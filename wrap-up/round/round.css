@@ -1,0 +1,91 @@
+/*reset css*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+body {
+    font-family: Helvetica, "Helvetica Neue", Arial;
+}
+
+.pearl-progress {
+    width: 100%;
+    background: linear-gradient(to bottom, #fff 0%, #fff 48%, #333 49%, #333 51%, #fff 52%, #fff 100%);
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.round-pearl {
+    width: 30px;
+    height: 30px;
+    border: 2px solid #333;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 27px;
+    text-align: center;
+    background: #fff;
+}
+
+.round-pearl.-success {
+    background: #a7ffa7;
+}
+.round-pearl.-fail {
+    background: #ff9b9b;
+}
+.round-pearl.-in-progress {
+    background: #ffc469;
+}
+
+
+.controls {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.controls .controls-timer {
+    flex-grow: 1;
+    max-width: 150px;
+    min-width: 100px;
+    text-align: center;
+    font-size: 55px;
+}
+.controls .controls-selector {
+    flex-grow: 5;
+}
+
+.selector-banned-container {
+    width: 100%;
+    border: 1px solid #333;
+    box-sizing: border-box;
+}
+
+.selector-banned-container .banned-symbol {
+    display: inline-block;
+    margin: 2px 5px;
+    padding: 3px;
+    border: 1px solid #666;
+    box-sizing: border-box;
+}
+
+.selector-input {
+    width: 100%;
+    font-size: 20px;
+    box-sizing: border-box;
+}
+
+.task .hljs .hljs-tag.target {
+    position: relative;
+}
+
+.task .hljs .hljs-tag.target:before {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    border: 2px solid #c112dd;
+    border-radius: 50%;
+    left: -20px;
+    top: 4px;
+}
