@@ -1,0 +1,28 @@
+{
+  "name": "css-quickdraw-redux",
+  "version": "1.0.0",
+  "description": "CSS Selector Multiplayer Puzzle",
+  "main": "webpack.config.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DaQuirm/css-quickdraw-redux.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DaQuirm/css-quickdraw-redux/issues"
+  },
+  "homepage": "https://github.com/DaQuirm/css-quickdraw-redux",
+  "devDependencies": {
+    "coffee-loader": "^0.7.2",
+    "coffee-script": "^1.9.3",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.11"
+  }
+}

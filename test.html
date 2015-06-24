@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>nexus tests</title>
+  <link rel="stylesheet" href="lib/mocha/mocha.css" />
+</head>
+<body>
+  <div id="mocha"></div>
+  <script src="lib/mocha/mocha.js"></script>
+  <script src="lib/chai/chai.js"></script>
+  <script>mocha.setup('bdd')</script>
+
+  <!-- Source -->
+  <script src="dist/bundle-test.js"></script>
+
+  <script>
+    var should = chai.should();
+    window.onload = function(){
+      mocha.run();
+    };
+  </script>
+</body>
+</html>
