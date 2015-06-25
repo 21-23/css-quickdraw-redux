@@ -89,3 +89,31 @@ body {
     left: -20px;
     top: 4px;
 }
+
+.user-panel {
+    width: 100%;
+    background: #000;
+    border-bottom: 5px solid #349161;
+    color: #fff;
+    padding: 5px 35px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-panel .logo {
+    flex-grow: 1;
+    min-width: 100px;
+}
+.user-panel .name {
+    flex-grow: 5;
+    text-align: right;
+}
+.user-panel .rating {
+    color: #ccc;
+    margin-left: 10px;
+}
