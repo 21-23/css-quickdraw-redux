@@ -67,12 +67,26 @@ body {
     padding: 3px;
     border: 1px solid #666;
     box-sizing: border-box;
+    border-radius: 4px;
+}
+
+.selector-banned-container .banned-symbol.-input {
+    background: #f00;
+    border-color: #910000;
 }
 
 .selector-input {
     width: 100%;
+    height: 25px;
+    border: 1px solid #000;
     font-size: 20px;
     box-sizing: border-box;
+}
+.selector-input.placeholder {
+    color: #aaa;
+}
+.selector-input .-banned {
+    color: #f00;
 }
 
 .task .hljs .hljs-tag.target {
