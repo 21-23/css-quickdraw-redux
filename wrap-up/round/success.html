@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSSQD - Round 6</title>
+
+    <link rel="stylesheet" type="text/css" href="round.css">
+    <link rel="stylesheet" type="text/css" href="monokai_sublime.css">
+    <script type="text/javascript" src="highlight.pack.js"></script>
+    <script type="text/javascript">hljs.initHighlightingOnLoad();</script>
+</head>
+<body>
+    <div class="user-panel">
+        <span class="logo">CSS Quick Draw</span>
+        <span class="name">John Doe<span class="rating">117</span></span>
+    </div>
+    <div class="pearl-progress">
+        <div class="round-pearl -success">1</div>
+        <div class="round-pearl -fail">2</div>
+        <div class="round-pearl -success">3</div>
+        <div class="round-pearl -success">4</div>
+        <div class="round-pearl -fail">5</div>
+        <div class="round-pearl -in-progress">6</div>
+        <div class="round-pearl">7</div>
+        <div class="round-pearl">8</div>
+        <div class="round-pearl">9</div>
+        <div class="round-pearl">10</div>
+        <div class="round-pearl">11</div>
+    </div>
+    <div class="controls">
+        <div class="controls-selector">
+            <div class="selector-banned-container">
+                <span>Banned:</span>
+                <div class="banned-symbol">*</div>
+                <div class="banned-symbol">:last-child</div>
+                <div class="banned-symbol">span</div>
+                <div class="banned-symbol">div</div>
+            </div>
+            <div class="selector-input" contenteditable="true">.any-class, a[data-state="nice"], a[data-state="smth"]</div>
+        </div>
+        <div class="controls-timer">0:00</div>
+    </div>
+    <div class="task">
+        <pre><code class="html">
+        &lt;div class="any-class"&gt;
+                &lt;span&gt;
+                        Item 1
+                &lt;/span&gt;
+                &lt;span&gt;
+                        Item 2
+                &lt;/span&gt;
+                &lt;span&gt;
+                        Item 3
+                &lt;/span&gt;
+        &lt;/div&gt;
+        &lt;ul&gt;
+                &lt;li&gt;
+                        &lt;a href="#go" data-state="nice" /&gt;
+                &lt;/li&gt;
+                &lt;li&gt;
+                        &lt;a href="#go1" data-state="ouch" /&gt;
+                        &lt;a data-state="rokotansky" /&gt;
+                        &lt;a href="#go2" data-state="smth" /&gt;
+                &lt;/li&gt;
+        &lt;/ul&gt;
+        </code></pre>
+    </div>
+
+    <script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            var timerNode = document.getElementsByClassName('controls-timer')[0],
+                startElapsedSec = 200,
+                timerInterval;
+
+            timerInterval = setInterval(function () {
+                var min, sec, currentPearl;
+
+                startElapsedSec--;
+                if (startElapsedSec < 195) {
+                    clearInterval(timerInterval);
+                    timerNode.classList.add('-success');
+                    timerNode.innerText = '\u2713' + timerNode.innerText;
+                    currentPearl = document.querySelector('.round-pearl.-in-progress');
+                    currentPearl.classList.remove('-in-progress');
+                    currentPearl.classList.add('-success');
+                    document.getElementsByClassName('selector-input')[0].classList.add('-done');
+                    return;
+                }
+
+                min = Math.floor(startElapsedSec / 60);
+                sec = startElapsedSec - min * 60;
+                if (sec < 10) { sec = "0" + sec; }
+                timerNode.innerText = min + ":" + sec;
+            }, 1000);
+
+
+            setTimeout(function () {
+                var tags = document.getElementsByClassName('hljs-tag');
+
+                    tags[0].classList.add('target');
+                    tags[0].classList.add('-selectored');
+                    tags[7].classList.add('target');
+                    tags[7].classList.add('-selectored');
+
+                    tags[10].classList.add('target');
+                    tags[10].classList.add('-selectored');
+
+                    tags[15].classList.add('target');
+                    tags[15].classList.add('-selectored');
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
