@@ -103,6 +103,9 @@ body {
     left: -20px;
     top: 4px;
 }
+.task .hljs .hljs-tag.-selectored:before {
+    background: #54c82d;
+}
 
 .user-panel {
     width: 100%;
