@@ -46,10 +46,16 @@ body {
 
 .controls .controls-timer {
     flex-grow: 1;
-    max-width: 150px;
+    max-width: 170px;
     min-width: 100px;
     text-align: center;
     font-size: 55px;
+}
+.controls .controls-timer.-success {
+    color: #349161;
+}
+.controls .controls-timer.-fail {
+    color: #f00;
 }
 .controls .controls-selector {
     flex-grow: 5;
@@ -84,6 +90,14 @@ body {
 }
 .selector-input.placeholder {
     color: #aaa;
+}
+.selector-input.-done {
+    background: #349161;
+    color: #fff;
+}
+.selector-input.-fail {
+    background: #f00;
+    color: #fff;
 }
 .selector-input .-banned {
     color: #f00;
