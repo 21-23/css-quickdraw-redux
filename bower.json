@@ -11,6 +11,6 @@
     "chai": "~3.0.0"
   },
   "dependencies": {
-    "nexus": "~0.3.4"
+    "nexus": "0.4.0-alpha.4"
   }
 }
