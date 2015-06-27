@@ -1,8 +1,14 @@
-TaskStatus = require './task-status'
+TaskStatus       = require './task-status'
+{PearlViewModel} = require './pearl-thread'
 
-class TaskPearlViewModel
+class TaskPearlViewModel extends PearlViewModel
+	constructor: (task) ->
+		super
+		@text.value = task.index.toString()
+		@color['<<-'] task.status, (status) ->
+			TaskPearlViewModel.ColorByStatus[status]
 
-	@StatusColor =
+	@ColorByStatus =
 		"#{TaskStatus.COMPLETED}"  : 'green'
 		"#{TaskStatus.TIMEOUT}"    : 'crimson'
 		"#{TaskStatus.IN_PROGRESS}": 'gold'
