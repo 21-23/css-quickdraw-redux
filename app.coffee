@@ -2,6 +2,8 @@ TaskPearlViewModel     = require './task-pearl-viewmodel'
 TaskStatus             = require './task-status'
 PearlThread            = require './pearl-thread'
 
+require './stylesheets/app.styl'
+
 tasks = [
 	{
 		index: 1
