@@ -5,13 +5,13 @@ class TaskPearlViewModel extends PearlViewModel
 	constructor: (task) ->
 		super
 		@text.value = task.index.toString()
-		@color['<<-'] task.status, (status) ->
-			TaskPearlViewModel.ColorByStatus[status]
+		@modifier['<<-'] task.status, (status) ->
+			TaskPearlViewModel.ModifierByStatus[status]
 
-	@ColorByStatus =
-		"#{TaskStatus.COMPLETED}"  : '#a7ffa7'
-		"#{TaskStatus.TIMEOUT}"    : '#ff9b9b'
-		"#{TaskStatus.IN_PROGRESS}": '#ffc469'
-		"#{TaskStatus.PENDING}"    : 'white'
+	@ModifierByStatus =
+		"#{TaskStatus.COMPLETED}"  : '-completed'
+		"#{TaskStatus.TIMEOUT}"    : '-timeout'
+		"#{TaskStatus.IN_PROGRESS}": '-in-progress'
+		"#{TaskStatus.PENDING}"    : '-pending'
 
 module.exports = TaskPearlViewModel

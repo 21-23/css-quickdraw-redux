@@ -2,8 +2,8 @@
 
 class PearlViewModel
 
-	constructor: ({color, text}) ->
-		@color = new nx.Cell value:color
+	constructor: ({modifier, text}) ->
+		@modifier = new nx.Cell value:modifier
 		@text = new nx.Cell value:text
 
 module.exports = PearlViewModel
