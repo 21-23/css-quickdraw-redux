@@ -10,7 +10,7 @@ describe 'TaskPearlViewModel', ->
 	beforeEach ->
 		task =
 			index: 1
-			status: nx.Cell value:TaskStatus.PENDING
+			status: new nx.Cell value:TaskStatus.PENDING
 		view_model = new TaskPearlViewModel task
 
 	describe 'constructor', ->
@@ -19,10 +19,9 @@ describe 'TaskPearlViewModel', ->
 
 	describe 'status-color binding', ->
 		it 'sets the color cell value to converted status color', ->
-			view_model.color.value.should.equal TaskPearlViewModel.StatusColor[task.status]
+			view_model.color.value.should.equal TaskPearlViewModel.ColorByStatus[task.status.value]
 
 		it 'updates the color using the view model\'s color map', ->
-			for status of TaskStatus
+			for _, status of TaskStatus
 				task.status.value = status
-				view_model.color.value.should.equal TaskPearlViewModel.StatusColor[status]
-
+				view_model.color.value.should.equal TaskPearlViewModel.ColorByStatus[status]
