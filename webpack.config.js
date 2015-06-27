@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 
+
 module.exports = {
 
 	context: __dirname,
@@ -11,7 +12,8 @@ module.exports = {
 	},
 
 	entry: {
-		'bundle-test': './test.coffee'
+		'bundle-test': './test.coffee',
+		'bundle-app': './app.coffee'
 	},
 
 	output: {
@@ -29,8 +31,11 @@ module.exports = {
 
 	module: {
 		loaders: [
-			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ }
+			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ },
+			{
+				test: /\.styl$/,
+    		loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+  		}
 		]
 	}
 };
-
