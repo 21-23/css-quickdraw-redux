@@ -9,9 +9,9 @@ class TaskPearlViewModel extends PearlViewModel
 			TaskPearlViewModel.ColorByStatus[status]
 
 	@ColorByStatus =
-		"#{TaskStatus.COMPLETED}"  : 'green'
-		"#{TaskStatus.TIMEOUT}"    : 'crimson'
-		"#{TaskStatus.IN_PROGRESS}": 'gold'
+		"#{TaskStatus.COMPLETED}"  : '#a7ffa7'
+		"#{TaskStatus.TIMEOUT}"    : '#ff9b9b'
+		"#{TaskStatus.IN_PROGRESS}": '#ffc469'
 		"#{TaskStatus.PENDING}"    : 'white'
 
 module.exports = TaskPearlViewModel

@@ -2,7 +2,6 @@ PearlView = require './pearl.view.coffee'
 
 PearlsView = (context) ->
   nxt.Element 'div',
-    context.pearls.map (item) ->
-      PearlView item
+    context.pearls.map PearlView
 
 module.exports = PearlsView
