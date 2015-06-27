@@ -34,7 +34,7 @@ module.exports = {
 			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ },
 			{
 				test: /\.styl$/,
-    		loader: 'css-loader!stylus-loader?paths=node_modules/bootstrap-stylus/stylus/'
+    		loader: 'style-loader!css-loader!stylus-loader'
   		}
 		]
 	}
