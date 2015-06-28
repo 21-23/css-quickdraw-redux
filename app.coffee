@@ -27,4 +27,3 @@ tasks = [
 	}
 ]
 document.body.appendChild PearlThread.View(new PearlThread.ViewModel tasks, TaskPearlViewModel).data.node
-# new PearlProgressIndicator.ViewModel tasks, TaskPearlViewModel

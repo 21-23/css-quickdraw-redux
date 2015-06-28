@@ -1,7 +1,37 @@
 @import '../common/color-variables.styl'
 
-task-completed-color = light-green
+thread-color           = space-gray
+task-completed-color   = light-green
+task-timeout-color     = light-red
+task-in-progress-color = light-orange
+task-pending-color     = white
+
+.qd-pearl-thread
+  width 100%
+  background thread-color
+  display flex
+  flex-flow row nowrap
+  justify-content space-around
+  align-items center
+
+.qd-pearl
+  width 30px
+  height 30px
+  border 2px solid #333
+  border-radius 50%
+  font-size 20px
+  line-height 27px
+  text-align center
 
 .qd-pearl
   &.-completed
     background task-completed-color
+.qd-pearl
+  &.-timeout
+    background task-timeout-color
+.qd-pearl
+  &.-in-progress
+    background task-in-progress-color
+.qd-pearl
+  &.-pending
+    background task-pending-color
