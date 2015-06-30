@@ -65,25 +65,43 @@
         </code></pre>
     </div>
 
+    <div class="pre-start-counter"></div>
+
     <script type="text/javascript">
         document.addEventListener("DOMContentLoaded", function () {
             var timerNode = document.getElementsByClassName('controls-timer')[0],
+                counterNode = document.getElementsByClassName('pre-start-counter')[0],
                 startElapsedSec = 200,
-                timerInterval;
+                timeToStart = 4,
+                timerInterval, startInterval;
 
-            timerInterval = setInterval(function () {
+            startInterval = setInterval(function () {
                 var min, sec;
 
-                startElapsedSec--;
-                if (startElapsedSec < 0) {
-                    clearInterval(timerInterval);
+                timeToStart--;
+                if (timeToStart < 0) {
+                    clearInterval(startInterval);
+                    counterNode.parentNode.removeChild(counterNode);
+
+                    timerInterval = setInterval(function () {
+                        var min, sec;
+
+                        startElapsedSec--;
+                        if (startElapsedSec < 0) {
+                            clearInterval(timerInterval);
+                            return;
+                        }
+
+                        min = Math.floor(startElapsedSec / 60);
+                        sec = startElapsedSec - min * 60;
+                        if (sec < 10) { sec = "0" + sec; }
+                        timerNode.innerText = min + ":" + sec;
+                    }, 1000);
+
                     return;
                 }
 
-                min = Math.floor(startElapsedSec / 60);
-                sec = startElapsedSec - min * 60;
-                if (sec < 10) { sec = "0" + sec; }
-                timerNode.innerText = min + ":" + sec;
+                counterNode.innerText = timeToStart;
             }, 1000);
 
 
