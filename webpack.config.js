@@ -7,7 +7,7 @@ module.exports = {
 	context: __dirname,
 
 	resolve: {
-		root: [path.join(__dirname, 'lib')],
+		root: [path.join(__dirname, './public')],
 		extensions: ['', '.js', '.coffee']
 	},
 
@@ -17,7 +17,7 @@ module.exports = {
 	},
 
 	output: {
-		path: path.join(__dirname, 'dist'),
+		path: path.join(__dirname, './public/dist'),
 		filename: '[name].js'
 	},
 
@@ -25,7 +25,7 @@ module.exports = {
 
 	plugins: [
 		new webpack.ResolverPlugin(
-			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin("bower.json", ["main"])
+			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin('bower.json', ['main'])
 		)
 	],
 
