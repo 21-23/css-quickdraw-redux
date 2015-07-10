@@ -1,5 +1,5 @@
-TaskStatus       = require './task-status'
-{PearlViewModel} = require './pearl-thread'
+TaskStatus       = require '../models/task-status'
+{PearlViewModel} = require '../../../components/pearl-thread'
 
 class TaskPearlViewModel extends PearlViewModel
 	constructor: (task) ->

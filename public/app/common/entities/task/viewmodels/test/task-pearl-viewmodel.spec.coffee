@@ -1,5 +1,5 @@
 TaskPearlViewModel = require '../task-pearl-viewmodel'
-TaskStatus         = require '../task-status'
+TaskStatus         = require '../../models/task-status'
 {nx} = require 'nexus'
 
 describe 'TaskPearlViewModel', ->

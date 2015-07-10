@@ -8,12 +8,13 @@ module.exports = {
 
 	resolve: {
 		root: [path.join(__dirname, './public')],
-		extensions: ['', '.js', '.coffee']
+		extensions: ['', '.js', '.coffee'],
+		modulesDirectories: ['lib']
 	},
 
 	entry: {
-		'bundle-test': './test.coffee',
-		'bundle-app': './app.coffee'
+		'bundle-test': 'app/test.coffee',
+		'bundle-app': 'app/app.coffee'
 	},
 
 	output: {

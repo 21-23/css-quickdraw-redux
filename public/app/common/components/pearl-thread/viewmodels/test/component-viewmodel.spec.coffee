@@ -1,5 +1,5 @@
-PearlViewModel     = require '../view-models/pearl-viewmodel'
-ComponentViewModel = require '../view-models/component-viewmodel'
+PearlViewModel     = require '../pearl-viewmodel'
+ComponentViewModel = require '../component-viewmodel'
 {nx} = require 'nexus'
 
 describe 'ComponentViewModel', ->
