@@ -1,5 +1,6 @@
 path		= require 'path'
 webpack = require 'webpack'
+WebpackNotifierPlugin = require 'webpack-notifier'
 
 PUBLIC_DIRECTORY = path.join __dirname, 'public'
 
@@ -26,6 +27,7 @@ module.exports =
 
 	plugins: [
 		new webpack.NoErrorsPlugin # for example to prevent tests from passing when there are coffee-lint errors
+		new WebpackNotifierPlugin
 		new webpack.ResolverPlugin(
 			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin 'bower.json', ['main']
 		)
