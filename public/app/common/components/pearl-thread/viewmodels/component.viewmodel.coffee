@@ -1,4 +1,4 @@
-PearlViewModel = require './pearl-viewmodel'
+PearlViewModel = require './pearl.viewmodel'
 
 class ComponentViewModel
 	constructor: (items, view_model = PearlViewModel) ->
