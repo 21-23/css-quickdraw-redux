@@ -1,13 +1,17 @@
 var path = require('path');
 var webpack = require('webpack');
 
+var PUBLIC_DIRECTORY = path.join(__dirname, 'public');
 
 module.exports = {
 
 	context: __dirname,
 
 	resolve: {
-		root: [path.join(__dirname, './public')],
+		alias: {
+			common: path.join(PUBLIC_DIRECTORY, 'app/common')
+		},
+		root: PUBLIC_DIRECTORY,
 		extensions: ['', '.js', '.coffee'],
 		modulesDirectories: ['lib']
 	},
