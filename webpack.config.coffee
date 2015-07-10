@@ -25,12 +25,24 @@ module.exports =
 	devtool: 'source-map'
 
 	plugins: [
+		new webpack.NoErrorsPlugin # for example to prevent tests from passing when there are coffee-lint errors
 		new webpack.ResolverPlugin(
 			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin 'bower.json', ['main']
 		)
 	]
 
+	coffeelint:
+		configFile: path.join __dirname, './coffee-lint.json'
+
 	module:
+
+		preLoaders: [
+			{
+				test: /\.coffee?$/
+				loader: 'coffee-lint-loader'
+			}
+		]
+
 		loaders: [
 			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ }
 			{
