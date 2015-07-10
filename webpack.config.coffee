@@ -20,7 +20,7 @@ module.exports =
 		'bundle-app': 'app/app.coffee'
 
 	output:
-		path: path.join(__dirname, './public/dist')
+		path: path.join __dirname, './public/dist'
 		filename: '[name].js'
 
 	devtool: 'source-map'
