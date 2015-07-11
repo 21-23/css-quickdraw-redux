@@ -22,14 +22,14 @@ describe 'ComponentViewModel', ->
 			view_model.string.value.should.equal ''
 
 	it 'should highlight matching templates', ->
-		view_model.string = 'this data'
-		view_model.patterns[0].should.be.ok
-		view_model.patterns[1].should.not.be.ok
-		view_model.patterns[2].should.not.be.ok
-		view_model.patterns[3].should.be.ok
+		view_model.string.value = 'this data'
+		view_model.patterns[0].is_matched.value.should.be.ok
+		view_model.patterns[1].is_matched.value.should.be.ok
+		view_model.patterns[2].is_matched.value.should.not.be.ok
+		view_model.patterns[3].is_matched.value.should.be.ok
 
-		view_model.string = 'data'
-		view_model.patterns[0].should.not.be.ok
-		view_model.patterns[1].should.not.be.ok
-		view_model.patterns[2].should.not.be.ok
-		view_model.patterns[3].should.be.ok
+		view_model.string.value = 'data'
+		view_model.patterns[0].is_matched.value.should.not.be.ok
+		view_model.patterns[1].is_matched.value.should.not.be.ok
+		view_model.patterns[2].is_matched.value.should.not.be.ok
+		view_model.patterns[3].is_matched.value.should.be.ok
