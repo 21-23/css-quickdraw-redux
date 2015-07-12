@@ -12,24 +12,20 @@ describe 'ComponentViewModel', ->
 
 	describe 'constructor', ->
 
-		it 'saves incoming array to `patterns`', ->
+		it 'saves passed array to `patterns`', ->
 			view_model.patterns.length.should.equal data.length
 			view_model.patterns.every (pattern) -> pattern instanceof PatternViewModel
-				.should.be.equal true
+				.should.equal true
 
-		it 'creates a nx.Cell property with empty string value', ->
+		it 'creates an nx.Cell property with empty string value', ->
 			view_model.string.should.be.an.instanceof nx.Cell
 			view_model.string.value.should.equal ''
 
-	it 'should highlight matching templates', ->
+	it 'should highlight matching patterns', ->
 		view_model.string.value = 'this data'
-		view_model.patterns[0].is_matched.value.should.be.ok
-		view_model.patterns[1].is_matched.value.should.be.ok
-		view_model.patterns[2].is_matched.value.should.not.be.ok
-		view_model.patterns[3].is_matched.value.should.be.ok
+		view_model.patterns.map ({is_matched}) -> is_matched.value
+			.should.deep.equal [yes, yes, no, yes]
 
 		view_model.string.value = 'data'
-		view_model.patterns[0].is_matched.value.should.not.be.ok
-		view_model.patterns[1].is_matched.value.should.not.be.ok
-		view_model.patterns[2].is_matched.value.should.not.be.ok
-		view_model.patterns[3].is_matched.value.should.be.ok
+		view_model.patterns.map ({is_matched}) -> is_matched.value
+			.should.deep.equal [no, no, no, yes]
