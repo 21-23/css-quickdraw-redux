@@ -7,6 +7,11 @@ landing-tagline-font-family = Monospace, Consolas, "Menlo Regular"
 landing-scroll-down-arrow-width = 7%
 landing-scroll-down-arrow-height = 60px
 
+landing-scroll-login-icon-width = 50px
+landing-scroll-login-icon-height = 50px
+landing-scroll-login-icon-spacing = 10px
+landing-scroll-login-panel-height = landing-scroll-login-icon-height + landing-scroll-login-icon-spacing
+
 main-background = #fff
 
 main-app-name-color = #fff
@@ -56,7 +61,21 @@ body
 				animation-delay -0.3s
 			&.arrow-3
 				animation-delay 0s
-
+	
+.scroll-login-panel
+	position: absolute
+	top: 100vh
+	height landing-scroll-login-panel-height
+	transform: translateY(- (landing-scroll-login-panel-height + 10px))
+	right 0px
+	
+	.icon
+		display inline-block
+		width landing-scroll-login-icon-width
+		height landing-scroll-login-icon-height
+		margin landing-scroll-login-icon-spacing
+		border 1px solid #00f
+	
 @keyframes scroll-down-arrow {
 	0% {
 		opacity 0
@@ -87,3 +106,11 @@ body
 		margin 0px
 		font-size main-app-name-font-size
 		line-height main-app-name-font-size / 2
+		box-shadow 0px 1px 0px 0px darken(green-main, 50%);
+	
+	.demo
+		width 80%
+		margin-left 10%
+		
+		.demo-image
+			width 100%
