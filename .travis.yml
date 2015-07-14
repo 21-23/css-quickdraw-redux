@@ -13,4 +13,4 @@ before_script:
   - bower i
 
 script:
-	npm run test-chrome
+  - npm run test-chrome
