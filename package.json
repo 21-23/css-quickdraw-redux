@@ -8,8 +8,7 @@
   },
   "scripts": {
     "prepush": "npm test",
-    "test": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
-    "test-chrome": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run --browsers Chrome"
+    "test": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run"
   },
   "repository": {
     "type": "git",

@@ -6,7 +6,12 @@ ENTRY = path.join PUBLIC_DIRECTORY, 'app/test.coffee'
 module.exports = (config) ->
 	config.set
 
-		browsers: ['PhantomJS2']
+		browsers: [if process.env.TRAVIS then 'Chrome_Travis' else 'PhantomJS2']
+
+		customLaunchers:
+			Chrome_Travis:
+				base: 'Chrome'
+				flags: ['--no-sandbox']
 
 		frameworks: ['mocha', 'chai-sinon']
 
@@ -24,4 +29,3 @@ module.exports = (config) ->
 			'karma-phantomjs2-launcher'
 			'karma-chrome-launcher'
 		]
-
