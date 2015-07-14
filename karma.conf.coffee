@@ -22,5 +22,6 @@ module.exports = (config) ->
 			'karma-mocha'
 			'karma-webpack'
 			'karma-phantomjs2-launcher'
+			'karma-chrome-launcher'
 		]
 
