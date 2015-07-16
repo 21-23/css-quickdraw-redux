@@ -1,4 +1,4 @@
-landing-background = #000
+landing-background-color = #000
 
 landing-tagline-color = #fff
 landing-tagline-font-size = 2em
@@ -19,8 +19,11 @@ main-app-name-font-size = 3em
 
 green-main = #349161
 
+@require 'landing-background.styl'
+
 body
-	background landing-background no-repeat
+	background-color landing-background-color
+	background-repeat no-repeat
 	background-size cover
 
 .tagline
@@ -102,7 +105,7 @@ body
 	
 	.app-name
 		color main-app-name-color
-		background landing-background
+		background landing-background-color
 		border-bottom: 5px solid green-main;
 		margin 0px
 		font-size main-app-name-font-size
