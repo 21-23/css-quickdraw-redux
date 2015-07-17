@@ -12,6 +12,8 @@ landing-scroll-login-icon-height = 50px
 landing-scroll-login-icon-spacing = 10px
 landing-scroll-login-panel-height = landing-scroll-login-icon-height + landing-scroll-login-icon-spacing
 
+landing-scroll-items-bttom-offset = 10px
+
 main-background = #fff
 
 main-app-name-color = #fff
@@ -42,12 +44,12 @@ body
 		margin-left landing-tagline-font-size
 
 .scroll-down-container
-	position: relative
-	top: 100vh
+	position: absolute
+	bottom landing-scroll-items-bttom-offset
+	left 50% - (landing-scroll-down-arrow-width / 2)
 	width landing-scroll-down-arrow-width
 	height landing-scroll-down-arrow-height
 	margin auto
-	transform: translateY(- (landing-scroll-down-arrow-height + 10px))
 	
 	.scroll-down-arrows
 		width 100%
@@ -57,21 +59,24 @@ body
 			stroke: #fff
 			fill: transparent
 			stroke-width: 3px
+			-webkit-animation scroll-down-arrow 1.5s infinite
 			animation scroll-down-arrow 1.5s infinite
 			
 			&.arrow-1
+				-webkit-animation-delay -0.6s
 				animation-delay -0.6s
 			&.arrow-2
+				-webkit-animation-delay -0.3s
 				animation-delay -0.3s
 			&.arrow-3
+				-webkit-animation-delay 0s
 				animation-delay 0s
 	
 .scroll-login-panel
 	position: absolute
-	top: 100vh
-	height landing-scroll-login-panel-height
-	transform: translateY(- (landing-scroll-login-panel-height + 10px))
+	bottom landing-scroll-items-bttom-offset
 	right 0px
+	height landing-scroll-login-panel-height
 	
 	.icon
 		display inline-block
@@ -79,6 +84,21 @@ body
 		height landing-scroll-login-icon-height
 		margin landing-scroll-login-icon-spacing
 		border 1px solid #00f
+
+@-webkit-keyframes scroll-down-arrow {
+	0% {
+		opacity 0
+	}
+	40% {
+		opacity 1
+	}
+	80% {
+		opacity 0
+	}
+	100% {
+		opacity 0
+	}
+}
 	
 @keyframes scroll-down-arrow {
 	0% {
