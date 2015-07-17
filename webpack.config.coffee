@@ -62,6 +62,6 @@ module.exports =
 			}
 			{
 				test: /\.jpg$/,
-				loader: 'file-loader'
+				loader: 'file-loader?name=[name].[ext]'
 			}
 		]
