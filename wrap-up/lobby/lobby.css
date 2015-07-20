@@ -35,75 +35,93 @@ body {
 
 .manage-controls {
     display: flex;
-    flex-flow: row wrap;
+    flex-flow: row nowrap;
     justify-content: space-around;
     align-items: center;
+    margin-bottom: 10px;
 }
 
 .manage-controls .control {
-    width: 200px;
-    height: 200px;
-    border: 20px solid #000;
-    opacity: 0.5;
-    cursor: pointer;
-    font-size: 200px;
-    line-height: 150px;
-    text-align: center;
-    color: #349161;
-    position: relative;
-    overflow: hidden;
-
-    transition: opacity 200ms linear;
-}
-
-.manage-controls .control .hint {
-    position: absolute;
-    bottom: 0px;
-    left: 0px;
-    width: 100%;
-    height: 50px;
-    font-size: 14px;
-    line-height: 50px;
-    color: #000;
-    transform: translateY(100%);
-
-    transition: transform 200ms;
-}
-
-.manage-controls .control:hover {
-    opacity: 1;
-}
-
-.manage-controls .control:hover .hint {
-    transform: translateY(0px);
-}
-
-.qd-date, .qd-title, .rep-delta {
     display: inline-block;
+    box-shadow: 0px 0px 0px 2px #000;
+    color: #000;
+    padding: 10px 15px;
+    margin: 5px 0px;
+    cursor: pointer;
+
+    -webkit-transition: box-shadow 100ms;
 }
 
-.latest-info .tab-title {
+.control.new-quickdraw {
+    font-size: 24px;
+}
+
+.control.new-quickdraw:hover {
+    box-shadow: 10px 0px 0px 2px #000, -10px 0px 0px 2px #000;
+    background: #000;
+    color: #fff;
+}
+
+.quickrdraws {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: stretch;
+    align-content: flex-start;
+}
+
+.quickrdraws .tile {
+    padding: 20px 20px;
+    font-size: 22px;
+    box-sizing: border-box;
+    width: 25%;
+    color: #fff;
+
+    cursor: pointer;
+    -webkit-transition: -webkit-transform 200ms;
+}
+@media (orientation: portrait) {
+    .quickrdraws .tile {
+        width: 50%;
+    }
+}
+
+.quickrdraws .tile:hover {
+    -webkit-transform: scale(1.05, 1.1);
+}
+
+.quickrdraws .tile .info.title {
     font-weight: 700;
 }
-
-.latest-info .rep-list {
-    max-height: 150px;
-    overflow: auto;
-    border-bottom: 1px solid #888;
-    border-top: 1px solid #888;
-    font-size: 18px;
+.quickrdraws .tile .info {
+    line-height: 26px;
+}
+.quickrdraws .tile .info.created {
+    font-size: 16px;
+}
+.quickrdraws .tile .info.rounds {
+    float: right;
+    font-size: 16px;
 }
 
-.latest-info .rep-list li {
-    border-bottom: 1px solid #aaa;
+.tile-0 {
+    background: repeating-linear-gradient(45deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
 }
-
-.latest-info .qd-date {
-    width: 130px;
+.tile-1 {
+    background: repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2) 10px,
+        rgba(0, 0, 0, 0.3) 10px, rgba(0, 0, 0, 0.3) 20px);
 }
-.latest-info .qd-title {
-    min-width: 500px;
+.tile-2 {
+    background: repeating-linear-gradient(to bottom, #5d9634, #5d9634 20px, #538c2b 20px, #538c2b 40px);
 }
-.latest-info .rep-delta.positive {
-    color: #349161;
+.tile-3 {
+    background: repeating-linear-gradient(-70deg, #f6ba52, #f6ba52 10px, #ffd180 10px, #ffd180 20px);
+}
+.tile-4 {
+    background-color: #026873;
+    background-image: linear-gradient(0deg, rgba(255,255,255,.07) 50%, transparent 50%),
+        linear-gradient(0deg, rgba(255,255,255,.13) 50%, transparent 50%),
+        linear-gradient(0deg, transparent 50%, rgba(255,255,255,.17) 50%),
+        linear-gradient(0deg, transparent 50%, rgba(255,255,255,.19) 50%);
+    background-size: 13px, 29px, 37px, 53px;
 }
