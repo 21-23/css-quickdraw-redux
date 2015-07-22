@@ -14,11 +14,9 @@ initHideOnScroll = (scrollLimit) ->
 		i = 0
 
 		newOpacity = 1 - currentScroll / scrollLimit
-		if newOpacity < 0
-			newOpacity = 0
+		newOpacity = 0 if newOpacity < 0
 
-		if newOpacity is lastOpacity
-			return
+		return if newOpacity is lastOpacity
 
 		for node in hideOnScrollNodes
 			do (node) ->
