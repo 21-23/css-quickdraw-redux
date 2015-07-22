@@ -54,11 +54,11 @@ module.exports =
 			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ }
 			{
 				test: /\.styl$/
-				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 2 versions!stylus-loader'
+				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 version!stylus-loader'
 			}
 			{
 				test: /\.css$/
-				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 versions'
+				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 version'
 			}
 			{
 				test: /\.jpg$/,
