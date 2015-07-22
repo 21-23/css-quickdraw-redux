@@ -2,7 +2,7 @@ landing-background-color = #000
 
 landing-tagline-color = #fff
 landing-tagline-font-size = 2em
-landing-tagline-font-family = Monospace, Consolas, "Menlo Regular"
+landing-tagline-font-family = Monospace, Consolas, 'Menlo Regular'
 
 landing-scroll-down-arrow-width = 7%
 landing-scroll-down-arrow-height = 60px
@@ -34,17 +34,17 @@ body
 	font-size landing-tagline-font-size
 	margin 1em
 	position absolute
-	top 0px
-	left 0px
+	top 0
+	left 0
 	
 	.line
-		margin 0.5em;
+		margin 0.5em
 	
 	.line-2
 		margin-left landing-tagline-font-size
 
 .scroll-down-container
-	position: absolute
+	position absolute
 	bottom landing-scroll-items-bttom-offset
 	left 50% - (landing-scroll-down-arrow-width / 2)
 	width landing-scroll-down-arrow-width
@@ -56,9 +56,9 @@ body
 		height 100%
 
 		.scroll-down-arrow
-			stroke: #fff
-			fill: transparent
-			stroke-width: 3px
+			stroke #fff
+			fill transparent
+			stroke-width 3px
 			animation scroll-down-arrow 1.5s infinite
 			
 			&.arrow-1
@@ -69,9 +69,9 @@ body
 				animation-delay 0s
 	
 .scroll-login-panel
-	position: absolute
+	position absolute
 	bottom landing-scroll-items-bttom-offset
-	right 0px
+	right 0
 	height landing-scroll-login-panel-height
 	
 	.icon
@@ -81,20 +81,18 @@ body
 		margin landing-scroll-login-icon-spacing
 		border 1px solid #00f
 	
-@keyframes scroll-down-arrow {
-	0% {
+@keyframes scroll-down-arrow
+	0%
 		opacity 0
-	}
-	40% {
+
+	40%
 		opacity 1
-	}
-	80% {
+
+	80%
 		opacity 0
-	}
-	100% {
+
+	100%
 		opacity 0
-	}
-}
 
 //------------------- Main Page -----------------------------
 
@@ -107,11 +105,11 @@ body
 	.app-name
 		color main-app-name-color
 		background landing-background-color
-		border-bottom: 5px solid green-main;
-		margin 0px
+		border-bottom 5px solid green-main
+		margin 0
 		font-size main-app-name-font-size
 		line-height main-app-name-font-size / 2
-		box-shadow 0px 1px 0px 0px darken(green-main, 50%);
+		box-shadow 0 1px 0 0 darken(green-main, 50%)
 	
 	.demo
 		width 80%
