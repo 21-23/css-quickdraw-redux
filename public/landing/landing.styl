@@ -1,0 +1,121 @@
+landing-background-color = #000
+
+landing-tagline-color = #fff
+landing-tagline-font-size = 2em
+landing-tagline-font-family = Monospace, Consolas, 'Menlo Regular'
+
+landing-scroll-down-arrow-width = 7%
+landing-scroll-down-arrow-height = 60px
+
+landing-scroll-login-icon-width = 50px
+landing-scroll-login-icon-height = 50px
+landing-scroll-login-icon-spacing = 10px
+landing-scroll-login-panel-height = landing-scroll-login-icon-height + landing-scroll-login-icon-spacing
+
+landing-scroll-items-bttom-offset = 10px
+
+main-background = #fff
+
+main-app-name-color = #fff
+main-app-name-font-size = 3em
+
+green-main = #349161
+
+@require 'landing-background.styl'
+
+body
+	background-color landing-background-color
+	background-repeat no-repeat
+	background-size cover
+
+.tagline
+	color landing-tagline-color
+	font-family landing-tagline-font-family
+	font-size landing-tagline-font-size
+	margin 1em
+	position absolute
+	top 0
+	left 0
+	
+	.line
+		margin 0.5em
+	
+	.line-2
+		margin-left landing-tagline-font-size
+
+.scroll-down-container
+	position absolute
+	bottom landing-scroll-items-bttom-offset
+	left 50% - (landing-scroll-down-arrow-width / 2)
+	width landing-scroll-down-arrow-width
+	height landing-scroll-down-arrow-height
+	margin auto
+	
+	.scroll-down-arrows
+		width 100%
+		height 100%
+		min-width 55px
+		max-width 70px
+
+		.scroll-down-arrow
+			stroke #fff
+			fill transparent
+			stroke-width 3px
+			animation scroll-down-arrow 1.5s infinite
+			
+			&.arrow-1
+				animation-delay -0.6s
+			&.arrow-2
+				animation-delay -0.3s
+			&.arrow-3
+				animation-delay 0s
+	
+.scroll-login-panel
+	position absolute
+	bottom landing-scroll-items-bttom-offset
+	right 0
+	height landing-scroll-login-panel-height
+	
+	.icon
+		display inline-block
+		width landing-scroll-login-icon-width
+		height landing-scroll-login-icon-height
+		margin landing-scroll-login-icon-spacing
+		border 1px solid #00f
+	
+@keyframes scroll-down-arrow
+	0%
+		opacity 0
+
+	40%
+		opacity 1
+
+	80%
+		opacity 0
+
+	100%
+		opacity 0
+
+//------------------- Main Page -----------------------------
+
+.main
+	position relative
+	top 100vh
+	text-align center
+	background main-background
+	
+	.app-name
+		color main-app-name-color
+		background landing-background-color
+		border-bottom 5px solid green-main
+		margin 0
+		font-size main-app-name-font-size
+		line-height main-app-name-font-size / 2
+		box-shadow 0 1px 0 0 darken(green-main, 50%)
+	
+	.demo
+		width 80%
+		margin-left 10%
+		
+		.demo-image
+			width 100%

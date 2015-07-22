@@ -1,6 +1,7 @@
 path		= require 'path'
 webpack = require 'webpack'
 WebpackNotifierPlugin = require 'webpack-notifier'
+HtmlWebpackPlugin = require 'html-webpack-plugin'
 
 PUBLIC_DIRECTORY = path.join __dirname, 'public'
 
@@ -18,6 +19,7 @@ module.exports =
 	entry:
 		'bundle-test': 'app/test.coffee'
 		'bundle-app': 'app/app.coffee'
+		'bundle-landing': 'landing/landing.coffee'
 
 	output:
 		path: path.join __dirname, './public/dist'
@@ -31,6 +33,9 @@ module.exports =
 		new webpack.ResolverPlugin(
 			new webpack.ResolverPlugin.DirectoryDescriptionFilePlugin 'bower.json', ['main']
 		)
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw'
+			template: 'public/landing/index.html'
 	]
 
 	coffeelint:
@@ -49,6 +54,14 @@ module.exports =
 			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ }
 			{
 				test: /\.styl$/
-				loader: 'style-loader!css-loader!stylus-loader'
+				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 version!stylus-loader'
+			}
+			{
+				test: /\.css$/
+				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 version'
+			}
+			{
+				test: /\.jpg$/,
+				loader: 'file-loader?name=[name].[ext]'
 			}
 		]
