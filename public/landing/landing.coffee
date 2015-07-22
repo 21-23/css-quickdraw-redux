@@ -9,7 +9,7 @@ initHideOnScroll = (scrollLimit) ->
 	lastOpacity = 1
 
 	window.addEventListener 'scroll', ->
-		currentScroll = this.pageYOffset
+		currentScroll = @pageYOffset
 		newOpacity = 1
 		i = 0
 
@@ -19,8 +19,6 @@ initHideOnScroll = (scrollLimit) ->
 		return if newOpacity is lastOpacity
 
 		for node in hideOnScrollNodes
-			do (node) ->
-				node.style.opacity = newOpacity
+			node.style.opacity = newOpacity
 
 		lastOpacity = newOpacity
-	, false
