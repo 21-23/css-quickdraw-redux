@@ -14,10 +14,23 @@ landing-scroll-login-panel-height = landing-scroll-login-icon-height + landing-s
 
 landing-scroll-items-bttom-offset = 10px
 
-main-background = #fff
+main-background = #212121
 
 main-app-name-color = #fff
 main-app-name-font-size = 3em
+main-app-description-color = rgba(255, 255, 255, 0.7)
+
+main-space-width = 80%
+main-space-left-offset = (100% - main-space-width) / 2
+
+main-login-panel-background = #333
+main-login-icon-width = 100px
+main-login-icon-height = 100px
+main-login-icon-spacing = 10px
+
+footer-background = #1f1f1f
+footer-height = 70px
+footer-color = rgba(255, 255, 255 0.8)
 
 green-main = #349161
 
@@ -26,7 +39,7 @@ green-main = #349161
 body
 	background-color landing-background-color
 	background-repeat no-repeat
-	background-size cover
+	background-size 100%
 
 .tagline
 	color landing-tagline-color
@@ -98,11 +111,12 @@ body
 
 //------------------- Main Page -----------------------------
 
-.main
+main
 	position relative
 	top 100vh
 	text-align center
 	background main-background
+	color #fff
 	
 	.app-name
 		color main-app-name-color
@@ -113,9 +127,52 @@ body
 		line-height main-app-name-font-size / 2
 		box-shadow 0 1px 0 0 darken(green-main, 50%)
 	
+	.app-description
+		display flex
+		justify-content space-between
+		align-items stretch
+		width main-space-width
+		margin auto
+		color main-app-description-color
+		
+		.new-game-flow-description, .play-flow-description
+			width 45%
+			text-align justify
+			
+			h2
+				text-align center
+				margin 0
+				color #fff
+
 	.demo
-		width 80%
-		margin-left 10%
+		width main-space-width
+		margin 1em auto
 		
 		.demo-image
 			width 100%
+
+.login-panel
+	display flex
+	justify-content space-around
+	align-items stretch
+	padding 0 main-space-left-offset
+	background main-login-panel-background
+	
+	.icon
+		display inline-block
+		width main-login-icon-width
+		height main-login-icon-height
+		margin main-login-icon-spacing
+		border 1px solid #00f
+
+footer
+	position relative
+	top 100vh
+	background footer-background
+	color footer-color
+	line-height footer-height
+	text-align center
+	font-weight bold
+	
+	.info
+		margin 10px
