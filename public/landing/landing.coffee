@@ -25,7 +25,7 @@ initHideOnScroll = (scrollLimit) ->
 		lastOpacity = newOpacity
 
 initScrollDownArrows = (scrollDuration) ->
-	arrows = document.getElementsByClassName('scroll-down-container')[0]
+	[arrows] = document.getElementsByClassName 'scroll-down-container'
 	currentPosition = window.scrollY
 	targetPosition = window.innerHeight
 	scrollLength = targetPosition - currentPosition
