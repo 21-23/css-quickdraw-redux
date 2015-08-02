@@ -47,5 +47,9 @@
     "stylus-loader": "^1.2.1",
     "webpack": "^1.9.11",
     "webpack-notifier": "^1.2.1"
+  },
+  "dependencies": {
+    "cson": "^3.0.1",
+    "nconf": "^0.7.1"
   }
 }
