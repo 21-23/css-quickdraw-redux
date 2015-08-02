@@ -7,8 +7,9 @@ CSONFormat =
 	stringify: CSON.stringify.bind CSON
 	parse: CSON.parseCSONString.bind CSON
 
-CSSQDConfig =
-	useDir: (directory) ->
+CSSQDConfig = Object.create nconf
+
+CSSQDConfig.useDir = (directory) ->
 		nconf.file 'environment',
 			file: path.join directory, "#{process.env.NODE_ENV}.cson"
 			format: CSONFormat
@@ -16,8 +17,5 @@ CSSQDConfig =
 		nconf.file 'settings',
 			file: path.join directory, 'settings.cson'
 			format: CSONFormat
-
-
-CSSQDConfig.__proto__ = nconf
 
 module.exports = CSSQDConfig
