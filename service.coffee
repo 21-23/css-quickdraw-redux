@@ -1,4 +1,5 @@
 cssqdConfig = require 'cssqd-config'
+path        = require 'path'
 
 cssqdConfig
 	.env
