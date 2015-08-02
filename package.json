@@ -8,7 +8,10 @@
   },
   "scripts": {
     "prepush": "npm test",
-    "test": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run"
+    "test": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
+    "start": "NODE_PATH=./app coffee service.coffee",
+    "dev": "NODE_ENV=dev npm start",
+    "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk service.coffee"
   },
   "repository": {
     "type": "git",
