@@ -12,4 +12,6 @@ console.log "port: #{cssqdConfig.get 'service:port'}"
 app.use serve path.join __dirname, cssqdConfig.get 'service:static'
 
 appConfig.configureRoutes app
+appConfig.configureKoa    app
+
 app.listen cssqdConfig.get 'service:port'
