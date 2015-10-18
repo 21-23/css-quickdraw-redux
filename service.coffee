@@ -10,7 +10,7 @@ cssqdConfig
 		separator: '__'
 
 cssqdConfig
-	.useDir path.join __dirname, 'config'
+	.useDir path.join __dirname, 'config', 'var'
 
 console.log "mongo connection string: #{cssqdConfig.get 'mongo_connection_string'}"
 console.log "port: #{cssqdConfig.get 'service:port'}"

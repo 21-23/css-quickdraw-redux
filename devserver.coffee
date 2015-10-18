@@ -3,7 +3,7 @@ WebpackDevServer = require 'webpack-dev-server'
 webpack          = require 'webpack'
 webpackConfig    = require './webpack.config'
 
-appConfig = cson.requireCSONFile './config/settings.cson'
+appConfig = cson.requireCSONFile './config/var/settings.cson'
 wdsPort = 8080
 compiler = webpack webpackConfig
 
