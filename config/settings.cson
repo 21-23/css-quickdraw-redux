@@ -1,4 +1,5 @@
 {
 	service:
 		port: 3000
+		static: 'public/dist'
 }
