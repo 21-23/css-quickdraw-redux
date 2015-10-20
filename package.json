@@ -53,6 +53,7 @@
     "cson": "^3.0.1",
     "koa": "^1.1.0",
     "koa-bodyparser": "^2.0.1",
+    "koa-passport": "^1.2.0",
     "koa-router": "^5.2.3",
     "koa-static": "^1.5.1",
     "nconf": "^0.7.1"
