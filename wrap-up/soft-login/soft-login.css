@@ -1,0 +1,55 @@
+/*reset css*/
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;vertical-align:baseline;margin:0;padding:0}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:none}table{border-collapse:collapse;border-spacing:0}
+
+body {
+	background: url('soft-login.jpg') #010101 no-repeat;
+  background-size: cover;
+  font-family: Helvetica, "Helvetica Neue", Arial;
+  color: #fff;
+}
+
+.soft-login-title, .soft-login-sub-title {
+	text-align: center;
+	color: #fff;
+	text-transform: uppercase;
+	position: absolute;
+	width: 100%;
+}
+
+.soft-login-title {
+	top: 10%;
+	font-size: 3em;
+}
+
+.soft-login-sub-title {
+	top: 30%;
+	font-size: 2.5em;
+}
+
+.soft-login-login-panel {
+	position: absolute;
+	top: 50%;
+	width: 100%;
+	text-align: center;
+	background: rgba(0, 0, 0, 0.7);
+}
+
+.soft-login-login-panel .icon {
+	display: inline-block;
+  vertical-align: middle;
+  margin: 20px 10px;
+  width: 80px;
+  height: 80px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.soft-login-login-panel .icon.fb {
+  background-image: url(fb-sheriff.png);
+}
+.soft-login-login-panel .icon.gp {
+  background-image: url(gp-sheriff.png);
+}
+.soft-login-login-panel .icon.tw {
+  background-image: url(tw-sheriff.png);
+}
