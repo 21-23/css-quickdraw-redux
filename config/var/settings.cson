@@ -5,6 +5,8 @@
 		https: false
 		auth:
 			url: 'auth'
+			successRedirect: '/'
+			failureRedirect: '/login.html'
 	session:
 		secret: 'cellar door'
 }
