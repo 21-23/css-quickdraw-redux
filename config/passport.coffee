@@ -12,5 +12,4 @@ passport.deserializeUser (id, done) ->
 	done null, users[id]
 
 for provider, authStrategy of authStrategies
-	console.log authStrategy.passportStrategy
 	passport.use authStrategy.passportStrategy
