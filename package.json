@@ -55,7 +55,13 @@
     "koa-bodyparser": "^2.0.1",
     "koa-passport": "^1.2.0",
     "koa-router": "^5.2.3",
+    "koa-session": "^3.3.1",
     "koa-static": "^1.5.1",
-    "nconf": "^0.7.1"
+    "nconf": "^0.7.1",
+    "passport": "^0.3.0",
+    "passport-facebook": "^2.0.0",
+    "passport-github": "^1.0.0",
+    "passport-google-auth": "^1.0.0",
+    "passport-twitter": "^1.0.3"
   }
 }
