@@ -1,6 +1,8 @@
 bodyParser  = require 'koa-bodyparser'
-cssqdConfig = require 'cssqd-config'
+session     = require 'koa-session'
 passport    = require 'koa-passport'
+cssqdConfig = require 'cssqd-config'
+
 
 module.exports = (app) ->
 	app.use do bodyParser
