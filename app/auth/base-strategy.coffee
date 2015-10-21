@@ -1,4 +1,4 @@
-passport    = require 'passport'
+passport    = require 'koa-passport'
 Router      = require 'koa-router'
 CSSQDConfig = require 'cssqd-config'
 
