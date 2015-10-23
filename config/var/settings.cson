@@ -1,0 +1,12 @@
+{
+	service:
+		port: 3000
+		static: 'public/dist'
+		https: false
+		auth:
+			url: 'auth'
+			successRedirect: '/'
+			failureRedirect: '/login.html'
+	session:
+		secret: 'cellar door'
+}

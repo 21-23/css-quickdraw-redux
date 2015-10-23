@@ -1,3 +1,5 @@
 {
 	mongo_connection_string: "mongo://localhost/cssqd-dev"
+	service:
+		host: 'localhost'
 }
