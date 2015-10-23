@@ -1,5 +1,5 @@
-configureRoutes = require './routes';
-configureKoa    = require './koa';
+configureRoutes = require './routes'
+configureKoa    = require './koa'
 
 module.exports =
 	configureRoutes: configureRoutes

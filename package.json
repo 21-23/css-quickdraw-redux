@@ -7,11 +7,12 @@
     "test": "test"
   },
   "scripts": {
-    "prepush": "npm test",
+    "prepush": "npm run coffeelint && npm test",
     "test": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
     "start": "NODE_PATH=./app coffee service.coffee",
     "dev": "NODE_ENV=dev npm start & webpack -w",
-    "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk service.coffee"
+    "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk service.coffee",
+    "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "coffee-lint-loader": "0.0.1",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.9.3",
+    "coffeelint": "^1.13.0",
     "css-loader": "^0.15.1",
     "file-loader": "^0.8.4",
     "html-webpack-plugin": "^1.6.0",
