@@ -26,7 +26,7 @@ class BaseOAuthStrategy
 
 	middleware: ->
 		router = new Router prefix: "/#{@name}"
-		router.get "/", passport.authenticate @name
+		router.get '/', passport.authenticate @name
 		router.get '/callback', passport.authenticate @name,
 			successRedirect: CSSQDConfig.get 'service:auth:successRedirect'
 			failureRedirect: CSSQDConfig.get 'service:auth:failureRedirect'
