@@ -39,7 +39,7 @@ module.exports =
 	]
 
 	coffeelint:
-		configFile: path.join __dirname, './coffee-lint.json'
+		configFile: path.join __dirname, './coffeelint.json'
 
 	module:
 

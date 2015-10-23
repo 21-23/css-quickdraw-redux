@@ -12,7 +12,7 @@
     "start": "NODE_PATH=./app coffee service.coffee",
     "dev": "NODE_ENV=dev npm start & webpack -w",
     "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk service.coffee",
-    "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint -f ./coffee-lint.json"
+    "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint"
   },
   "repository": {
     "type": "git",
