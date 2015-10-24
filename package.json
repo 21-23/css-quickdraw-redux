@@ -7,8 +7,8 @@
     "test": "test"
   },
   "scripts": {
-    "prepush": "npm run coffeelint && npm test && npm test-frontend",
-    "test": "mocha --compilers coffee:coffee-script/register --recursive --reporter spec",
+    "prepush": "npm run coffeelint && npm test && npm run test-frontend",
+    "test": "mocha --compilers coffee:coffee-script/register --require ./test/chai.coffee --recursive --reporter spec",
     "test-frontend": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
     "start": "NODE_PATH=./app coffee service.coffee",
     "dev": "NODE_ENV=dev npm start & webpack -w",
