@@ -19,6 +19,7 @@ module.exports =
 	entry:
 		'bundle-test': 'app/test.coffee'
 		'bundle-app': 'app/app.coffee'
+		'bundle-matcher': 'matcher/app.coffee'
 		'bundle-landing': 'landing/landing.coffee'
 
 	output:
@@ -36,6 +37,10 @@ module.exports =
 		new HtmlWebpackPlugin
 			title: 'CSS Quickdraw'
 			template: 'public/landing/index.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw Matcher'
+			template: 'public/matcher/index.html'
+			filename: 'matcher.html'
 	]
 
 	coffeelint:
