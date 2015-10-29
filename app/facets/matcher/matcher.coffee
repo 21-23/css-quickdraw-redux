@@ -1,3 +1,5 @@
+{nx} = require 'nexus-node'
+
 class Matcher
 
 	constructor: ->
