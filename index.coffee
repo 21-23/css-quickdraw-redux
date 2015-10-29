@@ -6,6 +6,8 @@ appConfig   = require './config'
 
 require './config/passport'
 
+Service = require './app/service'
+
 app = do koa
 
 console.log "mongo connection string: #{cssqdConfig.get 'mongo_connection_string'}"
@@ -16,4 +18,5 @@ app.use serve path.join __dirname, cssqdConfig.get 'service:static'
 appConfig.configureKoa    app
 appConfig.configureRoutes app
 
-app.listen cssqdConfig.get 'service:port'
+http_server = app.listen cssqdConfig.get 'service:port'
+(new Service).start http_server
