@@ -12,7 +12,7 @@ CSONFormat =
 CSSQDConfig = Object.create nconf
 CSSQDConfig.env separator: '__'
 CSSQDConfig.file 'environment',
-	file: path.join varsFolder, "#{process.env.NODE_ENV}.cson"
+	file: path.join varsFolder, "#{process.env.NODE_ENV or 'dev'}.cson"
 	format: CSONFormat
 
 CSSQDConfig.file 'settings',
