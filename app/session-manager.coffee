@@ -10,6 +10,7 @@ class SessionManager
 		facet = new MatcherFacet @service.matcher
 
 		new warp.Session
+			facet:     facet
 			transport: transport
 			entities:  facet.entities
 
