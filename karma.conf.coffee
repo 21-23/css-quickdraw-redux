@@ -1,7 +1,7 @@
 path = require 'path'
 
 PUBLIC_DIRECTORY = path.join __dirname, 'public'
-ENTRY = path.join PUBLIC_DIRECTORY, 'app/test.coffee'
+ENTRY = path.join PUBLIC_DIRECTORY, 'test.coffee'
 
 module.exports = (config) ->
 	config.set

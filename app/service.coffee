@@ -1,20 +1,20 @@
 warp = require 'nexus-warp'
 
-Matcher = require './facets/matcher/matcher'
+Sandbox = require './facets/sandbox/sandbox'
 SessionManager = require './session-manager'
 
 class Service
 
 	start: (http_server) ->
 
-		@matcher = new Matcher
+		@sandbox = new Sandbox
 
 		new warp.Service
 			transport: new warp.WebSocketTransport
 				http_server: http_server
 				session_manager: new SessionManager @
 			entities:
-				player_selector: @matcher.selector
-				player_match: @matcher.match
+				player_selector: @sandbox.selector
+				player_match: @sandbox.match
 
 module.exports = Service

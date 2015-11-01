@@ -20,7 +20,7 @@
 	},
 
 	"cyclomatic_complexity": {
-		"value": 6,
+		"value": 10,
 		"level": "warn"
 	},
 

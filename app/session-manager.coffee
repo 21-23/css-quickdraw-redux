@@ -1,13 +1,13 @@
 warp = require 'nexus-warp'
 
-MatcherFacet = require './facets/matcher/matcher-facet'
+SandboxFacet = require './facets/sandbox/sandbox-facet'
 
 class SessionManager
 
 	constructor: (@service) ->
 
 	create: (transport) ->
-		facet = new MatcherFacet @service.matcher
+		facet = new SandboxFacet @service.sandbox
 
 		new warp.Session
 			facet:     facet
