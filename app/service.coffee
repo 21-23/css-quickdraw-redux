@@ -1,4 +1,6 @@
 warp = require 'nexus-warp'
+vo   = require 'vo'
+Nightmare = require 'nightmare'
 
 Sandbox = require './facets/sandbox/sandbox'
 SessionManager = require './session-manager'
@@ -16,5 +18,11 @@ class Service
 			entities:
 				player_selector: @sandbox.selector
 				player_match: @sandbox.match
+
+		vo(->
+			nightmare = do Nightmare
+			yield nightmare
+				.goto 'http://localhost:3000/sandbox.html'
+		) (err, result) -> console.log err, result
 
 module.exports = Service
