@@ -40,6 +40,7 @@
     "karma": "^0.12.37",
     "karma-chai-sinon": "^0.1.5",
     "karma-chrome-launcher": "^0.2.0",
+    "karma-electron-launcher": "git+https://github.com/lele85/karma-electron-launcher.git",
     "karma-mocha": "^0.2.0",
     "karma-phantomjs2-launcher": "^0.1.6",
     "karma-webpack": "^1.5.1",

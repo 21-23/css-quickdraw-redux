@@ -6,7 +6,7 @@ ENTRY = path.join PUBLIC_DIRECTORY, 'test.coffee'
 module.exports = (config) ->
 	config.set
 
-		browsers: [if process.env.TRAVIS then 'Chrome_Travis' else 'PhantomJS2']
+		browsers: [if process.env.TRAVIS then 'Chrome_Travis' else 'Electron']
 
 		customLaunchers:
 			Chrome_Travis:
@@ -26,6 +26,6 @@ module.exports = (config) ->
 			'karma-chai-sinon'
 			'karma-mocha'
 			'karma-webpack'
-			'karma-phantomjs2-launcher'
+			'karma-electron-launcher'
 			'karma-chrome-launcher'
 		]
