@@ -147,13 +147,9 @@ describe 'Puzzle', ->
 				result: SelectorMatchResult.POSITIVE
 				ids:    [2]
 
-
-
-
-
-
-
-
-
-
-
+		it 'returns a negative match when qSA fails', ->
+			puzzle = new Puzzle puzzle_data
+			match = puzzle.match '='
+			match.should.deep.equal
+				result: SelectorMatchResult.NEGATIVE
+				ids:    []

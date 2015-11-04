@@ -67,19 +67,29 @@ class Puzzle
 			.sort ASCENDING
 
 	match: (selector) ->
-		nodes = @fragment.querySelectorAll selector
-		ids = [].map.call nodes, (node) -> node.__id
+		nodes =
+			try
+				@fragment.querySelectorAll selector
+			catch ex
+				null
 
+		ids = []
 		result =
-			if ids.length isnt @objective.length
-				SelectorMatchResult.NEGATIVE
-			else
-				ids.sort ASCENDING
-				identical = ids.every (id, index) => @objective[index] is id
-				if identical
-					SelectorMatchResult.POSITIVE
-				else
+			if nodes?
+				ids = [].map.call nodes, (node) -> node.__id
+
+				if ids.length isnt @objective.length
 					SelectorMatchResult.NEGATIVE
+				else
+					ids.sort ASCENDING
+					identical = ids.every (id, index) => @objective[index] is id
+					if identical
+						SelectorMatchResult.POSITIVE
+					else
+						SelectorMatchResult.NEGATIVE
+
+			else
+				SelectorMatchResult.NEGATIVE
 
 		result: result
 		ids:    ids
