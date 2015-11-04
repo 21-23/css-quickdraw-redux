@@ -3,4 +3,3 @@ SelectorMatchResult =
 	NEGATIVE: 'negative'
 
 module.exports = SelectorMatchResult
-
