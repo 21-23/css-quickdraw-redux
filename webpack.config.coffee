@@ -18,9 +18,10 @@ module.exports =
 		modulesDirectories: ['lib']
 
 	entry:
-		'bundle-test': 'test.coffee'
-		'bundle-app': 'app/app.coffee'
+		'bundle-test':    'test.coffee'
+		'bundle-app':     'app/app.coffee'
 		'bundle-sandbox': 'dom-sandbox/app.coffee'
+		'bundle-game':    'game/app.coffee'
 		'bundle-landing': 'landing/landing.coffee'
 
 	output:
@@ -42,6 +43,10 @@ module.exports =
 			title: 'CSS Quickdraw DOM Sandbox'
 			template: 'public/dom-sandbox/index.html'
 			filename: 'sandbox.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw Game Session'
+			template: 'public/game/index.html'
+			filename: 'game.html'
 	]
 
 	coffeelint:
