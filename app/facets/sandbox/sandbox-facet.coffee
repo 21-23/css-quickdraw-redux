@@ -2,7 +2,7 @@ class SandboxFacet
 
 	constructor: (sandbox) ->
 		@entities =
-			puzzle: sandbox.puzzle
+			puzzle_data: sandbox.puzzle_data
 			selector: sandbox.selector
 			match: sandbox.match
 

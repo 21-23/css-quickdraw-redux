@@ -1,10 +1,10 @@
 {nx} = require 'nexus-node'
 
-class Matcher
+class Sandbox
 
 	constructor: ->
 		@selector = new nx.Cell
-		@puzzle = new nx.Cell
+		@puzzle_data = new nx.Cell
 		@match = new nx.Cell
 
-module.exports = Matcher
+module.exports = Sandbox
