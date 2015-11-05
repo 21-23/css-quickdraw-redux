@@ -67,31 +67,40 @@ class Puzzle
 			.sort ASCENDING
 
 	match: (selector) ->
-		nodes =
-			try
-				@fragment.querySelectorAll selector
-			catch ex
-				null
+		position = null
+		for banned in @data.banned
+			position = selector.indexOf banned
+			break if position isnt -1
 
-		ids = []
-		result =
-			if nodes?
-				ids = [].map.call nodes, (node) -> node.__id
+		if position isnt -1
+			result: SelectorMatchResult.NEGATIVE
+			banned:
+				character: banned
+				at:        position
+		else
+			ids = []
+			nodes =
+				try
+					@fragment.querySelectorAll selector
+				catch ex
+					null
 
-				if ids.length isnt @objective.length
-					SelectorMatchResult.NEGATIVE
-				else
-					ids.sort ASCENDING
-					identical = ids.every (id, index) => @objective[index] is id
-					if identical
-						SelectorMatchResult.POSITIVE
-					else
+			result =
+				if nodes?
+					ids = [].map.call nodes, (node) -> node.__id
+						.sort ASCENDING
+					if ids.length isnt @objective.length
 						SelectorMatchResult.NEGATIVE
+					else
+						identical = ids.every (id, index) => @objective[index] is id
+						if identical
+							SelectorMatchResult.POSITIVE
+						else
+							SelectorMatchResult.NEGATIVE
+				else
+					SelectorMatchResult.NEGATIVE
 
-			else
-				SelectorMatchResult.NEGATIVE
-
-		result: result
-		ids:    ids
+			result: result
+			ids: ids
 
 module.exports = Puzzle

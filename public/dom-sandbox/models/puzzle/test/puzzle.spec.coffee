@@ -153,3 +153,12 @@ describe 'Puzzle', ->
 			match.should.deep.equal
 				result: SelectorMatchResult.NEGATIVE
 				ids:    []
+
+		it 'returns a negative match when banned characters are encountered', ->
+			puzzle = new Puzzle puzzle_data
+			match = puzzle.match '.mat_ch'
+			match.should.deep.equal
+				result: SelectorMatchResult.NEGATIVE
+				banned:
+					character: '_'
+					at: 4
