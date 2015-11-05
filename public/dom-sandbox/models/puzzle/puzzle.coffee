@@ -4,12 +4,9 @@ SelectorMatchResult = require './selector-match-result'
 class Puzzle
 
 	@create_fragment: (html) ->
-		fragment = do document.createDocumentFragment
-		temp = document.createElement 'body'
-		temp.innerHTML = html
-		while child = temp.firstElementChild
-			fragment.appendChild child
-		fragment
+		document
+			.createRange()
+			.createContextualFragment html
 
 	@create_tag_item: (node, type) ->
 		unless node.nodeType is Node.DOCUMENT_FRAGMENT_NODE
