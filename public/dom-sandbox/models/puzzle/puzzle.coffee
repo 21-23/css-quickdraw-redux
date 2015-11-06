@@ -63,6 +63,12 @@ class Puzzle
 			(index for tag, index in @tags when tag.objective)
 			.sort ASCENDING
 
+	select: (selector) ->
+		try
+			@fragment.querySelectorAll selector
+		catch ex
+			null
+
 	match: (selector) ->
 		position = null
 		for banned in @data.banned
@@ -76,12 +82,7 @@ class Puzzle
 				at:        position
 		else
 			ids = []
-			nodes =
-				try
-					@fragment.querySelectorAll selector
-				catch ex
-					null
-
+			nodes = @select selector
 			result =
 				if nodes?
 					ids = [].map.call nodes, (node) -> node.__id
