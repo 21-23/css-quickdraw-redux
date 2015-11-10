@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "nexus": "~0.4.0",
-    "normalize.css": "~3.0.3"
+    "normalize.css": "~3.0.3",
+    "nexus-warp": "~0.0.6"
   }
 }

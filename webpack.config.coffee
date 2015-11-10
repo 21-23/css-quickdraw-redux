@@ -11,14 +11,17 @@ module.exports =
 
 	resolve:
 		alias:
+			'nexus-node': 'nexus'
 			common: path.join PUBLIC_DIRECTORY, 'app/common'
 		root: PUBLIC_DIRECTORY
 		extensions: ['', '.js', '.coffee']
 		modulesDirectories: ['lib']
 
 	entry:
-		'bundle-test': 'app/test.coffee'
-		'bundle-app': 'app/app.coffee'
+		'bundle-test':    'test.coffee'
+		'bundle-app':     'app/app.coffee'
+		'bundle-sandbox': 'dom-sandbox/app.coffee'
+		'bundle-game':    'game/app.coffee'
 		'bundle-landing': 'landing/landing.coffee'
 
 	output:
@@ -36,6 +39,14 @@ module.exports =
 		new HtmlWebpackPlugin
 			title: 'CSS Quickdraw'
 			template: 'public/landing/index.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw DOM Sandbox'
+			template: 'public/dom-sandbox/index.html'
+			filename: 'sandbox.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw Game Session'
+			template: 'public/game/index.html'
+			filename: 'game.html'
 	]
 
 	coffeelint:
@@ -51,7 +62,7 @@ module.exports =
 		]
 
 		loaders: [
-			{ test: /\.coffee$/, loader: 'coffee-loader', exclude: /lib/ }
+			{ test: /\.coffee$/, loader: 'coffee-loader' }
 			{
 				test: /\.styl$/
 				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 version!stylus-loader'
