@@ -1,18 +1,21 @@
 warp = require 'nexus-warp'
 
-SandboxFacet = require './facets/sandbox/sandbox-facet'
-GameFacet    = require './facets/game/game-facet'
+SandboxFacet     = require './facets/sandbox/sandbox-facet'
+PlayerFacet      = require './facets/player/player-facet'
+GameMasterFacet  = require './facets/game-master/game-master-facet'
 
 class SessionManager
 
 	constructor: (@service) ->
 
 	create: (transport, cookies) ->
-		identity = cookies.find ({name}) -> name is 'identity'
+		auth = cookies.find ({name}) -> name is 'auth'
 
 		facet =
-			if identity? and identity.value is 'user'
-				new GameFacet @service.game_session
+			if auth?
+				switch auth.value
+					when 'player' then new PlayerFacet @service
+					when 'game_master' then new GameMasterFacet @service
 			else
 				new SandboxFacet @service.sandbox
 

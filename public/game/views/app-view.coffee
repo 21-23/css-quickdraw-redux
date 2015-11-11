@@ -1,5 +1,5 @@
 AppView = (context) ->
-	nxt.Element 'input',
-		nxt.ValueBinding context.selector
+	nxt.Element 'div',
+		nxt.Binding context.round_phase, nxt.Text
 
 module.exports = AppView
