@@ -15,9 +15,16 @@ class Service
 		@sandbox = new Sandbox
 
 		@game_sessions = null
-		GameSessionModel.find {}, (err, sessions) =>
-			@game_sessions = new Map sessions.map (session) =>
-				[do session._id.toString, new GameSession sandbox:@sandbox]
+		GameSessionModel
+			.find {}
+			.populate 'puzzles'
+			.exec (err, sessions) =>
+				@game_sessions = new Map sessions.map (session) =>
+					[
+						do session._id.toString,
+						new GameSession session, @sandbox
+					]
+
 
 		new warp.Service
 			transport:         new warp.WebSocketTransport

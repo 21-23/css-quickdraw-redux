@@ -19,4 +19,7 @@ class Sandbox
 					puzzle.match selector
 			]
 
+		@node_list = new nx.Cell
+			'<-': [@puzzle, ({tags}) -> tags]
+
 module.exports = Sandbox

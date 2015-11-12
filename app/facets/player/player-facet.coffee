@@ -11,8 +11,10 @@ class PlayerFacet
 		@entities =
 			# selector: game.selector
 			# match:    game.match
-			game_session_id: player.game_session_id
-			round_phase:     player.round_phase
+			game_session_id:      player.game_session_id
+			round_phase:          player.round_phase
+			puzzles:              player.puzzles
+			current_puzzle_index: player.current_puzzle_index
 
 	init: (session) ->
 

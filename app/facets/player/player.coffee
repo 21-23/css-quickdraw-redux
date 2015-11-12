@@ -1,15 +1,10 @@
 {nx} = require 'nexus-node'
 
-class Player
+Participant = require '../common/participant'
 
-	constructor: (@service) ->
-		@game_session = new nx.Cell
-		@game_session_id = new nx.Cell
-			'->': [
-				@game_session,
-				(id) =>	@service.game_sessions.get id
-			]
+class Player extends Participant
 
-		@round_phase = @game_session.flatten ({round_phase}) -> round_phase
+	constructor: (service) -> super service
+
 
 module.exports = Player

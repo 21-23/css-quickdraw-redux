@@ -19,7 +19,7 @@ class Countdown
 			'<-': [@time]
 
 		@active = new nx.Cell
-			'<-': [@time, -> yes]
+			'<-': [@time, (time) -> yes if time?]
 			value: no
 			action: (value) =>
 				clearInterval @_interval
