@@ -20,6 +20,6 @@ class AppViewModel
 				node_list:            @node_list
 				countdown:            @countdown
 
-		@game_session_id.value = '5644fb28efb1c61812c02009'
+		@game_session_id.value = '563e67b5e3177999a8406ac4'
 
 module.exports = AppViewModel

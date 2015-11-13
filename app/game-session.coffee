@@ -11,7 +11,6 @@ class GameSession
 
 		@current_puzzle_index = new nx.Cell
 			'->': [@sandbox.puzzle_data, (index) => @puzzles.value[index]]
-			action: (value) -> console.log value
 
 		@node_list = new nx.Cell
 			'<-': [@sandbox.node_list]
@@ -29,12 +28,16 @@ class GameSession
 		@countdown = new Countdown
 		@countdown.time['<-'] @round_phase, (phase) ->
 			switch phase
-				when RoundPhase.COUNTDOWN then 5000
-				# when RoundPhase.IN_PROGRESS then 1 * 10 * 1000
+				when RoundPhase.COUNTDOWN then 5 * 1000
+				when RoundPhase.IN_PROGRESS then 10 * 1000
+				else 0
+
+		@countdown.active['<-'] @round_phase, (phase) ->
+			phase in [RoundPhase.COUNTDOWN, RoundPhase.IN_PROGRESS]
 
 		@countdown.timeout['->'] @round_phase, =>
 			switch @round_phase.value
 				when RoundPhase.COUNTDOWN then RoundPhase.IN_PROGRESS
-				# when RoundPhase.IN_PROGRESS then RoundPhase.FINISHED
+				when RoundPhase.IN_PROGRESS then RoundPhase.FINISHED
 
 module.exports = GameSession
