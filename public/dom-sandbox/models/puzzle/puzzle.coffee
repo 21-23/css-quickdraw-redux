@@ -75,7 +75,7 @@ class Puzzle
 			position = selector.indexOf banned
 			break if position isnt -1
 
-		if position isnt -1
+		if position isnt -1 and position isnt null
 			result: SelectorMatchResult.NEGATIVE
 			banned:
 				character: banned

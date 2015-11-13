@@ -162,3 +162,16 @@ describe 'Puzzle', ->
 				banned:
 					character: '_'
 					at: 4
+
+		it 'doesn\'t check for banned characters when there aren\'t any', ->
+			puzzle = new Puzzle
+				html:     puzzle_data.html
+				selector: puzzle_data.selector
+				name:     puzzle_data.name
+				banned:   []
+
+			match = puzzle.match '.match'
+			match.should.deep.equal
+				result: SelectorMatchResult.POSITIVE
+				ids:    [2]
+
