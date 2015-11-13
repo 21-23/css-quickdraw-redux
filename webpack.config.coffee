@@ -12,14 +12,13 @@ module.exports =
 	resolve:
 		alias:
 			'nexus-node': 'nexus'
-			common: path.join PUBLIC_DIRECTORY, 'app/common'
+			common: path.join PUBLIC_DIRECTORY, 'common'
 		root: PUBLIC_DIRECTORY
 		extensions: ['', '.js', '.coffee']
 		modulesDirectories: ['lib']
 
 	entry:
 		'bundle-test':        'test.coffee'
-		'bundle-app':         'app/app.coffee'
 		'bundle-sandbox':     'dom-sandbox/app.coffee'
 		'bundle-game':        'game/app.coffee'
 		'bundle-game-master': 'game-master/app.coffee'
