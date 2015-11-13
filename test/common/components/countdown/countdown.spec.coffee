@@ -17,17 +17,16 @@ describe 'Countdown', ->
 	beforeEach ->
 		countdown = new Countdown
 		countdown.time.value = 3000
+		countdown.active.value = yes
 
 	describe 'constructor', ->
 		it 'sets `remaining` to the time value', ->
 			countdown.remaining.value.should.equal 3000
 
 	describe 'time', ->
-		it 'resets the countdown with new time and activates it', ->
+		it 'resets the countdown with new time', ->
 			countdown.time.value = 5000
 			countdown.remaining.value.should.equal 5000
-			countdown.timeout.value.should.equal no
-			countdown.active.value.should.equal yes
 
 	describe 'remaining', ->
 		it 'changes its value every second', ->
@@ -47,13 +46,11 @@ describe 'Countdown', ->
 			clock.tick 1000
 			countdown.remaining.value.should.equal 2000
 
-		it 'is set to `true` when countdown reaches zero', ->
+		it 'is set to `false` when countdown reaches zero', ->
 			clock.tick 3000
 			countdown.active.value.should.equal no
 
 	describe 'timeout', ->
-		it 'is set to `false` by default', ->
-			countdown.timeout.value.should.equal no
 
 		it 'is set to `true` when countdown reaches zero', ->
 			clock.tick 3000

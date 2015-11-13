@@ -10,8 +10,8 @@ class Countdown
 		interval_handler = =>
 			@remaining.value -= ONE_SECOND
 			if @remaining.value is 0
-				@timeout.value = yes
 				@active.value = no
+				@timeout.value = yes
 
 		@time = new nx.Cell
 
@@ -19,7 +19,6 @@ class Countdown
 			'<-': [@time]
 
 		@active = new nx.Cell
-			'<-': [@time, (time) -> yes if time?]
 			value: no
 			action: (value) =>
 				clearInterval @_interval
@@ -27,6 +26,5 @@ class Countdown
 					@_interval = setInterval interval_handler, ONE_SECOND
 
 		@timeout = new nx.Cell
-			'<-': [@time, -> no]
 
 module.exports = Countdown
