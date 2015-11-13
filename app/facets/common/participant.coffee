@@ -2,17 +2,17 @@
 
 class Participant
 
+	@id: 0
+
 	constructor: (@service) ->
+		@id = Participant.id++
+
 		@game_session = new nx.Cell
+			action: (game_session) =>
+				game_session.add_participant @
 
 		@round_phase = new nx.Cell
 			'<<-*': [@game_session, 'round_phase']
-
-		@puzzles = new nx.Cell
-			'<<-*': [@game_session, 'puzzles']
-
-		@current_puzzle_index = new nx.Cell
-			'->*': [@game_session, 'current_puzzle_index']
 
 		@node_list = new nx.Cell
 			'<<-*': [@game_session, 'node_list']
@@ -21,6 +21,10 @@ class Participant
 			'<<-*': [@game_session, ({countdown: {remaining}}) -> remaining]
 
 		@game_session_id = new nx.Cell
-			'->': [@game_session, (id) =>	@service.game_sessions.get id]
+			'->': [@game_session, (id) => @service.game_sessions.get id]
+
+		@disconnected = new nx.Cell
+			action: =>
+				@game_session.value?.remove_participant @
 
 module.exports = Participant

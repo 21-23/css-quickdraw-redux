@@ -6,7 +6,13 @@ Countdown     = require './common/components/countdown/countdown'
 
 class GameSession
 
+	@COUNTDOWN_DURATION: 3 * 1000
+	@ROUND_DURATION: 2 * 60 * 1000
+
 	constructor: ({puzzles}, @sandbox) ->
+		@participants = new nx.Collection
+		@participants_by_id = new Map
+
 		@puzzles = new nx.Cell value:puzzles
 
 		@current_puzzle_index = new nx.Cell
@@ -18,8 +24,9 @@ class GameSession
 		@selector = new nx.Cell
 			'->': [@sandbox.selector]
 
-		@match = new nx.Cell
-			'<-': [@sandbox.match]
+		@sandbox.match['->'] ({player_id}) =>
+			player = @participants_by_id.get player_id
+			player.match
 
 		@round_phase = new nx.Cell
 			value: RoundPhase.WAIT_SCREEN
@@ -28,8 +35,8 @@ class GameSession
 		@countdown = new Countdown
 		@countdown.time['<-'] @round_phase, (phase) ->
 			switch phase
-				when RoundPhase.COUNTDOWN then 5 * 1000
-				when RoundPhase.IN_PROGRESS then 10 * 1000
+				when RoundPhase.COUNTDOWN then GameSession.COUNTDOWN_DURATION
+				when RoundPhase.IN_PROGRESS then GameSession.ROUND_DURATION
 				else 0
 
 		@countdown.active['<-'] @round_phase, (phase) ->
@@ -39,5 +46,14 @@ class GameSession
 			switch @round_phase.value
 				when RoundPhase.COUNTDOWN then RoundPhase.IN_PROGRESS
 				when RoundPhase.IN_PROGRESS then RoundPhase.FINISHED
+
+
+	add_participant: (participant) ->
+		@participants.append participant
+		@participants_by_id.set participant.id, participant
+
+	remove_participant: (participant) ->
+		@participants.remove participant
+		@participants_by_id.delete participant.id
 
 module.exports = GameSession

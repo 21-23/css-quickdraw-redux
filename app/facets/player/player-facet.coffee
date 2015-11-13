@@ -6,18 +6,20 @@ class PlayerFacet
 
 	constructor: (@service) ->
 
-		player = new Player @service
+		@player = new Player @service
 
 		@entities =
-			# selector: game.selector
-			# match:    game.match
-			game_session_id:      player.game_session_id
-			round_phase:          player.round_phase
-			puzzles:              player.puzzles
-			current_puzzle_index: player.current_puzzle_index
+			game_session_id: @player.game_session_id
+			round_phase:     @player.round_phase
+			node_list:       @player.node_list
+			countdown:       @player.countdown
+
+			selector: @player.selector
+			match:    @player.match
 
 	init: (session) ->
 
 	destroy: (session) ->
+		@player.disconnected.value = yes
 
 module.exports = PlayerFacet
