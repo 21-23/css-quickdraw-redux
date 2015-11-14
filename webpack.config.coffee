@@ -18,11 +18,13 @@ module.exports =
 		modulesDirectories: ['lib']
 
 	entry:
-		'bundle-test':        'test.coffee'
-		'bundle-sandbox':     'dom-sandbox/app.coffee'
-		'bundle-game':        'game/app.coffee'
-		'bundle-game-master': 'game-master/app.coffee'
-		'bundle-landing':     'landing/landing.coffee'
+		'bundle-test':          'test.coffee'
+		'bundle-sandbox':       'dom-sandbox/app.coffee'
+		'bundle-game':          'game/app.coffee'
+		'bundle-game-master':   'game-master/app.coffee'
+		'bundle-quick-login':   'quick-login/app.coffee'
+		'bundle-success-login': 'login/success-login'
+		'bundle-landing':       'landing/landing.coffee'
 
 	output:
 		path: path.join __dirname, './public/dist'
@@ -51,6 +53,14 @@ module.exports =
 			title: 'CSS Quickdraw Game Master'
 			template: 'public/game-master/index.html'
 			filename: 'game-master.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw Login'
+			template: 'public/quick-login/index.html'
+			filename: 'quick-login.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw Login Success'
+			template: 'public/login/success-login.html'
+			filename: 'success-login.html'
 	]
 
 	coffeelint:

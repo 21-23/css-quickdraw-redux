@@ -1,0 +1,58 @@
+quick-login-bg-image = 'img/quick-login-bg.jpg'
+quick-login-bg-color = #010101
+quick-login-main-color = #fff
+
+quick-login-title-top = 10%
+quick-login-title-font-size = 3em
+
+quick-login-sub-title-top = 30%
+quick-login-sub-title-font-size = 2.5em
+
+quick-login-panel-top = 50%
+quick-login-panel-background = rgba(0, 0, 0, 0.7)
+quick-login-panel-icon-margin = 20px 10px
+quick-login-panel-icon-height = 80px
+quick-login-panel-icon-width = 80px
+
+quick-login-main-font = Helvetica, "Helvetica Neue", Arial
+
+body
+	background url(quick-login-bg-image) quick-login-bg-color no-repeat
+	background-size cover
+	font-family quick-login-main-font
+	color quick-login-main-color
+
+.quick-login-title, .quick-login-sub-title
+	text-align center
+	text-transform uppercase
+	position absolute
+	width 100%
+
+.quick-login-title
+	top quick-login-title-top
+	font-size quick-login-title-font-size
+
+.quick-login-sub-title
+	top quick-login-sub-title-top
+	font-size quick-login-sub-title-font-size
+
+.quick-login-login-panel
+	position absolute
+	top quick-login-panel-top
+	width 100%
+	text-align center
+	background quick-login-panel-background
+
+.quick-login-login-panel .icon
+	display inline-block
+	vertical-align middle
+	margin quick-login-panel-icon-margin
+	width quick-login-panel-icon-width
+	height quick-login-panel-icon-height
+	background-size contain
+	background-repeat no-repeat
+	background-color #f00
+
+.quick-login-login-panel .icon.fb {
+ 	//background-image: url(fb-sheriff.png);
+}

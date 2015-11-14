@@ -13,6 +13,8 @@
   "dependencies": {
     "nexus": "~0.4.21",
     "normalize.css": "~3.0.3",
-    "nexus-warp": "~0.0.6"
+    "nexus-warp": "~0.0.6",
+    "es6-promise": "~3.0.2",
+    "fetch": "~0.10.1"
   }
 }
