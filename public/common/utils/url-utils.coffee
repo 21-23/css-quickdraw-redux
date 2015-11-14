@@ -6,10 +6,8 @@ module.exports = {
 	getParamValue: (paramsStr, paramName) ->
 		params = paramsStr.split '&'
 		for param in params
-			pair = param.split '='
-			return decodeURIComponent pair[1] or '' if pair[0] is paramName
-
-		return undefined
+			[key, value] = param.split '='
+			return decodeURIComponent value or '' if key is paramName
 
 	goToQuickLogin: ->
 		cookieUtils.setCookie 'successLoginRedirect', location.href, 1

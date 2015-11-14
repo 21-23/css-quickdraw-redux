@@ -10,7 +10,7 @@ ensureSessionId = ->
 	sessionId = urlUtils.getParamValue urlUtils.getParamsString(location.search), 'id'
 
 	if not sessionId
-		console.log 'Unrecognizable session if (URL paramter [id]). Application may fail to start'
+		console.log 'Unrecognizable session if (URL parameter [id]). Application may fail to start'
 
 	return sessionId
 

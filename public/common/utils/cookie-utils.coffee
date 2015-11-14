@@ -3,9 +3,9 @@ setCookie = (name, value, hours) ->
 
 	if hours
 		date = new Date(do Date.now + (hours * 60 * 60 * 1000))
-		expires = '; expires=' + do date.toGMTString;
+		expires = "; expires=#{ do date.toGMTString }"
 
-	document.cookie = (name + '=' + value + expires + '; path=/')
+	document.cookie = "#{ name }= #{ value }#{ expires }; path=/"
 
 getCookie = (name) ->
 	nameEQ = name + '='
@@ -15,7 +15,7 @@ getCookie = (name) ->
 		if part.indexOf(nameEQ) is 0
 			return part.substring nameEQ.length, part.length
 
-	return null
+	null
 
 removeCookie = (name) ->
 	setCookie(name, '', -1)
