@@ -7,7 +7,7 @@ router = new Router
 
 #TODO: a quick hack to check if user is logged in or not
 router.get '/isAuthed', ->
-	@body = { isAuthed: @isAuthenticated() }
+	@body = isAuthed: @isAuthenticated()
 
 router.use authRouter.middleware()
 
