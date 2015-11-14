@@ -32,4 +32,4 @@ window.addEventListener 'load', ->
 			document.body.appendChild AppView(app).data.node
 		.catch ->
 			console.log 'Not authenticated user, redirect to login page'
-			#location.href = 'game-login.html'
+			location.href = 'quick-login.html'
