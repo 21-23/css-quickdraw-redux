@@ -4,10 +4,10 @@ require 'fetch'
 
 AppViewModel = require './view-models/app-viewmodel'
 AppView      = require './views/app-view'
-urlutils     = require '../common/utils/url-utils'
+urlUtils     = require '../common/utils/url-utils'
 
 ensureSessionId = ->
-	sessionId = urlutils.getParamValue urlutils.getParamsString(location.search), 'id'
+	sessionId = urlUtils.getParamValue urlUtils.getParamsString(location.search), 'id'
 
 	if not sessionId
 		return location.href = location.origin
@@ -32,4 +32,4 @@ window.addEventListener 'load', ->
 			document.body.appendChild AppView(app).data.node
 		.catch ->
 			console.log 'Not authenticated user, redirect to login page'
-			location.href = 'quick-login.html'
+			do urlUtils.goToQuickLogin
