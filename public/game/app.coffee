@@ -9,10 +9,7 @@ urlUtils     = require '../common/utils/url-utils'
 ensureSessionId = ->
 	sessionId = urlUtils.getParamValue urlUtils.getParamsString(location.search), 'id'
 
-	if not sessionId
-		return location.href = location.origin
-
-	return sessionId
+	if not sessionId then location.href = location.origin else sessionId
 
 ensureAuth = ->
 	fetch '/isAuthed', {

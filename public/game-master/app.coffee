@@ -12,7 +12,7 @@ ensureSessionId = ->
 	if not sessionId
 		console.log 'Unrecognizable session if (URL parameter [id]). Application may fail to start'
 
-	return sessionId
+	sessionId
 
 ensureAuth = ->
 	fetch '/isAuthed', {
