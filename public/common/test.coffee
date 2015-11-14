@@ -7,3 +7,4 @@ require 'common/entities/task/viewmodels/test/task-pearl-viewmodel.spec'
 
 ### Common Utils ###
 require 'common/utils/test/url-utils.spec'
+require 'common/utils/test/cookie-utils.spec'
