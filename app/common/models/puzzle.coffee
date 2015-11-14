@@ -6,4 +6,6 @@ PuzzleSchema = mongoose.Schema
 	banned_characters: [String]
 	selector: String
 
-module.exports = mongoose.model 'Puzzle', PuzzleSchema
+module.exports =
+	PuzzleModel: mongoose.model 'Puzzle', PuzzleSchema
+	PuzzleSchema: PuzzleSchema

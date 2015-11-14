@@ -62,7 +62,7 @@
     "koa-static": "^1.5.1",
     "mongoose": "^4.2.3",
     "nconf": "^0.7.1",
-    "nexus-node": "^0.4.18",
+    "nexus-node": "^0.4.21",
     "nexus-warp": "0.0.6",
     "nightmare": "^2.0.7",
     "passport": "^0.3.0",

@@ -14,9 +14,14 @@ class Sandbox
 		@match = new nx.Cell
 			'<-': [
 				@selector,
-				(selector) =>
+				({selector, player_id}) =>
 					puzzle = @puzzle.value
-					puzzle.match selector
+					match = puzzle.match selector
+					match.player_id = player_id
+					match
 			]
+
+		@node_list = new nx.Cell
+			'<-': [@puzzle, ({tags}) -> tags]
 
 module.exports = Sandbox

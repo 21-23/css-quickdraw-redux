@@ -14,5 +14,6 @@ class AppViewModel
 				puzzle_data: @sandbox.puzzle_data
 				selector:    @sandbox.selector
 				match:       @sandbox.match
+				node_list:   @sandbox.node_list
 
 module.exports = AppViewModel

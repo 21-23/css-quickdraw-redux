@@ -1,2 +1,2 @@
-require './app/test'
+require './common/test'
 require './dom-sandbox/test'

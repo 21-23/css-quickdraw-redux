@@ -12,17 +12,17 @@ module.exports =
 	resolve:
 		alias:
 			'nexus-node': 'nexus'
-			common: path.join PUBLIC_DIRECTORY, 'app/common'
+			common: path.join PUBLIC_DIRECTORY, 'common'
 		root: PUBLIC_DIRECTORY
 		extensions: ['', '.js', '.coffee']
 		modulesDirectories: ['lib']
 
 	entry:
-		'bundle-test':    'test.coffee'
-		'bundle-app':     'app/app.coffee'
-		'bundle-sandbox': 'dom-sandbox/app.coffee'
-		'bundle-game':    'game/app.coffee'
-		'bundle-landing': 'landing/landing.coffee'
+		'bundle-test':        'test.coffee'
+		'bundle-sandbox':     'dom-sandbox/app.coffee'
+		'bundle-game':        'game/app.coffee'
+		'bundle-game-master': 'game-master/app.coffee'
+		'bundle-landing':     'landing/landing.coffee'
 
 	output:
 		path: path.join __dirname, './public/dist'
@@ -47,6 +47,10 @@ module.exports =
 			title: 'CSS Quickdraw Game Session'
 			template: 'public/game/index.html'
 			filename: 'game.html'
+		new HtmlWebpackPlugin
+			title: 'CSS Quickdraw Game Master'
+			template: 'public/game-master/index.html'
+			filename: 'game-master.html'
 	]
 
 	coffeelint:
