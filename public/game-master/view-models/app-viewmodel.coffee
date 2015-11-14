@@ -1,7 +1,7 @@
 warp = require 'nexus-warp'
 
 class AppViewModel
-	constructor: ->
+	constructor: (sessionId) ->
 
 		@game_session_id = new nx.Cell
 		@round_phase = new nx.Cell
@@ -20,6 +20,6 @@ class AppViewModel
 				node_list:            @node_list
 				countdown:            @countdown
 
-		@game_session_id.value = '563e67b5e3177999a8406ac4'
+		@game_session_id.value = sessionId
 
 module.exports = AppViewModel
