@@ -11,6 +11,14 @@ class AppViewModel
 		@selector = new nx.Cell
 		@match = new nx.Cell
 
+		@view = new nx.Cell
+			'<-': [
+					@round_phase,
+					(phase) ->
+						# convert phase to view alias; for now - 1-to-1 conversion
+						phase
+				]
+
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
