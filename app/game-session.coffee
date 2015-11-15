@@ -1,7 +1,8 @@
 {nx} = require 'nexus-node'
 
+RoundPhase    = require 'cssqd-shared/models/round-phase'
+
 {PuzzleModel} = require './common/models/puzzle'
-RoundPhase    = require './common/models/round-phase'
 Countdown     = require './common/components/countdown/countdown'
 
 class GameSession

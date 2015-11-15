@@ -1,4 +1,5 @@
 warp = require 'nexus-warp'
+{nx} = require 'nexus'
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -10,6 +11,13 @@ class AppViewModel
 
 		@selector = new nx.Cell
 		@match = new nx.Cell
+
+		@view = new nx.Cell
+			'<-': [
+					@round_phase,
+					# convert phase to view alias; for now - 1-to-1 conversion
+					nx.Identity
+				]
 
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
