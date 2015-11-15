@@ -1,4 +1,5 @@
 warp = require 'nexus-warp'
+{nx} = require 'nexus'
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -14,9 +15,8 @@ class AppViewModel
 		@view = new nx.Cell
 			'<-': [
 					@round_phase,
-					(phase) ->
-						# convert phase to view alias; for now - 1-to-1 conversion
-						phase
+					# convert phase to view alias; for now - 1-to-1 conversion
+					nx.Identity
 				]
 
 		new warp.Client
