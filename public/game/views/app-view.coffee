@@ -1,13 +1,11 @@
+RoundPhase = require 'cssqd-shared/models/round-phase'
+
+WaitScreenView = require '../views/wait-screen-view'
+
 AppView = (context) ->
 	nxt.Element 'div',
-		nxt.Element 'div',
-			nxt.Binding context.round_phase, nxt.Text
-		nxt.Element 'div',
-			nxt.Binding context.countdown, nxt.Text
-		nxt.Element 'input',
-			nxt.ValueBinding context.selector
-		nxt.Element 'div',
-			nxt.Binding context.match, (match) ->
-				nxt.Text match?.result
+		nxt.Binding context.view, (phase) ->
+			switch phase
+				when RoundPhase.WAIT_SCREEN then WaitScreenView context
 
 module.exports = AppView
