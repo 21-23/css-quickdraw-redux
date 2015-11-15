@@ -8,6 +8,6 @@ WaitScreenView = (context) ->
 
 		nxt.Element 'h2',
 			nxt.Class 'game-wait-screen-sub-header'
-			nxt.Text 'We\'r waiting for others'
+			nxt.Text 'We are waiting for others'
 
 module.exports = WaitScreenView
