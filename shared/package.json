@@ -1,0 +1,9 @@
+{
+  "name": "cssqd-shared",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.coffee",
+  "scripts": {},
+  "author": "",
+  "license": "MIT"
+}
