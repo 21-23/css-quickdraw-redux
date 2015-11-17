@@ -74,6 +74,7 @@ describe 'Puzzle', ->
 			tag_list.should.deep.equal [
 				{
 					element: 'header'
+					text:   'header'
 					type:    PuzzleTag.SINGLE_LINE
 				}
 
@@ -87,6 +88,7 @@ describe 'Puzzle', ->
 					attrs:
 						class:  'match'
 					objective: yes
+					text:   'cellar door'
 					type:   PuzzleTag.SINGLE_LINE
 				}
 
@@ -97,6 +99,7 @@ describe 'Puzzle', ->
 
 				{
 					element: 'footer'
+					text:   'footer'
 					type:   PuzzleTag.SINGLE_LINE
 				}
 
