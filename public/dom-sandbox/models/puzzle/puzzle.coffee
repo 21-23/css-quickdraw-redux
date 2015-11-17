@@ -23,6 +23,12 @@ class Puzzle
 			if node.__objective
 				item.objective = yes
 
+			if node.hasChildNodes() and node.children.length is 0
+				only_text = [].every.call node.childNodes, ({nodeType}) ->
+					nodeType is Node.TEXT_NODE
+				if only_text
+					item.text = node.textContent
+
 			item
 
 	@to_tag_list: ({selector}, fragment) ->
