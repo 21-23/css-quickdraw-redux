@@ -53,14 +53,16 @@
     "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
+    "co": "^4.6.0",
     "cson": "^3.0.1",
+    "cssqd-shared": "file:./shared",
     "koa": "^1.1.0",
     "koa-bodyparser": "^2.0.1",
     "koa-passport": "^1.2.0",
     "koa-router": "^5.2.3",
     "koa-session": "^3.3.1",
     "koa-static": "^1.5.1",
-    "mongoose": "^4.2.3",
+    "mongoose": "^4.2.7",
     "nconf": "^0.7.1",
     "nexus-node": "^0.4.21",
     "nexus-warp": "0.0.6",
@@ -70,7 +72,6 @@
     "passport-github": "^1.0.0",
     "passport-google-auth": "^1.0.0",
     "passport-twitter": "^1.0.3",
-    "cssqd-shared": "file:./shared",
     "vo": "^1.0.3"
   }
 }
