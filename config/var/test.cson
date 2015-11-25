@@ -1,0 +1,5 @@
+{
+	mongo:
+		db: 'cssqd-test'
+		host: 'localhost'
+}
