@@ -8,7 +8,7 @@ passport.serializeUser (profile, done) ->
 		.then (user) -> done null, user.id
 
 passport.deserializeUser (id, done) ->
-	User.find(id: id).exec()
+	User.findOne(id: id).exec()
 		.then (user) -> done null, user
 
 

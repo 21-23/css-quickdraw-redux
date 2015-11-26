@@ -9,6 +9,10 @@ userSchema = new mongoose.Schema
 		type: String
 		unique: true
 		required: yes
+	role:
+		type: String
+		enum: ['game_master', 'player']
+		default: 'player'
 
 userSchema.static 'fromOAuthProfile', co.wrap (profile) ->
 	id = "#{profile.provider}#{profile.id}"
