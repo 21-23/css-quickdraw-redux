@@ -1,15 +1,16 @@
 passport       = require 'koa-passport'
 authStrategies = require 'auth/strategies'
+User           = require 'models/User'
 
-## temp
-users = {}
 
-passport.serializeUser (user, done) ->
-	users[user.id] = user
-	done null, user.id
+passport.serializeUser (profile, done) ->
+	User.fromOAuthProfile profile
+		.then (user) -> done null, user.id
 
 passport.deserializeUser (id, done) ->
-	done null, users[id]
+	User.find(id: id).exec()
+		.then (user) -> done null, user
+
 
 for provider, authStrategy of authStrategies
 	passport.use authStrategy.passportStrategy
