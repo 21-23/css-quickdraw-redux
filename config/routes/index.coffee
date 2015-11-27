@@ -6,7 +6,7 @@ module.exports = (app) ->
 
 	app.use (next) ->
 		if @isAuthenticated()
-			@cookies.set 'auth', @passport.user.role, signed: true
+			@cookies.set 'auth', @passport.user.role, signed: yes
 			yield next
 		else
 			@redirect '/'
