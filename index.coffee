@@ -12,12 +12,14 @@ Service = require './app/service'
 
 app = do koa
 
-mongo_connection_string = cssqdConfig.get 'mongo_connection_string'
+mongohost = cssqdConfig.get 'mongo:host'
+mongodb   = cssqdConfig.get 'mongo:db'
+connectionString = "#{mongohost}/#{mongodb}"
 
-console.log "mongo connection string: #{mongo_connection_string}"
+console.log "mongo connection string: #{connectionString}"
 console.log "port: #{cssqdConfig.get 'service:port'}"
 
-{connection} = mongoose.connect mongo_connection_string
+{connection} = mongoose.connect connectionString
 connection.on 'error', console.error.bind console, 'mongoose connection error:'
 connection.once 'open', ->
 	app.use serve path.join __dirname, cssqdConfig.get 'service:static'

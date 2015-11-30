@@ -8,7 +8,7 @@
   },
   "scripts": {
     "prepush": "npm run coffeelint && npm test",
-    "test-backend": "mocha --compilers coffee:coffee-script/register --require ./test/chai.coffee --recursive --reporter spec",
+    "test-backend": "NODE_ENV=test NODE_PATH=./ mocha --compilers coffee:coffee-script/register --require ./test/chai.coffee --recursive --reporter spec",
     "test-frontend": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
     "test": "npm run test-backend && npm run test-frontend",
     "start": "NODE_PATH=./app coffee index.coffee",
@@ -29,6 +29,7 @@
   "devDependencies": {
     "autoprefixer-loader": "^2.0.0",
     "chai": "^3.4.0",
+    "co-mocha": "^1.1.2",
     "coffee-lint-loader": "0.0.1",
     "coffee-loader": "^0.7.2",
     "coffee-script": "^1.9.3",
@@ -53,14 +54,16 @@
     "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
+    "co": "^4.6.0",
     "cson": "^3.0.1",
+    "cssqd-shared": "file:./shared",
     "koa": "^1.1.0",
     "koa-bodyparser": "^2.0.1",
     "koa-passport": "^1.2.0",
     "koa-router": "^5.2.3",
     "koa-session": "^3.3.1",
     "koa-static": "^1.5.1",
-    "mongoose": "^4.2.3",
+    "mongoose": "^4.2.7",
     "nconf": "^0.7.1",
     "nexus-node": "^0.4.21",
     "nexus-warp": "0.0.6",
@@ -70,7 +73,6 @@
     "passport-github": "^1.0.0",
     "passport-google-auth": "^1.0.0",
     "passport-twitter": "^1.0.3",
-    "cssqd-shared": "file:./shared",
     "vo": "^1.0.3"
   }
 }

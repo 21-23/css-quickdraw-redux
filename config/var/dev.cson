@@ -1,5 +1,7 @@
 {
-	mongo_connection_string: "mongodb://localhost/cssqd-dev"
+	mongo:
+		host: "mongodb://localhost"
+		db: "cssqd-dev"
 	service:
 		host: 'localhost'
 }
