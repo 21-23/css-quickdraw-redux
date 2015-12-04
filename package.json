@@ -66,7 +66,7 @@
     "mongoose": "^4.2.7",
     "nconf": "^0.7.1",
     "nexus-node": "^0.4.21",
-    "nexus-warp": "0.0.6",
+    "nexus-warp": "git+https://github.com/DaQuirm/nexus-warp.git",
     "nightmare": "^2.0.7",
     "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",
