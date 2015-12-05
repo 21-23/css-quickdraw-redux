@@ -3,6 +3,7 @@ warp = require 'nexus-warp'
 class AppViewModel
 	constructor: (sessionId) ->
 
+		@user_data = new nx.Cell
 		@game_session_id = new nx.Cell
 		@round_phase = new nx.Cell
 		@puzzles = new nx.Cell
@@ -14,6 +15,7 @@ class AppViewModel
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
+				user_data:            @user_data
 				game_session_id:      @game_session_id
 				round_phase:          @round_phase
 				puzzles:              @puzzles
