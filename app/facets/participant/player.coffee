@@ -9,8 +9,10 @@ class Player
 				'selector',
 				(selector) =>
 					selector: selector
-					player_id: @participant.id
+					player_id: do @participant.id.toString
 			]
+
+		@participant.player = @
 
 		@match = new nx.Cell
 

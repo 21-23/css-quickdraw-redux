@@ -4,10 +4,12 @@ GameRole = require '../../../shared/models/game-role'
 
 class Participant
 
-	@id: 0
+	constructor: (@service, user) ->
+		@id = user._id
 
-	constructor: (@service) ->
-		@id = Participant.id++
+		@user_data = new nx.Cell
+			value:
+				displayName: user.displayName
 
 		@game_session = new nx.Cell
 			action: (game_session) =>
@@ -29,7 +31,7 @@ class Participant
 			'<-': [
 				@game_session,
 				({game_master_id}) =>
-					if game_master_id is @id
+					if game_master_id.equals @id
 						GameRole.GAME_MASTER
 					else
 						GameRole.PLAYER

@@ -7,11 +7,11 @@ GameRole    = require '../../../shared/models/game-role'
 
 class ParticipantFacet
 
-	constructor: (@service) ->
-
-		@participant = new Participant @service
+	constructor: (@service, user) ->
+		@participant = new Participant @service, user
 
 		@entities =
+			user_data:       @participant.user_data
 			game_session_id: @participant.game_session_id
 			role:            @participant.role
 

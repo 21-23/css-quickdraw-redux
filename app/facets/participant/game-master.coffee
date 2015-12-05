@@ -4,6 +4,8 @@ class GameMaster
 
 	constructor: (@participant) ->
 
+		@participant.game_master = @
+
 		@puzzles = new nx.Cell
 			'<<-*': [@participant.game_session, 'puzzles']
 
