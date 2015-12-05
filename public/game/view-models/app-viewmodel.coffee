@@ -8,6 +8,7 @@ class AppViewModel
 		@round_phase = new nx.Cell
 		@node_list = new nx.Cell
 		@countdown = new nx.Cell
+		@role = new nx.Cell
 
 		@selector = new nx.Cell
 		@match = new nx.Cell
@@ -26,6 +27,7 @@ class AppViewModel
 				round_phase:     @round_phase
 				node_list:       @node_list
 				countdown:       @countdown
+				role:            @role
 
 				selector: @selector
 				match:    @match

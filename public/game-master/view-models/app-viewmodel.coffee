@@ -9,6 +9,7 @@ class AppViewModel
 		@current_puzzle_index = new nx.Cell
 		@node_list = new nx.Cell
 		@countdown = new nx.Cell
+		@role      = new nx.Cell
 
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
@@ -19,6 +20,7 @@ class AppViewModel
 				current_puzzle_index: @current_puzzle_index
 				node_list:            @node_list
 				countdown:            @countdown
+				role:                 @role
 
 		@game_session_id.value = sessionId
 

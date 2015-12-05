@@ -10,7 +10,9 @@ class GameSession
 	@COUNTDOWN_DURATION: 3 * 1000
 	@ROUND_DURATION: 2 * 60 * 1000
 
-	constructor: ({puzzles}, @sandbox) ->
+	constructor: (data, @sandbox) ->
+		{puzzles, @game_master_id} = data
+
 		@participants = new nx.Collection
 		@participants_by_id = new Map
 
