@@ -3,7 +3,7 @@
 Participant = require './participant'
 Player      = require './player'
 GameMaster  = require './game-master'
-GameRole    = require '../../../shared/models/game-role'
+GameRole    = require 'cssqd-shared/models/game-role'
 
 class ParticipantFacet
 
