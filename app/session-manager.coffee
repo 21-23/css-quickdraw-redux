@@ -14,8 +14,8 @@ class SessionManager
 		session_cookie = cookies.find ({name}) ->
 			name is 'koa:sess'
 
-		passport_data = JSON.parse (new Buffer session_cookie.value, 'base64').toString 'utf8'
-		user_id = passport_data.passport.user
+		session_data = JSON.parse (new Buffer session_cookie.value, 'base64').toString 'utf8'
+		user_id = session_data.passport.user
 
 		if user_id is 'sandbox'
 			facet = new SandboxFacet @service.sandbox
