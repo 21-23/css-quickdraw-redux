@@ -1,6 +1,6 @@
 {nx} = require 'nexus-node'
 
-GameRole = require '../../../shared/models/game-role'
+GameRole = require 'cssqd-shared/models/game-role'
 
 class Participant
 
