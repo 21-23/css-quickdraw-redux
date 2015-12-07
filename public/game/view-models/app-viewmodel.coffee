@@ -1,6 +1,8 @@
 warp = require 'nexus-warp'
 {nx} = require 'nexus'
 
+MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
+
 class AppViewModel
 	constructor: (sessionId) ->
 
@@ -35,5 +37,9 @@ class AppViewModel
 				match:    @match
 
 		@game_session_id.value = sessionId
+
+		@matchRendererViewModel = new MatchRendererViewModel
+			node_list: @node_list
+			match: @match
 
 module.exports = AppViewModel

@@ -11,7 +11,7 @@
     "chai": "~3.0.0"
   },
   "dependencies": {
-    "nexus": "~0.4.21",
+    "nexus": "~0.4.22",
     "normalize.css": "~3.0.3",
     "nexus-warp": "~0.0.6",
     "es6-promise": "~3.0.2",
