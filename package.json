@@ -65,7 +65,7 @@
     "koa-static": "^1.5.1",
     "mongoose": "^4.2.7",
     "nconf": "^0.7.1",
-    "nexus-node": "^0.4.21",
+    "nexus-node": "git+https://github.com/DaQuirm/nexus.git",
     "nexus-warp": "git+https://github.com/DaQuirm/nexus-warp.git",
     "nightmare": "^2.0.7",
     "passport": "^0.3.0",
