@@ -12,7 +12,7 @@
     "test-frontend": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
     "test": "npm run test-backend && npm run test-frontend",
     "start": "NODE_PATH=./app coffee index.coffee",
-    "dev": "NODE_ENV=dev npm start & webpack -w",
+    "dev": "NODE_ENV=dev npm start",
     "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk index.coffee",
     "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint"
   },
