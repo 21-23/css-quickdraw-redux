@@ -3,7 +3,7 @@
 class Player
 
 	constructor: (@participant) ->
-		@selector = new nx.Cell
+		@participant.selector = new nx.Cell
 			'->*': [
 				@participant.game_session,
 				'selector',
@@ -12,18 +12,14 @@ class Player
 					player_id: do @participant.id.toString
 			]
 
-		@participant.player = @
-
-		@match = new nx.Cell
+		@participant.match = new nx.Cell
 
 	get_entities: ->
 		round_phase: @participant.round_phase
 		node_list:   @participant.node_list
 		countdown:   @participant.countdown
 
-		selector: @selector
-		match:    @match
-
-
+		selector: @participant.selector
+		match:    @participant.match
 
 module.exports = Player

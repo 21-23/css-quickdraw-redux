@@ -11,4 +11,9 @@ AppView = (context) ->
 		nxt.Element 'div',
 			nxt.Binding context.countdown, nxt.Text
 
+		nxt.Element 'div',
+			nxt.Text 'Players:'
+		nxt.Collection context.players, (player) ->
+			nxt.Text player.displayName
+
 module.exports = AppView
