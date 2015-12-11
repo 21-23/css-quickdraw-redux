@@ -2,4 +2,6 @@
 	mongo:
 		db: 'cssqd-test'
 		host: 'localhost'
+	service:
+		blind_guardian: yes
 }
