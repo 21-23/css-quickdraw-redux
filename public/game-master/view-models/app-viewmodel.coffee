@@ -25,7 +25,7 @@ class AppViewModel
 				current_puzzle_index: @current_puzzle_index
 				node_list:            @node_list
 				countdown:            @countdown
-				players:         @players
+				players:         			@players
 
 		@game_session_id.value = sessionId
 

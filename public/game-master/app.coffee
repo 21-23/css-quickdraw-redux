@@ -25,10 +25,9 @@ ensureAuth = ->
 
 window.addEventListener 'load', ->
 	sessionId = do ensureSessionId
-
 	ensureAuth()
 		.then ->
-			app = new AppViewModel sessionId
+			window.app = new AppViewModel sessionId
 			document.body.appendChild AppView(app).data.node
 		.catch ->
 			console.log 'Not authenticated user, redirect to login page'
