@@ -29,7 +29,7 @@ class GameSession
 
 		@sandbox.match['->'] ({player_id}) =>
 			participant = @participants_by_id.get player_id
-			participant.player.match
+			participant.match
 
 		@round_phase = new nx.Cell
 			value: RoundPhase.WAIT_SCREEN

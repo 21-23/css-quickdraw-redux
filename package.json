@@ -12,7 +12,8 @@
     "test-frontend": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
     "test": "npm run test-backend && npm run test-frontend",
     "start": "NODE_PATH=./app coffee index.coffee",
-    "dev": "NODE_ENV=dev npm start & webpack -w",
+    "dev": "NODE_ENV=dev npm start",
+    "dev-test": "NODE_ENV=test npm start",
     "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk index.coffee",
     "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint"
   },
@@ -65,7 +66,7 @@
     "koa-static": "^1.5.1",
     "mongoose": "^4.2.7",
     "nconf": "^0.7.1",
-    "nexus-node": "^0.4.21",
+    "nexus-node": "git+https://github.com/DaQuirm/nexus.git",
     "nexus-warp": "git+https://github.com/DaQuirm/nexus-warp.git",
     "nightmare": "^2.0.7",
     "passport": "^0.3.0",

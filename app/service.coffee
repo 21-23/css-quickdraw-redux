@@ -35,6 +35,6 @@ class Service
 			nightmare = do Nightmare
 			yield nightmare
 				.goto 'http://localhost:3000/sandbox.html'
-		) (err, result) -> console.log "Nightmare.js: #{err}, #{result}"
+		) (err, result) -> console.log 'cssqd-service:ready'
 
 module.exports = Service
