@@ -13,21 +13,22 @@ MatchRendererView = (vm) ->
 		nxt.Class 'match-renderer'
 		nxt.Binding vm.tags, (tags) ->
 			nxt.Fragment tags.map (tag) ->
-				if tag.type is PuzzleTag.CLOSING
+				{ node } = tag
+				if node.type is PuzzleTag.CLOSING
 					indentSize--
 
 				commands = nxt.Element 'div',
 					nxt.Class 'row'
 					nxt.Binding tag.match, (match) ->
 						if match
-							nxt.Class if tag.objective then 'matched-positive' else 'matched-negative'
+							nxt.Class if node.objective then '-matched-positive' else '-matched-negative'
 					IndentView indentSize
-					TagView tag
-					nxt.Text tag.text
-					nxt.If tag.type is PuzzleTag.SINGLE_LINE,
-						(TagView tag, PuzzleTag.CLOSING)
+					TagView node
+					nxt.Text node.text
+					nxt.If node.type is PuzzleTag.SINGLE_LINE,
+						(TagView node, PuzzleTag.CLOSING)
 
-				if tag.type is PuzzleTag.OPENING
+				if node.type is PuzzleTag.OPENING
 					indentSize++
 
 				commands
