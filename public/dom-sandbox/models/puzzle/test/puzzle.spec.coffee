@@ -177,4 +177,3 @@ describe 'Puzzle', ->
 			match.should.deep.equal
 				result: SelectorMatchResult.POSITIVE
 				ids:    [2]
-
