@@ -12,25 +12,24 @@ MatchRendererView = (vm) ->
 	nxt.Element 'div',
 		nxt.Class 'match-renderer'
 		nxt.Binding vm.tags, (tags) ->
-			nxt.Element 'div', # nxt.Restrictions
-				tags.map (tag) ->
-					if tag.type is PuzzleTag.CLOSING
-						indentSize--
+			nxt.Fragment tags.map (tag) ->
+				if tag.type is PuzzleTag.CLOSING
+					indentSize--
 
-					commands = nxt.Element 'div',
-						nxt.Class 'row'
-						nxt.Binding tag.matchType, (matchType) ->
-							if matchType
-								nxt.Class "matched-#{matchType}"
-						IndentView indentSize
-						TagView tag
-						nxt.Text tag.text
-						nxt.If tag.type is PuzzleTag.SINGLE_LINE,
-							(TagView tag, PuzzleTag.CLOSING)
+				commands = nxt.Element 'div',
+					nxt.Class 'row'
+					nxt.Binding tag.match, (match) ->
+						if match
+							nxt.Class if tag.objective then 'matched-positive' else 'matched-negative'
+					IndentView indentSize
+					TagView tag
+					nxt.Text tag.text
+					nxt.If tag.type is PuzzleTag.SINGLE_LINE,
+						(TagView tag, PuzzleTag.CLOSING)
 
-					if tag.type is PuzzleTag.OPENING
-						indentSize++
+				if tag.type is PuzzleTag.OPENING
+					indentSize++
 
-					commands
+				commands
 
 module.exports = MatchRendererView

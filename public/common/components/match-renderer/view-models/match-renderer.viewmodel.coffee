@@ -1,6 +1,6 @@
 class MatchRendererViewModel
 	constructor: ({node_list, match}) ->
-		@tags = new nx.Cell
+		tags = @tags = new nx.Cell
 			'<-': [
 				node_list,
 				(nodes) ->
@@ -11,27 +11,25 @@ class MatchRendererViewModel
 							attrs: attrs
 							text: text
 							objective: objective
-							matchType: new nx.Cell
+							match: new nx.Cell
 					else
 						[]
 			]
 
-		new nx.Cell
-			'<-': [
-				match,
-				(newMatch, oldMatch) ->
-					console.log newMatch, oldMatch
-					if oldMatch
-						matchesToDelete = oldMatch.ids.filter (id) -> newMatch.ids.indexOf(id) is -1
+		matchUpdate = new nx.Cell
+		matchUpdate['<-'] match, (newMatch, oldMatch) ->
+			unset = if oldMatch
+				oldMatch.ids.filter (id) -> newMatch.ids.indexOf(id) is -1
+			else []
 
-					console.log matchesToDelete
-			]
+			set: newMatch.ids
+			unset: unset
 
-	resetMatchedTags: =>
-		if @tags.value.length > 0
-			@setMatchedTags [0..@tags.value.length - 1], no
+		createMatchCellsPicker = (key) ->
+			(command) ->
+				command[key].map (id) -> tags.value[id].match
 
-	setMatchedTags: (ids, value) =>
-		ids.forEach (id) => @tags.value[id].matchType.value = value
+		matchUpdate['->'] createMatchCellsPicker('set'), -> yes
+		matchUpdate['->'] createMatchCellsPicker('unset'), -> no
 
 module.exports = MatchRendererViewModel

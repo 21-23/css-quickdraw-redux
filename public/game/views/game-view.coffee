@@ -5,9 +5,6 @@ GameView = (context) ->
 		nxt.Element 'input',
 			nxt.ValueBinding context.selector
 
-		nxt.Element 'div',
-			nxt.Binding context.match, (match) ->
-				nxt.Text JSON.stringify match
-			MatchRendererView context.matchRendererViewModel
+		MatchRendererView context.matchRendererViewModel
 
 module.exports = GameView
