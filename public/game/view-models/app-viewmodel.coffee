@@ -1,6 +1,7 @@
 warp = require 'nexus-warp'
 {nx} = require 'nexus'
 
+Round = require '../models/round'
 MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
 
 class AppViewModel
@@ -15,6 +16,8 @@ class AppViewModel
 
 		@selector = new nx.Cell
 		@match = new nx.Cell
+
+		@rounds = new nx.Collection
 
 		@view = new nx.Cell
 			'<-': [
@@ -35,6 +38,10 @@ class AppViewModel
 
 				selector: @selector
 				match:    @match
+
+				rounds:
+					link: @rounds
+					item_from_json: ({status, solution}) -> new Round status, solution
 
 		@game_session_id.value = sessionId
 

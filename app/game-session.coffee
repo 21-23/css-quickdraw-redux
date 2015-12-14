@@ -35,6 +35,9 @@ class GameSession
 			value: RoundPhase.WAIT_SCREEN
 			'<-': [@current_puzzle_index, -> RoundPhase.COUNTDOWN]
 
+		@round_start_time = new nx.Cell
+			'<-': [@current_puzzle_index, -> do Date.now]
+
 		@countdown = new Countdown
 		@countdown.time['<-'] @round_phase, (phase) ->
 			switch phase
