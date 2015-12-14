@@ -41,19 +41,8 @@ class Player
 					time: do @get_solution_time
 					selector: @participant.selector.value
 				else
-					null
-
-		# @participant.timeout = new nx.Cell
-		# 	'<<-*': [@participant.game_session, ({countdown: {timeout}}) -> timeout]
-
-		# @participant.timeout['->'] \
-		# 	(=>
-		# 		{solution} = do @get_current_round
-		# 		solution),
-
-		# 	=>
-		# 		time: GameSession.ROUND_DURATION
-		# 		selector: 'x__x'
+					time: GameSession.ROUND_DURATION
+					selector: 'x__x'
 
 	get_current_round: ->
 		@participant.rounds.items[@participant.current_puzzle_index.value]
