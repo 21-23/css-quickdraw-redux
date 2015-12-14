@@ -29,8 +29,6 @@ class ParticipantFacet
 							do @player.get_entities
 			]
 
-	init: (session) ->
-
 	destroy: (session) ->
 		@participant.disconnected.value = yes
 
