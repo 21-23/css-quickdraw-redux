@@ -1,0 +1,48 @@
+.game-screen
+	.user-panel
+		width: 100%
+	
+
+.game-screen-container
+	width: 80%
+	margin: auto
+	
+	.qd-pearl-thread
+		width: 100%
+	
+	.controls
+		width: 100%
+		display: flex
+		justify-content: space-between
+		align-items: stretch
+		flex-flow: row nowrap
+		
+	.controls-selector
+		flex-grow: 5
+	
+	.controls-timer
+		flex-grow: 1
+		
+	.controls-selector-banned-container
+		width: 100%
+		box-sizing: border-box
+	
+	.controls-selector-input
+		width: 100%
+		box-sizing: border-box
+
+@media (orientation: portrait)
+	.game-screen-container
+		width: 96%
+
+//NON-PRODUCTION styles; only for testing
+.user-panel
+	background: #888
+.qd-pearl-thread
+	background: #da5
+.controls-timer
+	background: #e5a
+.match-renderer
+	background: #eee!important
+.controls-selector-banned-container
+	background: #4fa
