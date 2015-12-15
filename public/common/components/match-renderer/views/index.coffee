@@ -1,4 +1,4 @@
-require 'common/stylesheets/match-renderer.styl'
+require 'common/stylesheets/match-renderer/component.styl'
 
 PuzzleTag  = require 'dom-sandbox/models/puzzle/puzzle-tag'
 
@@ -11,6 +11,7 @@ MatchRendererView = (vm) ->
 
 	nxt.Element 'div',
 		nxt.Class 'match-renderer'
+		nxt.Attr 'theme', 'default'
 		nxt.Binding vm.tags, (tags) ->
 			nxt.Fragment tags.map (tag) ->
 				{ node } = tag
