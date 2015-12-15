@@ -1,0 +1,21 @@
+generate-theme(themeName)
+	@import themeName
+
+	&[theme={themeName}]
+		color text-color
+		background background-color
+
+		.row.-matched-negative
+				background negative-match-color
+
+		.row.-matched-positive
+				background positive-match-color
+
+		.tagname
+			color tagname-color
+
+		.attr-name
+			color attrname-color
+
+		.attr-value
+			color attrvalue-color
