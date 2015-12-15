@@ -11,9 +11,9 @@
     "chai": "~3.0.0"
   },
   "dependencies": {
-    "nexus": "~0.4.21",
+    "nexus": "git://github.com/DaQuirm/nexus#master",
     "normalize.css": "~3.0.3",
-    "nexus-warp": "~0.0.6",
+    "nexus-warp": "git://github.com/DaQuirm/nexus-warp#master",
     "es6-promise": "~3.0.2",
     "fetch": "~0.10.1",
     "cssqd-shared": "./shared"
