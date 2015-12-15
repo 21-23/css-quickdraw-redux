@@ -7,8 +7,6 @@ class SandboxFacet
 			match:       sandbox.match
 			node_list:   sandbox.node_list
 
-	init: (session) ->
-
 	destroy: (session) ->
 
 module.exports = SandboxFacet
