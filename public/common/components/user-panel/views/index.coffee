@@ -12,8 +12,9 @@ UserPanelView = (context) ->
 			nxt.Class 'user-info'
 			nxt.Binding context.name, nxt.Text
 
-		nxt.Element 'div',
+		nxt.Element 'a',
 			nxt.Class 'log-out'
-			nxt.Text 'L'
+			nxt.Text 'Log out'
+			nxt.Attr 'href', '/auth/logout'
 
 module.exports = UserPanelView
