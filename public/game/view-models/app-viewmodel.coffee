@@ -44,12 +44,13 @@ class AppViewModel
 					link: @rounds
 					item_from_json: ({status, solution}) -> new Round status, solution
 
-		@game_session_id.value = sessionId
-
 		@matchRendererViewModel = new MatchRendererViewModel
 			node_list: @node_list
 			match: @match
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
+
+		#Keep session ID set as the last operation as it triggers the data flow
+		@game_session_id.value = sessionId
 
 module.exports = AppViewModel
