@@ -86,7 +86,7 @@ module.exports =
 				loader: 'style-loader!css-loader!autoprefixer-loader?browsers=last 1 version'
 			}
 			{
-				test: /\.jpg$/,
+				test: /\.(jpg|png)$/,
 				loader: 'file-loader?name=[name].[ext]'
 			}
 		]
