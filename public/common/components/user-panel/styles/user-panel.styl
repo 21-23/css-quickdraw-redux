@@ -1,0 +1,28 @@
+@import '../../../stylesheets/color-palette'
+
+bottom-line = 5px solid #349161
+
+.user-panel
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: center;
+	color: #fff
+    
+	box-sizing: border-box
+	border-bottom: bottom-line
+	background: #000
+	padding: 5px 35px
+	margin-bottom: 10px
+	
+	.logo
+		flex-grow: 1;
+		min-width: 100px;
+		
+	.user-info
+		flex-grow: 5;
+		text-align: right;
+	
+	.log-out
+		min-width: 30px
+		text-align: right
