@@ -1,5 +1,7 @@
 warp = require 'nexus-warp'
 
+UserPanelViewModel = (require 'common/components/user-panel').ViewModel
+
 class AppViewModel
 	constructor: (sessionId) ->
 
@@ -28,5 +30,7 @@ class AppViewModel
 				players:              @players
 
 		@game_session_id.value = sessionId
+
+		@userPanelViewModel = new UserPanelViewModel @user_data
 
 module.exports = AppViewModel

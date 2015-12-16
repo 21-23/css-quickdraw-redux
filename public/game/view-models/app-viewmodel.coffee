@@ -3,6 +3,7 @@ warp = require 'nexus-warp'
 
 Round = require '../models/round'
 MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
+UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -48,5 +49,7 @@ class AppViewModel
 		@matchRendererViewModel = new MatchRendererViewModel
 			node_list: @node_list
 			match: @match
+
+		@userPanelViewModel = new UserPanelViewModel @user_data
 
 module.exports = AppViewModel

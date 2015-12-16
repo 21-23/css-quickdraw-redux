@@ -1,12 +1,11 @@
 MatchRendererView = (require '../../common/components/match-renderer').View
+UserPanelView = (require 'common/components/user-panel').View
 
 GameView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-screen'
 
-		nxt.Element 'div',
-			nxt.Class 'user-panel'
-			nxt.Text 'user panel'
+		UserPanelView context.userPanelViewModel
 
 		nxt.Element 'div',
 			nxt.Class 'game-screen-container'

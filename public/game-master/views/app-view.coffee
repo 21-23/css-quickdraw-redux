@@ -1,10 +1,10 @@
+UserPanelView = (require 'common/components/user-panel').View
+
 AppView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-master-screen'
 
-		nxt.Element 'div',
-			nxt.Class 'user-panel'
-			nxt.Text 'user panel'
+		UserPanelView context.userPanelViewModel
 
 		nxt.Element 'div',
 			nxt.Class 'game-master-screen-container'
