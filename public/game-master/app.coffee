@@ -1,3 +1,6 @@
+require 'normalize.css'
+require './styles/index.styl'
+
 require 'nexus'
 require 'es6-promise'
 require 'fetch'
