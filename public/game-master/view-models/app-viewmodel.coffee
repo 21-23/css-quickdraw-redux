@@ -2,6 +2,7 @@ warp = require 'nexus-warp'
 
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimerViewModel = (require 'common/components/timer').ViewModel
+ButtonViewModel = (require 'common/components/button').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -32,6 +33,9 @@ class AppViewModel
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@timerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']
+		@StartButtonViewModel = new ButtonViewModel text: 'Start', clickHandler: ->
+		@StopButtonViewModel = new ButtonViewModel text: 'Stop', clickHandler: ->
+		@NextButtonViewModel = new ButtonViewModel text: 'Next', clickHandler: ->
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
