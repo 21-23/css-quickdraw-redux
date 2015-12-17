@@ -24,13 +24,17 @@ AppView = (context) ->
 					nxt.Class 'players-list'
 
 					nxt.Element 'table',
+						nxt.Class 'players-list-table'
 						nxt.Element 'thead',
 							nxt.Element 'tr',
 								nxt.Element 'th',
+									nxt.Class 'col-player-name'
 									nxt.Text 'Player Name'
 								nxt.Element 'th',
+									nxt.Class 'col-player-time'
 									nxt.Text 'Time'
 								nxt.Element 'th',
+									nxt.Class 'col-player-length'
 									nxt.Text 'Length'
 						nxt.Element 'tbody',
 							nxt.Collection context.players, (player) ->
@@ -38,8 +42,10 @@ AppView = (context) ->
 									nxt.Element 'td',
 										nxt.Text player.displayName
 									nxt.Element 'td',
+										nxt.Class 'cell-player-time'
 										nxt.Text '0:27'
 									nxt.Element 'td',
+										nxt.Class 'cell-player-length'
 										nxt.Text '4'
 
 				nxt.Element 'div',
