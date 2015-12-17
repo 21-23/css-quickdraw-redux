@@ -1,6 +1,7 @@
 warp = require 'nexus-warp'
 
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
+TimerViewModel = (require 'common/components/timer').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -30,6 +31,7 @@ class AppViewModel
 				players:              @players
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
+		@timerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
