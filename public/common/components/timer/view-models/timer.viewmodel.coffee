@@ -13,7 +13,7 @@ class TimerViewModel
 			else @formatDefault
 
 	formatDefault: (value) ->
-		if isNumeric(value)
+		if isNumeric value
 			'' + value
 		else
 			''
@@ -25,7 +25,7 @@ class TimerViewModel
 			''
 
 	formatMSS: (value) ->
-		return '' if not isNumeric(value)
+		return '' if not isNumeric value
 
 		seconds = (value / 1000) | 0
 
