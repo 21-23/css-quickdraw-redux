@@ -51,6 +51,7 @@ class AppViewModel
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@roundTimerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']
+		@countdownViewModel = new TimerViewModel @countdown, TimerViewModel.formats['s']
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
