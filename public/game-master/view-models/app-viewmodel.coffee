@@ -29,6 +29,19 @@ class AppViewModel
 			#TODO: UNSAFE!!! check puzzles length
 			if typeof @target.value is 'undefined' then 0 else @target.value + 1
 
+		@current_puzzle = new nx.Cell
+			'<-': [
+					[ @current_puzzle_index, @puzzles ],
+					(index, puzzles) ->
+						if index >= 0 and index < puzzles.length then puzzles[index] else null
+				]
+		@current_puzzle_name = new nx.Cell
+			'<-': [
+				@current_puzzle,
+				(puzzle) ->
+					puzzle and puzzle.name or ''
+			]
+
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
