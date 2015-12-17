@@ -1,5 +1,3 @@
-noop = ->
-
 class ButtonViewModel
 	constructor: ({ @text, @click }) ->
 
