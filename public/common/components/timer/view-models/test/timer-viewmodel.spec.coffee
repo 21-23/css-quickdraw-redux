@@ -64,3 +64,12 @@ describe 'TimerViewModel', ->
 
 			formatted = TimerViewModel.prototype.formatDefault 'Smith'
 			formatted.should.equal ''
+
+			formatted = TimerViewModel.prototype.formatMSS 59000
+			formatted.should.equal '0:59'
+
+			formatted = TimerViewModel.prototype.formatMSS 60000
+			formatted.should.equal '1:00'
+
+			formatted = TimerViewModel.prototype.formatMSS 61000
+			formatted.should.equal '1:01'

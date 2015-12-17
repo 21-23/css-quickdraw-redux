@@ -29,7 +29,7 @@ class TimerViewModel
 
 		seconds = (value / 1000) | 0
 
-		minutes = if seconds > 60 then (seconds / 60) | 0 else 0
+		minutes = if seconds >= 60 then (seconds / 60) | 0 else 0
 		seconds = seconds - (60 * minutes)
 		seconds = '0' + seconds if seconds < 10
 
