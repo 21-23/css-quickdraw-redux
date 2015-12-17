@@ -17,6 +17,18 @@ class AppViewModel
 		@role      = new nx.Cell
 		@players = new nx.Collection
 
+		@startButtonClick = new nx.Cell
+		@stopButtonClick = new nx.Cell
+		@nextButtonClick = new nx.Cell
+
+		@current_puzzle_index['<-'] @startButtonClick, (evt) ->
+			#replace with utils method
+			if typeof @target.value is 'undefined' then 0 else @target.value
+		@current_puzzle_index['<-'] @nextButtonClick, (evt) ->
+			#replace with utils method
+			#TODO: UNSAFE!!! check puzzles length
+			if typeof @target.value is 'undefined' then 0 else @target.value + 1
+
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
@@ -33,9 +45,10 @@ class AppViewModel
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@timerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']
-		@StartButtonViewModel = new ButtonViewModel text: 'Start', clickHandler: ->
-		@StopButtonViewModel = new ButtonViewModel text: 'Stop', clickHandler: ->
-		@NextButtonViewModel = new ButtonViewModel text: 'Next', clickHandler: ->
+
+		@StartButtonViewModel = new ButtonViewModel text: 'Start', click: @startButtonClick
+		@StopButtonViewModel = new ButtonViewModel text: 'Stop', click: @stopButtonClick
+		@NextButtonViewModel = new ButtonViewModel text: 'Next', click: @nextButtonClick
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId

@@ -83,4 +83,7 @@ AppView = (context) ->
 						nxt.Class 'master-controls-puzzle'
 						nxt.Text 'HTML GOES HERE'
 
+		nxt.Element 'div',
+			nxt.Binding context.current_puzzle_index, nxt.Text
+
 module.exports = AppView
