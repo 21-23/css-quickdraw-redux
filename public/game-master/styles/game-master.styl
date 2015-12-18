@@ -1,3 +1,5 @@
+@import '../../common/stylesheets/color-palette'
+
 .game-master-screen
 	.user-panel
 		width 100%
@@ -14,7 +16,39 @@
 		
 		.players-list, .master-controls
 			width 50%
-			padding 10px
+		
+		.players-list-table
+			table-layout fixed
+			border-spacing 1px
+			border-collapse separate
+			width 100%
+			white-space nowrap
+			color holy-white
+			
+			.col-player-name
+				width 70%
+			.col-player-time
+				width 15%
+			.col-player-length
+				width 15%
+			
+			td, th
+				background black-gold
+			
+			th
+				font-size 1.3em
+				line-height 1.6em
+			
+			td
+				white-space nowrap
+				overflow hidden
+				text-overflow ellipsis
+				font-size 1.3em
+				line-height 1.6em
+				padding 0 5px
+				
+				&.cell-player-time, &.cell-player-length
+					text-align center
 	
 	.master-controls-timings
 		display flex
@@ -43,8 +77,6 @@
 	div
 		display inline-block
 		margin-right 20px
-.players-list
-	background #e5a
 .master-controls
 	background #4fa
 .round-title
