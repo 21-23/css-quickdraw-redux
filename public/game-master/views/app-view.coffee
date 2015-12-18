@@ -1,4 +1,5 @@
 UserPanelView = (require 'common/components/user-panel').View
+TimerView = (require 'common/components/timer').View
 
 AppView = (context) ->
 	nxt.Element 'div',
@@ -51,9 +52,7 @@ AppView = (context) ->
 						nxt.Element 'div',
 							nxt.Class 'round-title'
 							nxt.Binding context.round_phase, nxt.Text
-						nxt.Element 'div',
-							nxt.Class 'round-timer'
-							nxt.Binding context.countdown, nxt.Text
+						TimerView context.timerViewModel
 
 					nxt.Element 'div',
 						nxt.Class 'master-controls-gameplay'
