@@ -82,6 +82,7 @@ class Puzzle
 			break if position isnt -1
 
 		if position isnt -1 and position isnt null
+			selector: selector
 			result: SelectorMatchResult.NEGATIVE
 			banned:
 				character: banned
@@ -104,6 +105,7 @@ class Puzzle
 				else
 					SelectorMatchResult.NEGATIVE
 
+			selector: selector
 			result: result
 			ids: ids
 
