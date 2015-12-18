@@ -1,5 +1,6 @@
 warp = require 'nexus-warp'
 
+Player = require '../models/player'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimerViewModel = (require 'common/components/timer').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
@@ -17,7 +18,7 @@ class AppViewModel
 		@role      = new nx.Cell
 		@players = new nx.Collection
 
-		@StartButtonViewModel = new ButtonViewModel 'Start'
+@StartButtonViewModel = new ButtonViewModel 'Start'
 		@StopButtonViewModel = new ButtonViewModel 'Stop'
 		@NextButtonViewModel = new ButtonViewModel 'Next'
 
@@ -36,6 +37,14 @@ class AppViewModel
 						if 0 <= index < puzzles.length then puzzles[index] else null
 				]
 
+		@solution = new nx.Cell
+			'->': [
+				({player_id}) =>
+					# obligatory apologetic comment
+					{solution} = @players.items.find (player) -> player.id is player_id
+					solution
+			]
+
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
@@ -48,7 +57,10 @@ class AppViewModel
 				current_puzzle_index: @current_puzzle_index
 				node_list:            @node_list
 				countdown:            @countdown
-				players:              @players
+				solution:             @solution
+				players:
+					link: @players
+					item_from_json: (json) -> new Player json
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@timerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']

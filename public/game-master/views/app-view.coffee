@@ -42,13 +42,17 @@ AppView = (context) ->
 							nxt.Collection context.players, (player) ->
 								nxt.Element 'tr',
 									nxt.Element 'td',
-										nxt.Text player.displayName
+										nxt.Text player.display_name
 									nxt.Element 'td',
 										nxt.Class 'cell-player-time'
-										nxt.Text '0:27'
+										nxt.Binding player.solution, (solution) ->
+											if solution?
+												nxt.Text solution.time
 									nxt.Element 'td',
 										nxt.Class 'cell-player-length'
-										nxt.Text '4'
+										nxt.Binding player.solution, (solution) ->
+											if solution?
+												nxt.Text solution.selector.length
 
 				nxt.Element 'div',
 					nxt.Class 'master-controls'
