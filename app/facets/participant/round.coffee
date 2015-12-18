@@ -10,8 +10,8 @@ class Round
 			value: RoundStatus.SOLVING
 			'<-': [
 				@solution
-				(solution) ->
-					if solution?
+				({correct}) ->
+					if correct
 						RoundStatus.SOLVED
 					else
 						RoundStatus.SOLVING

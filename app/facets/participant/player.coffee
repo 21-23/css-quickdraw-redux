@@ -31,26 +31,16 @@ class Player
 			items = puzzles.map (puzzle) -> new Round
 			new nx.Command 'reset', {items}
 
-		@participant.match['->'] \
-			(=>
-				{solution} = do @get_current_round
-				solution),
-
-			({result}) =>
-				if result is SelectorMatchResult.POSITIVE
-					time: do @get_solution_time
-					selector: @participant.selector.value
-				else
-					time: GameSession.ROUND_DURATION
-					selector: 'x__x'
+		@participant.solution = new nx.Cell
+			'<-*': [@participant.game_session, 'solution']
+			'->': [
+				=>
+					{solution} = do @get_current_round
+					solution
+			]
 
 	get_current_round: ->
 		@participant.rounds.items[@participant.current_puzzle_index.value]
-
-	get_solution_time: ->
-		now = do Date.now
-		elapsed = now - @participant.round_start_time.value
-		GameSession.ROUND_DURATION - elapsed
 
 	get_entities: ->
 		round_phase: @participant.round_phase

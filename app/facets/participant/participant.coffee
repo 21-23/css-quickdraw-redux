@@ -9,7 +9,8 @@ class Participant
 
 		@user_data = new nx.Cell
 			value:
-				displayName: user.displayName
+				id: @id
+				display_name: user.displayName
 
 		@game_session = new nx.Cell
 			action: (game_session) =>

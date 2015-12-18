@@ -23,12 +23,16 @@ class GameMaster
 			filter: (role) -> role isnt GameRole.GAME_MASTER
 			binding: '->>'
 
+		@participant.solution = new nx.Cell
+			'<-*': [@participant.game_session, 'solution']
+
 	get_entities: ->
 		round_phase:          @participant.round_phase
 		node_list:            @participant.node_list
 		countdown:            @participant.countdown
 		puzzles:              @participant.puzzles
 		current_puzzle_index: @participant.current_puzzle_index
+		solution:             @participant.solution
 		players:
 			link: @participant.players
 			item_to_json: ({user_data: {value}}) -> value
