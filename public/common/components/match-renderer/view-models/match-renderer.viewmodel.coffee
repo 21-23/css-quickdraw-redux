@@ -14,10 +14,13 @@ class MatchRendererViewModel
 
 		matchUpdate = new nx.Cell
 		matchUpdate['<-'] match, (newMatch, oldMatch) ->
-			set: newMatch.ids
+			set: newMatch.ids or []
 			unset:
-				if oldMatch
-					oldMatch.ids.filter (id) -> newMatch.ids.indexOf(id) is -1
+				if oldMatch and oldMatch.ids
+					unless newMatch.ids
+						oldMatch.ids
+					else
+						oldMatch.ids.filter (id) -> newMatch.ids.indexOf(id) is -1
 				else []
 
 		createMatchCellsPicker = (key) ->
