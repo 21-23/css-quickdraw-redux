@@ -4,6 +4,7 @@ Player = require '../models/player'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimerViewModel = (require 'common/components/timer').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
+PlayersListViewModel = (require 'common/components/players-list').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -64,6 +65,7 @@ class AppViewModel
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@timerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']
+		@playersListViewModel = new PlayersListViewModel @players
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
