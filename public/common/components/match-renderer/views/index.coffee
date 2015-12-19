@@ -20,6 +20,7 @@ MatchRendererView = (vm) ->
 
 				commands = nxt.Element 'div',
 					nxt.Class 'row'
+					(if node.objective then nxt.Class 'objective')
 					nxt.Binding tag.match, (match) ->
 						if match
 							nxt.Class if node.objective then '-matched-positive' else '-matched-negative'
