@@ -27,9 +27,8 @@ class Player
 				(node_list) =>
 					current_puzzle_index = @participant.current_puzzle_index.value
 					current_puzzle = @participant.puzzles.value[current_puzzle_index]
-
 					tags: node_list
-					banned_characters: current_puzzle.banned_characters
+					banned_characters: current_puzzle.banned
 			]
 
 		@participant.round_start_time = new nx.Cell
