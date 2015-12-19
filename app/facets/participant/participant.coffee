@@ -22,6 +22,9 @@ class Participant
 		@round_phase = new nx.Cell
 			'<<-*': [@game_session, 'round_phase']
 
+		@puzzles = new nx.Cell
+			'<<-*': [@game_session, 'puzzles']
+
 		@node_list = new nx.Cell
 			'<<-*': [@game_session, 'node_list']
 

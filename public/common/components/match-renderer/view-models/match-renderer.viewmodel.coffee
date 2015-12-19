@@ -1,13 +1,13 @@
 TagViewModel = require './tag.viewmodel'
 
 class MatchRendererViewModel
-	constructor: ({node_list, match}) ->
+	constructor: ({puzzle, match}) ->
 		tags = @tags = new nx.Cell
 			'<-': [
-				node_list,
-				(nodes) ->
-					if nodes
-						nodes.map (node) -> new TagViewModel node
+				puzzle,
+				({tags}) ->
+					if tags
+						tags.map (tag) -> new TagViewModel tag
 					else
 						[]
 			]
