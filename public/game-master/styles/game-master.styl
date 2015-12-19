@@ -7,16 +7,16 @@
 .game-master-screen-container
 	width 96%
 	margin auto
-	
+
 	.qd-pearl-thread
 		width 100%
-	
+
 	.master-controls-container
 		display flex
-		
+
 		.players-list, .master-controls
 			width 50%
-		
+
 		.players-list-table
 			table-layout fixed
 			border-spacing 1px
@@ -24,21 +24,21 @@
 			width 100%
 			white-space nowrap
 			color holy-white
-			
+
 			.col-player-name
 				width 70%
 			.col-player-time
 				width 15%
 			.col-player-length
 				width 15%
-			
+
 			td, th
 				background black-gold
-			
+
 			th
 				font-size 1.3em
 				line-height 1.6em
-			
+
 			td
 				white-space nowrap
 				overflow hidden
@@ -46,25 +46,25 @@
 				font-size 1.3em
 				line-height 1.6em
 				padding 0 5px
-				
+
 				&.cell-player-time, &.cell-player-length
 					text-align center
-	
+
 	.master-controls-timings
 		display flex
-		
+		align-items center
+
 		.round-title
 			flex-grow 4
 			line-height 1.2em
 			font-size 1.5em
-			height 2.4em //2 lines max
 			overflow hidden
-			
+
 		.timer
 			font-size 3em
 			margin-left 0.5em
 			line-height 1.2em
-	
+
 	.master-controls-gameplay
 		display flex
 		justify-content space-between
