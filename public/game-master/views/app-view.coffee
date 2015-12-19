@@ -58,7 +58,7 @@ AppView = (context) ->
 
 						nxt.Element 'div',
 							nxt.Class 'round-title'
-							nxt.Binding context.current_puzzle_name, nxt.Text
+							nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name
 						TimerView context.timerViewModel
 
 					nxt.Element 'div',
