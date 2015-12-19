@@ -18,7 +18,7 @@ class AppViewModel
 		@role      = new nx.Cell
 		@players = new nx.Collection
 
-@StartButtonViewModel = new ButtonViewModel 'Start'
+		@StartButtonViewModel = new ButtonViewModel 'Start'
 		@StopButtonViewModel = new ButtonViewModel 'Stop'
 		@NextButtonViewModel = new ButtonViewModel 'Next'
 
