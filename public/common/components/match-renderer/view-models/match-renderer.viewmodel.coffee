@@ -16,7 +16,7 @@ class MatchRendererViewModel
 		matchUpdate['<-'] match, (newMatch, oldMatch) ->
 			set: newMatch.ids or []
 			unset:
-				if oldMatch and oldMatch.ids
+				if oldMatch?.ids?
 					unless newMatch.ids
 						oldMatch.ids
 					else
