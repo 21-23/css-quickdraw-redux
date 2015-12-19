@@ -1,6 +1,6 @@
 { isNumeric } = require '../../../utils/data-type-utils'
 
-class TimerViewModel
+class TimespanViewModel
 	constructor: (remainingCell, format) ->
 		@remaining = new nx.Cell
 			'<<-': [ remainingCell, @selectFormatter(format) ]
@@ -8,8 +8,8 @@ class TimerViewModel
 	selectFormatter: (format) ->
 		#there could be a super-duper DataTime formatter but not now
 		switch format
-			when TimerViewModel.formats['s'] then @formatS
-			when TimerViewModel.formats['m:ss'] then @formatMSS
+			when TimespanViewModel.formats['s'] then @formatS
+			when TimespanViewModel.formats['m:ss'] then @formatMSS
 			else @formatDefault
 
 	formatDefault: (value) ->
@@ -35,9 +35,9 @@ class TimerViewModel
 
 		"#{minutes}:#{seconds}"
 
-TimerViewModel.formats = {
+TimespanViewModel.formats = {
 	's'
 	'm:ss'
 }
 
-module.exports = TimerViewModel
+module.exports = TimespanViewModel

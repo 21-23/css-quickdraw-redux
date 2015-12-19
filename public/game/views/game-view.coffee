@@ -1,6 +1,6 @@
 MatchRendererView = (require '../../common/components/match-renderer').View
 UserPanelView = (require 'common/components/user-panel').View
-TimerView = (require 'common/components/timer').View
+TimespanView = (require 'common/components/timespan').View
 
 GameView = (context) ->
 	nxt.Element 'div',
@@ -30,7 +30,7 @@ GameView = (context) ->
 						nxt.ValueBinding context.selector
 						nxt.Attr 'placeholder', 'Enter your selector here...'
 
-				TimerView context.roundTimerViewModel
+				TimespanView context.roundTimerViewModel
 
 			MatchRendererView context.matchRendererViewModel
 
