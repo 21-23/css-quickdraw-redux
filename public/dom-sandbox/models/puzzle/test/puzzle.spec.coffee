@@ -135,32 +135,42 @@ describe 'Puzzle', ->
 	describe 'match', ->
 		it 'matches a selector to the fragment and returns an array of node ids and match result', ->
 			puzzle = new Puzzle puzzle_data
-			match = puzzle.match '*'
+			selector = '*'
+			match = puzzle.match selector
 			match.should.deep.equal
+				selector: selector
 				result: SelectorMatchResult.NEGATIVE
 				ids:    [0, 1, 2, 4]
 
-			match = puzzle.match 'div, footer'
+			selector = 'div, footer'
+			match = puzzle.match selector
 			match.should.deep.equal
+				selector: selector
 				result: SelectorMatchResult.NEGATIVE
 				ids:    [2, 4]
 
-			match = puzzle.match '.match'
+			selector = '.match'
+			match = puzzle.match selector
 			match.should.deep.equal
+				selector: selector
 				result: SelectorMatchResult.POSITIVE
 				ids:    [2]
 
 		it 'returns a negative match when qSA fails', ->
 			puzzle = new Puzzle puzzle_data
-			match = puzzle.match '='
+			selector = '='
+			match = puzzle.match selector
 			match.should.deep.equal
+				selector: selector
 				result: SelectorMatchResult.NEGATIVE
 				ids:    []
 
 		it 'returns a negative match when banned characters are encountered', ->
 			puzzle = new Puzzle puzzle_data
-			match = puzzle.match '.mat_ch'
+			selector = '.mat_ch'
+			match = puzzle.match selector
 			match.should.deep.equal
+				selector: selector
 				result: SelectorMatchResult.NEGATIVE
 				banned:
 					character: '_'
@@ -173,7 +183,9 @@ describe 'Puzzle', ->
 				name:     puzzle_data.name
 				banned:   []
 
-			match = puzzle.match '.match'
+			selector = '.match'
+			match = puzzle.match selector
 			match.should.deep.equal
+				selector: selector
 				result: SelectorMatchResult.POSITIVE
 				ids:    [2]
