@@ -5,9 +5,6 @@ GameRole = require 'cssqd-shared/models/game-role'
 class GameMaster
 
 	constructor: (@participant) ->
-		@participant.puzzles = new nx.Cell
-			'<<-*': [@participant.game_session, 'puzzles']
-
 		@participant.current_puzzle_index = new nx.Cell
 			'->*': [@participant.game_session, 'current_puzzle_index']
 

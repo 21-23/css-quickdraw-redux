@@ -12,7 +12,7 @@ class AppViewModel
 		@user_data = new nx.Cell
 		@game_session_id = new nx.Cell
 		@round_phase = new nx.Cell
-		@node_list = new nx.Cell
+		@puzzle = new nx.Cell
 		@countdown = new nx.Cell
 		@role = new nx.Cell
 
@@ -34,7 +34,7 @@ class AppViewModel
 				user_data:       @user_data
 				game_session_id: @game_session_id
 				round_phase:     @round_phase
-				node_list:       @node_list
+				puzzle:          @puzzle
 				countdown:       @countdown
 				role:            @role
 
@@ -46,7 +46,7 @@ class AppViewModel
 					item_from_json: ({status, solution}) -> new Round status, solution
 
 		@matchRendererViewModel = new MatchRendererViewModel
-			node_list: @node_list
+			puzzle: @puzzle
 			match: @match
 
 		@userPanelViewModel = new UserPanelViewModel @user_data

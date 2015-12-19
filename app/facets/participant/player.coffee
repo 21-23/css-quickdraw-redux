@@ -21,6 +21,17 @@ class Player
 		@participant.current_puzzle_index = new nx.Cell
 			'<<-*': [@participant.game_session, 'current_puzzle_index']
 
+		@participant.puzzle = new nx.Cell
+			'<-': [
+				@participant.node_list,
+				(node_list) =>
+					current_puzzle_index = @participant.current_puzzle_index.value
+					current_puzzle = @participant.puzzles.value[current_puzzle_index]
+
+					tags: node_list
+					banned_characters: current_puzzle.banned_characters
+			]
+
 		@participant.round_start_time = new nx.Cell
 			'<<-*': [@participant.game_session, 'round_start_time']
 
@@ -44,7 +55,7 @@ class Player
 
 	get_entities: ->
 		round_phase: @participant.round_phase
-		node_list:   @participant.node_list
+		puzzle:      @participant.puzzle
 		countdown:   @participant.countdown
 
 		selector: @participant.selector
