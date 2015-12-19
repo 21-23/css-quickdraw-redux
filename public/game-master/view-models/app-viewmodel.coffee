@@ -2,6 +2,7 @@ warp = require 'nexus-warp'
 
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimerViewModel = (require 'common/components/timer').ViewModel
+ButtonViewModel = (require 'common/components/button').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -15,6 +16,25 @@ class AppViewModel
 		@countdown = new nx.Cell
 		@role      = new nx.Cell
 		@players = new nx.Collection
+
+		@StartButtonViewModel = new ButtonViewModel 'Start'
+		@StopButtonViewModel = new ButtonViewModel 'Stop'
+		@NextButtonViewModel = new ButtonViewModel 'Next'
+
+		@current_puzzle_index['<-'] @StartButtonViewModel.click, (evt) ->
+			#replace with utils method
+			if @target.value? then @target.value else 0
+		@current_puzzle_index['<-'] @NextButtonViewModel.click, (evt) ->
+			#replace with utils method
+			#TODO: UNSAFE!!! check puzzles length
+			if @target.value? then @target.value + 1 else 0
+
+		@current_puzzle = new nx.Cell
+			'<-': [
+					[ @current_puzzle_index, @puzzles ],
+					(index, puzzles) ->
+						if 0 <= index < puzzles.length then puzzles[index] else null
+				]
 
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"

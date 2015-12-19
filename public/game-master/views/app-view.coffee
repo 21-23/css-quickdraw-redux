@@ -1,5 +1,6 @@
 UserPanelView = (require 'common/components/user-panel').View
 TimerView = (require 'common/components/timer').View
+ButtonView = (require 'common/components/button').View
 
 AppView = (context) ->
 	nxt.Element 'div',
@@ -9,7 +10,7 @@ AppView = (context) ->
 
 		nxt.Element 'div',
 			nxt.Class 'game-master-screen-container'
-				
+
 				nxt.Binding context.puzzles, (puzzles) ->
 					nxt.Element 'div',
 						nxt.Class 'qd-pearl-thread'
@@ -57,21 +58,15 @@ AppView = (context) ->
 
 						nxt.Element 'div',
 							nxt.Class 'round-title'
-							nxt.Binding context.round_phase, nxt.Text
+							nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name
 						TimerView context.timerViewModel
 
 					nxt.Element 'div',
 						nxt.Class 'master-controls-gameplay'
 
-						nxt.Element 'div',
-							nxt.Class 'start'
-							nxt.Text 'Start'
-						nxt.Element 'div',
-							nxt.Class 'stop'
-							nxt.Text 'Stop'
-						nxt.Element 'div',
-							nxt.Class 'next'
-							nxt.Text 'Next'
+						ButtonView context.StartButtonViewModel
+						ButtonView context.StopButtonViewModel
+						ButtonView context.NextButtonViewModel
 
 					nxt.Element 'div',
 						nxt.Class 'master-controls-solution-container'
@@ -87,5 +82,8 @@ AppView = (context) ->
 					nxt.Element 'div',
 						nxt.Class 'master-controls-puzzle'
 						nxt.Text 'HTML GOES HERE'
+
+		nxt.Element 'div',
+			nxt.Binding context.current_puzzle_index, nxt.Text
 
 module.exports = AppView
