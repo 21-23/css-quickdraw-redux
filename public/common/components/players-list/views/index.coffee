@@ -1,4 +1,5 @@
 require '../styles/players-list.styl'
+TimespanViewModel = (require '../../timespan').ViewModel
 
 PlayersListView = (context) ->
 	nxt.Element 'table',
@@ -26,7 +27,7 @@ PlayersListView = (context) ->
 						nxt.Class 'cell-player-time'
 						nxt.Binding player.solution, (solution) ->
 							if solution?
-								nxt.Text solution.time
+								nxt.Text TimespanViewModel.prototype.formatMSS solution.time
 					nxt.Element 'td',
 						nxt.Class 'cell-player-length'
 						nxt.Binding player.solution, (solution) ->
