@@ -4,7 +4,7 @@ warp = require 'nexus-warp'
 Round = require '../models/round'
 MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
-TimerViewModel = (require 'common/components/timer').ViewModel
+TimespanViewModel = (require 'common/components/timespan').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -50,8 +50,8 @@ class AppViewModel
 			match: @match
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
-		@roundTimerViewModel = new TimerViewModel @countdown, TimerViewModel.formats['m:ss']
-		@countdownViewModel = new TimerViewModel @countdown, TimerViewModel.formats['s']
+		@roundTimerViewModel = new TimespanViewModel @countdown, TimespanViewModel.formats['m:ss']
+		@countdownViewModel = new TimespanViewModel @countdown, TimespanViewModel.formats['s']
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId

@@ -3,7 +3,7 @@ mongoose = require 'mongoose'
 PuzzleSchema = mongoose.Schema
 	name: String
 	html: String
-	banned_characters: [String]
+	banned: [String]
 	selector: String
 
 module.exports =

@@ -1,8 +1,8 @@
-TimerView = (require 'common/components/timer').View
+TimespanView = (require 'common/components/timespan').View
 
 GameView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-countdown'
-		TimerView context.countdownViewModel
+		TimespanView context.countdownViewModel
 
 module.exports = GameView

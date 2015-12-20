@@ -1,5 +1,5 @@
 UserPanelView = (require 'common/components/user-panel').View
-TimerView = (require 'common/components/timer').View
+TimespanView = (require 'common/components/timespan').View
 ButtonView = (require 'common/components/button').View
 PlayersListView = (require 'common/components/players-list').View
 
@@ -37,7 +37,7 @@ AppView = (context) ->
 						nxt.Element 'div',
 							nxt.Class 'round-title'
 							nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name
-						TimerView context.timerViewModel
+						TimespanView context.remainingTimeViewModel
 
 					nxt.Element 'div',
 						nxt.Class 'master-controls-gameplay'
