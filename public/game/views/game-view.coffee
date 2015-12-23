@@ -1,3 +1,5 @@
+SelectorMatchResult = require 'cssqd-shared/models/selector-match-result'
+
 MatchRendererView = (require '../../common/components/match-renderer').View
 UserPanelView = (require 'common/components/user-panel').View
 TimespanView = (require 'common/components/timespan').View
@@ -29,6 +31,8 @@ GameView = (context) ->
 						nxt.Class 'controls-selector-input'
 						nxt.ValueBinding context.selector
 						nxt.Attr 'placeholder', 'Enter your selector here...'
+						nxt.Binding context.match, (match) ->
+							nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
 
 				TimespanView context.roundTimerViewModel
 
