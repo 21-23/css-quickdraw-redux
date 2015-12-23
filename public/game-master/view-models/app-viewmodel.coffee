@@ -1,6 +1,7 @@
 warp = require 'nexus-warp'
 
 dateTimeFormats = (require 'common/utils/date-time-utils').formats
+RoundPhase = require 'cssqd-shared/models/round-phase'
 
 Player = require '../models/player'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
@@ -47,6 +48,13 @@ class AppViewModel
 					{solution} = @players.items.find (player) -> player.id is player_id
 					solution
 			]
+
+		@current_puzzle_visible_soultion = new nx.Cell
+			'<-': [
+					[ @current_puzzle, @round_phase ],
+					(puzzle, phase) ->
+						puzzle?.selector if phase is RoundPhase.FINISHED
+				]
 
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
