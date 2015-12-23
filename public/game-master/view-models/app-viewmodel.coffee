@@ -1,9 +1,12 @@
 warp = require 'nexus-warp'
 
+dateTimeFormats = (require 'common/utils/date-time-utils').formats
+
 Player = require '../models/player'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
+PlayersListViewModel = (require 'common/components/players-list').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -63,7 +66,8 @@ class AppViewModel
 					item_from_json: (json) -> new Player json
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
-		@remainingTimeViewModel = new TimespanViewModel @countdown, TimespanViewModel.formats['m:ss']
+		@remainingTimeViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
+		@playersListViewModel = new PlayersListViewModel @players
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
