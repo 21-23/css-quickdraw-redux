@@ -12,24 +12,12 @@ class Participant
 				id: @id
 				display_name: user.displayName
 
+		@game_session_id = new nx.Cell
+
 		@game_session = new nx.Cell
+			'<-': [@game_session_id, (id) => @service.game_sessions.get id]
 			action: (game_session) =>
 				game_session.add_participant @
-
-		@game_session_id = new nx.Cell
-			'->': [@game_session, (id) => @service.game_sessions.get id]
-
-		@round_phase = new nx.Cell
-			'<<-*': [@game_session, 'round_phase']
-
-		@puzzles = new nx.Cell
-			'<<-*': [@game_session, 'puzzles']
-
-		@node_list = new nx.Cell
-			'<<-*': [@game_session, 'node_list']
-
-		@countdown = new nx.Cell
-			'<<-*': [@game_session, ({countdown: {remaining}}) -> remaining]
 
 		@role = new nx.Cell
 			'<-': [
@@ -40,6 +28,23 @@ class Participant
 					else
 						GameRole.PLAYER
 			]
+
+		@round = new nx.Cell
+
+		@round_phase = new nx.Cell
+			'<-': [@round, ({round_phase}) -> round_phase]
+
+		@puzzles = new nx.Cell
+			'<-': [@round, ({puzzles}) -> puzzles]
+
+		@puzzle = new nx.Cell
+			'<-': [@round, ({puzzle}) -> puzzle]
+
+		@countdown = new nx.Cell
+		@solution = new nx.Cell
+
+		@storage = new nx.Cell
+		@recovery = new nx.Cell
 
 		@disconnected = new nx.Cell
 			action: =>

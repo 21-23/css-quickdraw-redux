@@ -7,8 +7,9 @@ ParticipantFacet = require './facets/participant/participant-facet'
 class SessionManager
 
 	constructor: (@service) ->
+		@sessions = new Map
 
-	create: (transport, cookies, done) ->
+	create: (transport, id, cookies, done) ->
 		user = {}
 
 		session_cookie = cookies.find ({name}) ->
@@ -20,15 +21,27 @@ class SessionManager
 		if user_id is 'sandbox'
 			facet = new SandboxFacet @service.sandbox
 			session = new warp.Session
+				id:        id
 				facet:     facet
 				transport: transport
 			done session
 		else
 			User.findOne id:user_id, (err, user) =>
 				facet = new ParticipantFacet @service, user
+
 				session = new warp.Session
+					id:        id
 					facet:     facet
 					transport: transport
+
+				data =
+					if @sessions.has user_id
+						old_session = @sessions.get user_id
+						do old_session.session_facet.salvage
+
+				@sessions.set user_id, session
+				facet.recover data if data?
+
 				done session
 
 module.exports = SessionManager
