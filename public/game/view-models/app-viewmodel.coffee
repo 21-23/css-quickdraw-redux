@@ -5,6 +5,7 @@ dateTimeFormats = (require 'common/utils/date-time-utils').formats
 
 Round = require '../models/round'
 MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
+OccurrenceIndicator = require 'common/components/occurrence-indicator'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 
@@ -50,6 +51,13 @@ class AppViewModel
 		@matchRendererViewModel = new MatchRendererViewModel
 			puzzle: @puzzle
 			match: @match
+
+		@occurrenceIndicator = new OccurrenceIndicator.ViewModel
+		@occurrenceIndicator.patterns['<-'] \
+			@puzzle,
+			({banned_characters}) -> banned_characters
+
+		@occurrenceIndicator.string['<-'] @selector
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@roundTimerViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
