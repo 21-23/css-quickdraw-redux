@@ -51,7 +51,8 @@ AppView = (context) ->
 
 						nxt.Element 'span',
 							nxt.Text 'Solution: '
-						nxt.Element 'span'
+						nxt.Element 'span',
+							nxt.Binding context.current_puzzle_visible_soultion, nxt.Text
 
 					nxt.Element 'div',
 						nxt.Class 'controls-selector-banned-container'
