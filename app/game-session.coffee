@@ -11,7 +11,7 @@ Scorekeeper   = require './scorekeeper'
 class GameSession
 
 	@COUNTDOWN_DURATION: 3 * 1000
-	@ROUND_DURATION: 5000 #2 * 60 * 1000
+	@ROUND_DURATION: 2 * 60 * 1000
 
 	constructor: (data, @sandbox) ->
 		{puzzles, @game_master_id} = data
