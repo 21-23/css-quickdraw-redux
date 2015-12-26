@@ -12,7 +12,7 @@ MatchRendererView = (vm) ->
 	nxt.Element 'div',
 		nxt.Class 'match-renderer'
 		nxt.Attr 'theme', 'default'
-		nxt.Binding vm.tags, (tags) ->
+		nxt.Binding vm.tags, (tags = []) ->
 			nxt.Fragment tags.map (tag) ->
 				{ node } = tag
 				if node.type is PuzzleTag.CLOSING

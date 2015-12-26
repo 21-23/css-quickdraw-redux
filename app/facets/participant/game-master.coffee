@@ -5,11 +5,11 @@ GameRole = require 'cssqd-shared/models/game-role'
 class GameMaster
 
 	constructor: (@participant) ->
-		@participant.current_puzzle_index = new nx.Cell
-			'->*': [@participant.game_session, 'current_puzzle_index']
-
 		participants = do @participant.game_session.value.participants.items.slice
 		@participant.participants = new nx.Collection	items:participants
+
+		@participant.command = new nx.Cell
+			'->*': [@participant.game_session, 'command']
 
 		@participant.participants.command['<-*'] \
 			@participant.game_session,
@@ -20,16 +20,16 @@ class GameMaster
 			filter: (role) -> role isnt GameRole.GAME_MASTER
 			binding: '->>'
 
-		@participant.solution = new nx.Cell
-			'<-*': [@participant.game_session, 'solution']
-
 	get_entities: ->
-		round_phase:          @participant.round_phase
-		node_list:            @participant.node_list
-		countdown:            @participant.countdown
-		puzzles:              @participant.puzzles
-		current_puzzle_index: @participant.current_puzzle_index
-		solution:             @participant.solution
+		round_phase: @participant.round_phase
+		puzzle:      @participant.puzzle
+		puzzles:     @participant.puzzles # GM only
+
+		countdown:   @participant.countdown
+		solution:    @participant.solution
+
+		command:     @participant.command # GM only
+
 		players:
 			link: @participant.players
 			item_to_json: ({user_data: {value}}) -> value

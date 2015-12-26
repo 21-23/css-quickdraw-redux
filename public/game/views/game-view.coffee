@@ -1,8 +1,11 @@
 SelectorMatchResult = require 'cssqd-shared/models/selector-match-result'
 
-MatchRendererView = (require '../../common/components/match-renderer').View
-UserPanelView = (require 'common/components/user-panel').View
-TimespanView = (require 'common/components/timespan').View
+MatchRendererView       = (require 'common/components/match-renderer').View
+UserPanelView           = (require 'common/components/user-panel').View
+TimespanView            = (require 'common/components/timespan').View
+OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
+
+require 'common/stylesheets/occurrence-indicator.styl'
 
 GameView = (context) ->
 	nxt.Element 'div',
@@ -14,25 +17,28 @@ GameView = (context) ->
 			nxt.Class 'game-screen-container'
 
 			nxt.Element 'div',
-				nxt.Class 'qd-pearl-thread'
-				nxt.Text 'pear thread'
-
-			nxt.Element 'div',
 				nxt.Class 'controls'
 
 				nxt.Element 'div',
-					nxt.Class 'controls-selector'
+					nxt.Class 'qd-pearl-thread'
+					nxt.Text 'pearl thread'
 
-					nxt.Element 'div',
-						nxt.Class 'controls-selector-banned-container'
-						nxt.Text 'banned chars'
+				nxt.Binding context.puzzle, (puzzle) ->
+					if puzzle?.banned_characters.length
+						nxt.Element 'div',
+							nxt.Class 'controls-selector-banned-container'
+								nxt.Element 'div',
+									nxt.Class 'controls-selector-banned-container'
+									nxt.Text 'Banned characters'
+									OccurrenceIndicatorView context.occurrenceIndicator
 
-					nxt.Element 'input',
-						nxt.Class 'controls-selector-input'
-						nxt.ValueBinding context.selector
-						nxt.Attr 'placeholder', 'Enter your selector here...'
-						nxt.Binding context.match, (match) ->
-							nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
+
+				nxt.Element 'input',
+					nxt.Class 'controls-selector-input'
+					nxt.ValueBinding context.selector
+					nxt.Attr 'placeholder', 'Enter your selector here...'
+					nxt.Binding context.match, (match) ->
+						nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
 
 				TimespanView context.roundTimerViewModel
 
