@@ -20,6 +20,8 @@ class GameMaster
 			filter: (role) -> role isnt GameRole.GAME_MASTER
 			binding: '->>'
 
+		@participant.aggregate_score = new nx.Cell
+
 	get_entities: ->
 		round_phase: @participant.round_phase
 		puzzle:      @participant.puzzle
@@ -33,5 +35,7 @@ class GameMaster
 		players:
 			link: @participant.players
 			item_to_json: ({user_data: {value}}) -> value
+
+		aggregate_score: @participant.aggregate_score #GM only
 
 module.exports = GameMaster

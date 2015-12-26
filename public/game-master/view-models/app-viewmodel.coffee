@@ -22,6 +22,7 @@ class AppViewModel
 		@countdown = new nx.Cell
 		@role      = new nx.Cell
 		@players = new nx.Collection
+		@aggregate_score = new nx.Cell
 
 		@current_puzzle_index = new nx.Cell
 			value: 0
@@ -80,6 +81,8 @@ class AppViewModel
 				players:
 					link: @players
 					item_from_json: (json) -> new Player json
+
+				aggregate_score: @aggregate_score
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@remainingTimeViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']

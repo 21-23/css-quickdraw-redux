@@ -6,11 +6,12 @@ GameSessionCommand  = require 'cssqd-shared/models/game-session-command'
 
 {PuzzleModel} = require './common/models/puzzle'
 Countdown     = require './common/components/countdown/countdown'
+Scorekeeper   = require './scorekeeper'
 
 class GameSession
 
 	@COUNTDOWN_DURATION: 3 * 1000
-	@ROUND_DURATION: 2 * 60 * 1000
+	@ROUND_DURATION: 5000 #2 * 60 * 1000
 
 	constructor: (data, @sandbox) ->
 		{puzzles, @game_master_id} = data
@@ -18,13 +19,29 @@ class GameSession
 		@participants = new nx.Collection
 		@participants_by_id = new Map
 
+		@scorekeeper = new Scorekeeper
+			default_score: GameSession.ROUND_DURATION
+
+		@score = new Map
+
 		Switchboard =
 			to: (id, cell) =>
 				participant = @participants_by_id.get id
 				participant[cell]
 
+			to_score: (id) =>
+				@score.get id
+
+			all_scores: =>
+				=>
+					cells = []
+					@score.forEach (cell) -> cells.push cell
+					cells
+
 			all: (cell) =>
 				=> @participants.items.map (participant) -> participant[cell]
+
+			nobody: []
 
 		@puzzles = new nx.Cell
 			'->': [Switchboard.all 'puzzles']
@@ -54,7 +71,7 @@ class GameSession
 		@round_start['->'] @round_phase, -> RoundPhase.COUNTDOWN
 
 		@round_start_time = new nx.Cell
-			'<-': [@round_start, -> do Date.now]
+			'<-': [@round_start, -> do Date.now + GameSession.COUNTDOWN_DURATION]
 
 		@command = new nx.Cell
 			'->': [
@@ -117,6 +134,37 @@ class GameSession
 					]
 			]
 
+		@round_phase['->'] \
+			((phase) ->
+				if phase is RoundPhase.IN_PROGRESS
+					Switchboard.all_scores
+				else
+					Switchboard.nobody),
+			-> GameSession.ROUND_DURATION
+
+		@aggregate_score = new nx.Cell
+			'->': [
+				=> Switchboard.to @game_master_id.toString(), 'aggregate_score'
+			]
+
+		@round_phase['->'] \
+			((phase) =>
+				if phase is RoundPhase.FINISHED
+					@aggregate_score
+				else
+					Switchboard.nobody),
+			=>
+				round_score = {}
+				@score.forEach ({value}, player_id) =>
+					if player_id isnt @game_master_id.toString()
+						round_score[player_id] = value
+				@scorekeeper.add_round round_score
+				do @scorekeeper.aggregate
+
+		@solution['->'] \
+			(({player_id}) => Switchboard.to_score player_id),
+			({time}) -> time
+
 		@countdown = new Countdown
 		@countdown.time['<-'] @round_phase, (phase) ->
 			switch phase
@@ -143,11 +191,13 @@ class GameSession
 	add_participant: (participant) ->
 		@participants.append participant
 		@participants_by_id.set participant.id.toString(), participant
+		@score.set participant.id.toString(), new nx.Cell
 
 		@participant.value = participant
 
 	remove_participant: (participant) ->
 		@participants.remove participant
 		@participants_by_id.delete participant.id.toString()
+		@score.delete participant.id.toString()
 
 module.exports = GameSession
