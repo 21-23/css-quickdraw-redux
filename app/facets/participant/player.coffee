@@ -18,22 +18,6 @@ class Player
 
 		@participant.match = new nx.Cell
 
-		@participant.current_puzzle_index = new nx.Cell
-			'<<-*': [@participant.game_session, 'current_puzzle_index']
-
-		@participant.puzzle = new nx.Cell
-			'<-': [
-				@participant.node_list,
-				(node_list) =>
-					current_puzzle_index = @participant.current_puzzle_index.value
-					current_puzzle = @participant.puzzles.value[current_puzzle_index]
-					tags: node_list
-					banned_characters: current_puzzle.banned
-			]
-
-		@participant.round_start_time = new nx.Cell
-			'<<-*': [@participant.game_session, 'round_start_time']
-
 		@participant.rounds = new nx.Collection
 			transform: nx.LiveTransform ['status', 'solution']
 
@@ -41,24 +25,30 @@ class Player
 			items = puzzles.map (puzzle) -> new Round
 			new nx.Command 'reset', {items}
 
-		@participant.solution = new nx.Cell
-			'<-*': [@participant.game_session, 'solution']
-			'->': [
-				=>
-					{solution} = do @get_current_round
-					solution
-			]
+		@participant.solution['->'] \
+			=>
+				{solution} = do @get_current_round
+				solution
+
+		@participant.recovery['->'] \
+			@participant.rounds.command
+			({rounds}) ->	new nx.Command 'reset', items:rounds
+
+		@participant.disconnected['->'] @participant.storage, =>
+			rounds: @participant.rounds.items
+
 
 	get_current_round: ->
-		@participant.rounds.items[@participant.current_puzzle_index.value]
+		@participant.rounds.items[@participant.puzzle.value.index]
 
 	get_entities: ->
 		round_phase: @participant.round_phase
 		puzzle:      @participant.puzzle
+
 		countdown:   @participant.countdown
 
-		selector: @participant.selector
-		match:    @participant.match
+		selector: @participant.selector # Player only
+		match:    @participant.match    # Player only
 		rounds:
 			link: @participant.rounds
 			item_to_json: (round) -> do round.to_json
