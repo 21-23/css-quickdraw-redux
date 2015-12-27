@@ -68,7 +68,7 @@ AppView = (context) ->
 
 					nxt.Element 'div',
 						nxt.Class 'controls-selector-banned-container'
-						nxt.Text 'banned chars'
+						nxt.Text 'Banned chars'
 						nxt.Binding context.round_phase, (phase) ->
 							#should we each time re-create MatchRenderer? or use CSS to show/hide?
 							if phase is RoundPhase.FINISHED or phase is RoundPhase.IN_PROGRESS
