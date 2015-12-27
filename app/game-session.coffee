@@ -33,10 +33,9 @@ class GameSession
 				@score.get id
 
 			all_scores: =>
-				=>
-					cells = []
-					@score.forEach (cell) -> cells.push cell
-					cells
+				cells = []
+				@score.forEach (cell) -> cells.push cell
+				cells
 
 			all: (cell) =>
 				=> @participants.items.map (participant) -> participant[cell]
@@ -137,7 +136,7 @@ class GameSession
 		@round_phase['->'] \
 			((phase) ->
 				if phase is RoundPhase.IN_PROGRESS
-					Switchboard.all_scores
+					do Switchboard.all_scores
 				else
 					Switchboard.nobody),
 			-> GameSession.ROUND_DURATION
