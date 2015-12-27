@@ -5,8 +5,6 @@ UserPanelView           = (require 'common/components/user-panel').View
 TimespanView            = (require 'common/components/timespan').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
 
-require 'common/stylesheets/occurrence-indicator.styl'
-
 GameView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-screen'
