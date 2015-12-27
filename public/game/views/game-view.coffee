@@ -5,6 +5,8 @@ UserPanelView           = (require 'common/components/user-panel').View
 TimespanView            = (require 'common/components/timespan').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
 
+RoundPhase = require 'cssqd-shared/models/round-phase'
+
 GameView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-screen'
@@ -30,13 +32,14 @@ GameView = (context) ->
 									nxt.Text 'Banned characters'
 									OccurrenceIndicatorView context.occurrenceIndicator
 
-
-				nxt.Element 'input',
-					nxt.Class 'controls-selector-input'
-					nxt.ValueBinding context.selector
-					nxt.Attr 'placeholder', 'Enter your selector here...'
-					# nxt.Binding context.match, (match) ->
-					# 	nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
+				nxt.Binding context.round_phase, (phase) ->
+					if phase is RoundPhase.IN_PROGRESS
+						nxt.Element 'input',
+							nxt.Class 'controls-selector-input'
+							nxt.Event 'input', context.selector, (event) -> event.target.value
+							nxt.Attr 'placeholder', 'Enter your selector here...'
+							# nxt.Binding context.match, (match) ->
+							# 	nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
 
 				TimespanView context.roundTimerViewModel
 
