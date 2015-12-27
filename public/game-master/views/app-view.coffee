@@ -18,6 +18,13 @@ AppView = (context) ->
 		nxt.Element 'div',
 			nxt.Class 'game-master-screen-container'
 
+				nxt.Element 'input',
+					nxt.Attr 'readonly', 'readonly'
+					nxt.Class 'client-url'
+					nxt.Event 'focus', -> do @select
+					nxt.Binding context.game_session_id, (sessionId) ->
+						nxt.Attr 'value', "#{location.origin}/game.html?id=#{sessionId}"
+
 				nxt.Binding context.puzzles, (puzzles) ->
 					nxt.Element 'div',
 						nxt.Class 'qd-pearl-thread'
