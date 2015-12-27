@@ -10,6 +10,7 @@ TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
 PlayersListViewModel = (require 'common/components/players-list').ViewModel
 MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
+OccurrenceIndicatorViewModel = (require 'common/components/occurrence-indicator').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -92,6 +93,10 @@ class AppViewModel
 			puzzle: @puzzle
 			#TODO: probably pass here the correct match to highlight the correct solution
 			match: new nx.Cell
+		@occurrenceIndicator = new OccurrenceIndicatorViewModel
+		@occurrenceIndicator.patterns['<-'] \
+			@puzzle,
+			({banned_characters}) -> banned_characters
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId

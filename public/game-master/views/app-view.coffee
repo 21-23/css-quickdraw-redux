@@ -3,6 +3,7 @@ TimespanView = (require 'common/components/timespan').View
 ButtonView = (require 'common/components/button').View
 PlayersListView = (require 'common/components/players-list').View
 MatchRendererView       = (require 'common/components/match-renderer').View
+OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
 
 RoundPhase = require 'cssqd-shared/models/round-phase'
 
@@ -68,6 +69,10 @@ AppView = (context) ->
 					nxt.Element 'div',
 						nxt.Class 'controls-selector-banned-container'
 						nxt.Text 'banned chars'
+						nxt.Binding context.round_phase, (phase) ->
+							#should we each time re-create MatchRenderer? or use CSS to show/hide?
+							if phase is RoundPhase.FINISHED or phase is RoundPhase.IN_PROGRESS
+								OccurrenceIndicatorView context.occurrenceIndicator
 
 					nxt.Binding context.round_phase, (phase) ->
 						#should we each time re-create MatchRenderer? or use CSS to show/hide?
