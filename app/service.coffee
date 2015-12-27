@@ -1,5 +1,5 @@
 warp = require 'nexus-warp'
-vo   = require 'vo'
+co   = require 'co'
 Nightmare = require 'nightmare'
 
 SessionManager = require './session-manager'
@@ -31,10 +31,11 @@ class Service
 				http_server:     http_server
 				session_manager: new SessionManager @
 
-		vo(->
+		co(->
 			nightmare = do Nightmare
 			yield nightmare
 				.goto 'http://localhost:3000/sandbox.html'
-		) (err, result) -> console.log 'cssqd-service:ready'
+		).catch (err) -> console.log err
+		 .then -> console.log 'cssqd-service:ready'
 
 module.exports = Service
