@@ -26,7 +26,15 @@ AppView = (context) ->
 				nxt.Element 'div',
 					nxt.Class 'players-list'
 
-					PlayersListView context.playersListViewModel
+						nxt.Binding context.round_phase, (phase) ->
+							if phase is 'finished'
+								nxt.Element 'div',
+									nxt.Binding context.aggregate_score, (scores = []) ->
+										nxt.Fragment scores.map ({name, score}) ->
+											nxt.Element 'div',
+												nxt.Text "#{name} #{score}"
+							else
+								PlayersListView context.playersListViewModel
 
 				nxt.Element 'div',
 					nxt.Class 'master-controls'
