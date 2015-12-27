@@ -5,6 +5,8 @@ PlayersListView = (require 'common/components/players-list').View
 MatchRendererView       = (require 'common/components/match-renderer').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
 
+{ formatMSS } = (require '../../common/utils/date-time-utils')
+
 RoundPhase = require 'cssqd-shared/models/round-phase'
 
 AppView = (context) ->
@@ -29,16 +31,14 @@ AppView = (context) ->
 
 				nxt.Element 'div',
 					nxt.Class 'players-list'
-
-						nxt.Binding context.round_phase, (phase) ->
-							if phase is RoundPhase.FINISHED
-								nxt.Element 'div',
-									nxt.Binding context.aggregate_score, (scores = []) ->
-										nxt.Fragment scores.map ({name, score}) ->
-											nxt.Element 'div',
-												nxt.Text "#{name} #{score}"
-							else
-								PlayersListView context.playersListViewModel
+					PlayersListView context.playersListViewModel
+					nxt.Binding context.round_phase, (phase) ->
+						if phase is RoundPhase.FINISHED
+							nxt.Element 'div',
+								nxt.Binding context.aggregate_score, (scores = []) ->
+									nxt.Fragment scores.map ({name, score}) ->
+										nxt.Element 'div',
+											nxt.Text "#{name} #{formatMSS score}"
 
 				nxt.Element 'div',
 					nxt.Class 'master-controls'
