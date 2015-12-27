@@ -37,8 +37,8 @@ GameView = (context) ->
 					nxt.Class 'controls-selector-input'
 					nxt.ValueBinding context.selector
 					nxt.Attr 'placeholder', 'Enter your selector here...'
-					nxt.Binding context.match, (match) ->
-						nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
+					# nxt.Binding context.match, (match) ->
+					# 	nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
 
 				TimespanView context.roundTimerViewModel
 
