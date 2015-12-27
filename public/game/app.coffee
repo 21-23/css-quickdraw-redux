@@ -4,6 +4,9 @@ require './styles/index.styl'
 require 'nexus'
 require 'es6-promise'
 require 'fetch'
+#backspace-block should be replaced with more flexible npm module
+#https://github.com/slorber/backspace-disabler
+require 'backspace-block'
 
 AppViewModel = require './view-models/app-viewmodel'
 AppView      = require './views/app-view'
