@@ -2,6 +2,10 @@ UserPanelView = (require 'common/components/user-panel').View
 TimespanView = (require 'common/components/timespan').View
 ButtonView = (require 'common/components/button').View
 PlayersListView = (require 'common/components/players-list').View
+MatchRendererView       = (require 'common/components/match-renderer').View
+OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
+
+{ formatMSS } = (require '../../common/utils/date-time-utils')
 
 RoundPhase = require 'cssqd-shared/models/round-phase'
 
@@ -27,16 +31,14 @@ AppView = (context) ->
 
 				nxt.Element 'div',
 					nxt.Class 'players-list'
-
-						nxt.Binding context.round_phase, (phase) ->
-							if phase is RoundPhase.FINISHED
-								nxt.Element 'div',
-									nxt.Binding context.aggregate_score, (scores = []) ->
-										nxt.Fragment scores.map ({name, score}) ->
-											nxt.Element 'div',
-												nxt.Text "#{name} #{score}"
-							else
-								PlayersListView context.playersListViewModel
+					PlayersListView context.playersListViewModel
+					nxt.Binding context.round_phase, (phase) ->
+						if phase is RoundPhase.FINISHED
+							nxt.Element 'div',
+								nxt.Binding context.aggregate_score, (scores = []) ->
+									nxt.Fragment scores.map ({name, score}) ->
+										nxt.Element 'div',
+											nxt.Text "#{name} #{formatMSS score}"
 
 				nxt.Element 'div',
 					nxt.Class 'master-controls'
@@ -66,11 +68,16 @@ AppView = (context) ->
 
 					nxt.Element 'div',
 						nxt.Class 'controls-selector-banned-container'
-						nxt.Text 'banned chars'
+						nxt.Text 'Banned chars'
+						nxt.Binding context.round_phase, (phase) ->
+							#should we each time re-create MatchRenderer? or use CSS to show/hide?
+							if phase is RoundPhase.FINISHED or phase is RoundPhase.IN_PROGRESS
+								OccurrenceIndicatorView context.occurrenceIndicator
 
-					nxt.Element 'div',
-						nxt.Class 'master-controls-puzzle'
-						nxt.Text 'HTML GOES HERE'
+					nxt.Binding context.round_phase, (phase) ->
+						#should we each time re-create MatchRenderer? or use CSS to show/hide?
+						if phase is RoundPhase.FINISHED or phase is RoundPhase.IN_PROGRESS
+							MatchRendererView context.matchRendererViewModel
 
 		nxt.Element 'div',
 			nxt.Binding context.current_puzzle_index, nxt.Text

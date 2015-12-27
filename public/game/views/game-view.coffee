@@ -7,8 +7,6 @@ OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').Vie
 
 RoundPhase = require 'cssqd-shared/models/round-phase'
 
-require 'common/stylesheets/occurrence-indicator.styl'
-
 GameView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-screen'
