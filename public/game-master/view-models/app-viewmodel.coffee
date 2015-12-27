@@ -9,6 +9,7 @@ UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
 PlayersListViewModel = (require 'common/components/players-list').ViewModel
+MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -87,6 +88,10 @@ class AppViewModel
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@remainingTimeViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
 		@playersListViewModel = new PlayersListViewModel @players
+		@matchRendererViewModel = new MatchRendererViewModel
+			puzzle: @puzzle
+			#TODO: probably pass here the correct match to highlight the correct solution
+			match: new nx.Cell
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId

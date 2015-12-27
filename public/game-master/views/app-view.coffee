@@ -2,6 +2,7 @@ UserPanelView = (require 'common/components/user-panel').View
 TimespanView = (require 'common/components/timespan').View
 ButtonView = (require 'common/components/button').View
 PlayersListView = (require 'common/components/players-list').View
+MatchRendererView       = (require 'common/components/match-renderer').View
 
 RoundPhase = require 'cssqd-shared/models/round-phase'
 
@@ -68,9 +69,10 @@ AppView = (context) ->
 						nxt.Class 'controls-selector-banned-container'
 						nxt.Text 'banned chars'
 
-					nxt.Element 'div',
-						nxt.Class 'master-controls-puzzle'
-						nxt.Text 'HTML GOES HERE'
+					nxt.Binding context.round_phase, (phase) ->
+						#should we each time re-create MatchRenderer? or use CSS to show/hide?
+						if phase is RoundPhase.FINISHED or phase is RoundPhase.IN_PROGRESS
+							MatchRendererView context.matchRendererViewModel
 
 		nxt.Element 'div',
 			nxt.Binding context.current_puzzle_index, nxt.Text
