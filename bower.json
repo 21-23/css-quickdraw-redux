@@ -16,6 +16,7 @@
     "nexus-warp": "git://github.com/DaQuirm/nexus-warp#master",
     "es6-promise": "~3.0.2",
     "fetch": "~0.10.1",
-    "cssqd-shared": "./shared"
+    "cssqd-shared": "./shared",
+    "backspace-block": "~1.0.1"
   }
 }
