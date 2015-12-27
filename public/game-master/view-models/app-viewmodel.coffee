@@ -36,10 +36,12 @@ class AppViewModel
 				GameSessionCommand.START_ROUND,
 				puzzle_index: @current_puzzle_index.value
 
-		# @current_puzzle_index['<-'] @NextButtonViewModel.click, (evt) ->
-		# 	#replace with utils method
-		# 	#TODO: UNSAFE!!! check puzzles length
-		# 	if @target.value? then @target.value + 1 else 0
+		@command['<-'] @NextButtonViewModel.click, =>
+			nextIndex = @current_puzzle_index.value + 1
+			if nextIndex < @puzzles.value.length
+				new GameSessionCommand \
+					GameSessionCommand.START_ROUND,
+					puzzle_index: nextIndex
 
 		@current_puzzle = new nx.Cell
 			'<-': [
