@@ -22,7 +22,7 @@
     "url": "https://github.com/DaQuirm/css-quickdraw-redux.git"
   },
   "author": "",
-  "license": "LGPLv3",
+  "license": "LGPL-3.0",
   "bugs": {
     "url": "https://github.com/DaQuirm/css-quickdraw-redux/issues"
   },
@@ -73,7 +73,6 @@
     "passport-facebook": "^2.0.0",
     "passport-github": "^1.0.0",
     "passport-google-auth": "^1.0.0",
-    "passport-twitter": "^1.0.3",
-    "vo": "^1.0.3"
+    "passport-twitter": "^1.0.3"
   }
 }
