@@ -24,11 +24,16 @@ class Scorekeeper
 		@rounds.push round_score
 
 	aggregate: ->
-		score = {}
+		score = []
 		@players.forEach (id) =>
-			score[id] = 0
+			player_score =
+				id: id
+				score: 0
 			for round in @rounds
-				score[id] += round[id]
+				player_score.score += round[id]
+			score.push player_score
+		score.sort (first_score, second_score) ->
+			first_score.score - second_score.score
 		score
 
 module.exports = Scorekeeper
