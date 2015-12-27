@@ -12,12 +12,21 @@ class Participant
 				id: @id
 				display_name: user.displayName
 
-		@game_session_id = new nx.Cell
 
 		@game_session = new nx.Cell
-			'<-': [@game_session_id, (id) => @service.game_sessions.get id]
 			action: (game_session) =>
-				game_session.add_participant @
+				game_session?.add_participant @
+
+		@game_session_id = new nx.Cell
+			'->': [
+				((id) =>
+					if @service.game_sessions.has id
+						@game_session
+					else
+						[]
+				)
+				((id) => @service.game_sessions.get id)
+			]
 
 		@role = new nx.Cell
 			'<-': [
