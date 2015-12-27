@@ -3,6 +3,8 @@ TimespanView = (require 'common/components/timespan').View
 ButtonView = (require 'common/components/button').View
 PlayersListView = (require 'common/components/players-list').View
 
+RoundPhase = require 'cssqd-shared/models/round-phase'
+
 AppView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-master-screen'
@@ -27,7 +29,7 @@ AppView = (context) ->
 					nxt.Class 'players-list'
 
 						nxt.Binding context.round_phase, (phase) ->
-							if phase is 'finished'
+							if phase is RoundPhase.FINISHED
 								nxt.Element 'div',
 									nxt.Binding context.aggregate_score, (scores = []) ->
 										nxt.Fragment scores.map ({name, score}) ->
