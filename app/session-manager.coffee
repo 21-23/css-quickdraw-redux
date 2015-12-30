@@ -37,7 +37,7 @@ class SessionManager
 				data =
 					if @sessions.has user_id
 						old_session = @sessions.get user_id
-						do old_session.session_facet.salvage
+						do old_session.facet.salvage
 
 				@sessions.set user_id, session
 				facet.recover data if data?
