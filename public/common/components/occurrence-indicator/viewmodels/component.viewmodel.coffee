@@ -7,11 +7,12 @@ class ComponentViewModel
 		toggle_list = new ToggleList.ViewModel
 			item_viewmodel: PatternViewModel
 
+		# in
 		@patterns = toggle_list.items
-		@items = toggle_list.toggles
+		@string = new nx.Cell	value:''
 
-		@string = new nx.Cell
-			value: ''
+		# out
+		@items = toggle_list.toggles
 
 		toggle_list.pick['<-'] @string,	(string) =>
 			@patterns.value.reduce ((indexes, pattern, index) ->
