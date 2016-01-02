@@ -14,6 +14,6 @@ describe 'PatternViewModel', ->
 		it 'sets pattern values using passed parameter', ->
 			view_model.pattern.should.equal data
 
-		it 'sets is_matched to `false` by default', ->
-			view_model.is_matched.should.be.an.instanceOf nx.Cell
-			view_model.is_matched.value.should.equal no
+		it 'sets toggled to `false` by default', ->
+			view_model.toggled.should.be.an.instanceOf nx.Cell
+			view_model.toggled.value.should.equal no
