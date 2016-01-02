@@ -43,6 +43,6 @@ GameView = (context) ->
 
 				TimespanView context.roundTimerViewModel
 
-			MatchRendererView context.matchRendererViewModel
+			MatchRendererView context.matchRenderer
 
 module.exports = GameView

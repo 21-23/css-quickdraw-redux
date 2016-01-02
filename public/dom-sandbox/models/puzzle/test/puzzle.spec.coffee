@@ -172,6 +172,7 @@ describe 'Puzzle', ->
 			match.should.deep.equal
 				selector: selector
 				result: SelectorMatchResult.NEGATIVE
+				ids: []
 				banned:
 					character: '_'
 					at: 4
