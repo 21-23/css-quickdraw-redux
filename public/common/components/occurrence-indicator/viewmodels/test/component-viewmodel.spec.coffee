@@ -24,11 +24,11 @@ describe 'ComponentViewModel', ->
 			view_model.items.value.every (item) -> item instanceof PatternViewModel
 				.should.equal yes
 
-	it 'updates the is_matched cell for every pattern', ->
+	it 'updates the `toggled` cell for every pattern', ->
 		view_model.string.value = 'this data'
-		view_model.items.value.map ({is_matched}) -> is_matched.value
+		view_model.items.value.map ({toggled}) -> toggled.value
 			.should.deep.equal [yes, yes, no, yes]
 
 		view_model.string.value = 'data'
-		view_model.items.value.map ({is_matched}) -> is_matched.value
+		view_model.items.value.map ({toggled}) -> toggled.value
 			.should.deep.equal [no, no, no, yes]

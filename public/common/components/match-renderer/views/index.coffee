@@ -3,7 +3,6 @@ require 'common/stylesheets/match-renderer/component.styl'
 PuzzleTag  = require 'dom-sandbox/models/puzzle/puzzle-tag'
 
 IndentView = require './indent-view'
-AttrsView  = require './attrs-view'
 TagView    = require './tag-view'
 
 MatchRendererView = (vm) ->
