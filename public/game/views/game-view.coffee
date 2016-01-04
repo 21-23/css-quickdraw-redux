@@ -38,6 +38,7 @@ GameView = (context) ->
 							nxt.Class 'controls-selector-input'
 							nxt.Event 'input', context.selector, (event) -> event.target.value
 							nxt.Attr 'placeholder', 'Enter your selector here...'
+							nxt.Focus yes
 							# nxt.Binding context.match, (match) ->
 							# 	nxt.Attr 'disabled' if match?.result is SelectorMatchResult.POSITIVE
 
