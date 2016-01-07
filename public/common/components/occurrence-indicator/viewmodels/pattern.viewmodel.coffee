@@ -3,6 +3,6 @@
 class PatternViewModel
 
 	constructor: (@pattern) ->
-		@is_matched = new nx.Cell value:no
+		@toggled = new nx.Cell value:no
 
 module.exports = PatternViewModel

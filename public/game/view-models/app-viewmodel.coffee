@@ -4,7 +4,7 @@ warp = require 'nexus-warp'
 dateTimeFormats = (require 'common/utils/date-time-utils').formats
 
 Round = require '../models/round'
-MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
+MatchRenderer = require 'common/components/match-renderer'
 OccurrenceIndicator = require 'common/components/occurrence-indicator'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
@@ -48,9 +48,9 @@ class AppViewModel
 					link: @rounds
 					item_from_json: ({status, solution}) -> new Round status, solution
 
-		@matchRendererViewModel = new MatchRendererViewModel
-			puzzle: @puzzle
-			match: @match
+		@matchRenderer = new MatchRenderer.ViewModel
+		@matchRenderer.tag_list['<-'] @puzzle, ({tags}) -> tags
+		@matchRenderer.match['<-'] @match
 
 		@occurrenceIndicator = new OccurrenceIndicator.ViewModel
 		@occurrenceIndicator.patterns['<-'] \

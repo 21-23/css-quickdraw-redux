@@ -9,8 +9,8 @@ UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
 PlayersListViewModel = (require 'common/components/players-list').ViewModel
-MatchRendererViewModel = (require 'common/components/match-renderer').ViewModel
-OccurrenceIndicatorViewModel = (require 'common/components/occurrence-indicator').ViewModel
+MatchRenderer = require 'common/components/match-renderer'
+OccurrenceIndicator = require 'common/components/occurrence-indicator'
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -91,11 +91,12 @@ class AppViewModel
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@remainingTimeViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
 		@playersListViewModel = new PlayersListViewModel @players
-		@matchRendererViewModel = new MatchRendererViewModel
-			puzzle: @puzzle
+
+		@matchRenderer = new MatchRenderer.ViewModel
+		@matchRenderer.tag_list['<-'] @puzzle,	({tags}) -> tags
 			#TODO: probably pass here the correct match to highlight the correct solution
-			match: new nx.Cell
-		@occurrenceIndicator = new OccurrenceIndicatorViewModel
+
+		@occurrenceIndicator = new OccurrenceIndicator.ViewModel
 		@occurrenceIndicator.patterns['<-'] \
 			@puzzle,
 			({banned_characters}) -> banned_characters

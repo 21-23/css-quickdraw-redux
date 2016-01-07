@@ -3,7 +3,6 @@ require 'common/stylesheets/match-renderer/component.styl'
 PuzzleTag  = require 'dom-sandbox/models/puzzle/puzzle-tag'
 
 IndentView = require './indent-view'
-AttrsView  = require './attrs-view'
 TagView    = require './tag-view'
 
 MatchRendererView = (vm) ->
@@ -13,24 +12,24 @@ MatchRendererView = (vm) ->
 		nxt.Class 'match-renderer'
 		nxt.Attr 'theme', 'default'
 		nxt.Binding vm.tags, (tags = []) ->
-			nxt.Fragment tags.map (tag) ->
-				{ node } = tag
-				if node.type is PuzzleTag.CLOSING
+			nxt.Fragment tags.map (item) ->
+				{tag} = item
+				if tag.type is PuzzleTag.CLOSING
 					indentSize--
 
 				commands = nxt.Element 'div',
 					nxt.Class 'row'
-					(if node.objective then nxt.Class 'objective')
-					nxt.Binding tag.match, (match) ->
+					(if tag.objective then nxt.Class 'objective')
+					nxt.Binding item.toggled, (match) ->
 						if match
-							nxt.Class if node.objective then '-matched-positive' else '-matched-negative'
+							nxt.Class if tag.objective then '-matched-positive' else '-matched-negative'
 					IndentView indentSize
-					TagView node
-					nxt.Text node.text
-					nxt.If node.type is PuzzleTag.SINGLE_LINE,
-						(TagView node, PuzzleTag.CLOSING)
+					TagView tag
+					nxt.Text tag.text
+					nxt.If tag.type is PuzzleTag.SINGLE_LINE,
+						(TagView tag, PuzzleTag.CLOSING)
 
-				if node.type is PuzzleTag.OPENING
+				if tag.type is PuzzleTag.OPENING
 					indentSize++
 
 				commands

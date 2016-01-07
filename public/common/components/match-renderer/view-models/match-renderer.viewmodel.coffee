@@ -1,33 +1,18 @@
+ToggleList = require 'common/components/toggle-list'
 TagViewModel = require './tag.viewmodel'
 
 class MatchRendererViewModel
-	constructor: ({puzzle, match}) ->
-		tags = @tags = new nx.Cell
-			'<-': [
-				puzzle,
-				({tags}) ->
-					if tags
-						tags.map (tag) -> new TagViewModel tag
-					else
-						[]
-			]
+	constructor: ->
+		toggle_list = new ToggleList.ViewModel
+			item_viewmodel: TagViewModel
 
-		matchUpdate = new nx.Cell
-		matchUpdate['<-'] match, (newMatch, oldMatch) ->
-			set: newMatch.ids or []
-			unset:
-				if oldMatch?.ids?
-					unless newMatch.ids
-						oldMatch.ids
-					else
-						oldMatch.ids.filter (id) -> newMatch.ids.indexOf(id) is -1
-				else []
+		# in
+		@match = new nx.Cell
+		@tag_list = toggle_list.items
 
-		createMatchCellsPicker = (key) ->
-			(command) ->
-				command[key].map (id) -> tags.value[id].match
+		# out
+		@tags = toggle_list.toggles
 
-		matchUpdate['->'] createMatchCellsPicker('set'), -> yes
-		matchUpdate['->'] createMatchCellsPicker('unset'), -> no
+		toggle_list.pick['<-'] @match, ({ids}) -> ids
 
 module.exports = MatchRendererViewModel
