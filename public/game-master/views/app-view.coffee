@@ -84,7 +84,7 @@ AppView = (context) ->
 					nxt.Binding context.round_phase, (phase) ->
 						#should we each time re-create MatchRenderer? or use CSS to show/hide?
 						if phase is RoundPhase.FINISHED or phase is RoundPhase.IN_PROGRESS
-							MatchRendererView context.matchRendererViewModel
+							MatchRendererView context.matchRenderer
 
 		nxt.Element 'div',
 			nxt.Binding context.current_puzzle_index, nxt.Text
