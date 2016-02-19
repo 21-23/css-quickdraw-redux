@@ -70,6 +70,9 @@ class AppViewModel
 		@selector_input_disabled = Cascade @round_phase, @match, (round_phase, match) ->
 			round_phase is RoundPhase.IN_PROGRESS and match.result is SelectorMatchResult.POSITIVE
 
+		@selector_input_disabled['<-'] @round_phase, (round_phase) ->
+			round_phase isnt RoundPhase.IN_PROGRESS
+
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
 
