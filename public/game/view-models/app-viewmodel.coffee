@@ -1,6 +1,10 @@
 warp = require 'nexus-warp'
 {nx} = require 'nexus'
 
+Cascade = require 'cssqd-shared/nx/cascade'
+RoundPhase = require 'cssqd-shared/models/round-phase'
+SelectorMatchResult = require 'cssqd-shared/models/selector-match-result'
+
 dateTimeFormats = (require 'common/utils/date-time-utils').formats
 
 Round = require '../models/round'
@@ -62,6 +66,12 @@ class AppViewModel
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@roundTimerViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
 		@countdownViewModel = new TimespanViewModel @countdown, dateTimeFormats['s']
+
+		@selector_input_disabled = Cascade @round_phase, @match, (round_phase, match) ->
+			round_phase is RoundPhase.IN_PROGRESS and match.result is SelectorMatchResult.POSITIVE
+
+		@selector_input_disabled['<-'] @round_phase, (round_phase) ->
+			round_phase isnt RoundPhase.IN_PROGRESS
 
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
