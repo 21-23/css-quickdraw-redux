@@ -11,5 +11,6 @@ AppView = (context) ->
 				when RoundPhase.WAIT_SCREEN then WaitScreenView context
 				when RoundPhase.COUNTDOWN then CountdownView context
 				when RoundPhase.IN_PROGRESS then GameView context
+				when RoundPhase.FINISHED then WaitScreenView context
 
 module.exports = AppView
