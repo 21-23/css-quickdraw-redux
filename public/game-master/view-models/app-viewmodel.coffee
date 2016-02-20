@@ -62,8 +62,11 @@ class AppViewModel
 			'->': [
 				({player_id}) =>
 					# obligatory apologetic comment
-					{solution} = @players.items.find (player) -> player.id is player_id
-					solution
+					player = @players.items.find (player) -> player.id is player_id
+					if player?
+						player.solution
+					else
+						[]
 			]
 
 		@current_puzzle_visible_soultion = new nx.Cell
@@ -72,6 +75,10 @@ class AppViewModel
 					(puzzle, phase) ->
 						puzzle?.selector if phase is RoundPhase.FINISHED
 				]
+
+		@NextButtonViewModel.click['->'] \
+			(=> @players.items.map (player) -> player.solution),
+			-> undefined
 
 		new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"

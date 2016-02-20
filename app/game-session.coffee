@@ -18,6 +18,7 @@ class GameSession
 
 		@participants = new nx.Collection
 		@participants_by_id = new Map
+		@who_is_who = new Map
 
 		@scorekeeper = new Scorekeeper
 			default_score: GameSession.ROUND_DURATION
@@ -143,10 +144,6 @@ class GameSession
 					]
 			]
 
-		@solution['->'] \
-			(({correct}) =>	if correct and @everyone_solved()	then @round_phase else []),
-			-> RoundPhase.FINISHED
-
 		# @early_round_end = new nx.Cell
 		# @early_round_end['->'] @round_phase, -> RoundPhase.FINISHED
 
@@ -176,14 +173,17 @@ class GameSession
 						round_score[player_id] = value
 				@scorekeeper.add_round round_score
 				for score in do @scorekeeper.aggregate
-					if @participants_by_id.has score.id
-						player = @participants_by_id.get score.id
-						score.name = player.user_data.value.display_name
+					player = @who_is_who.get score.id
+					score.name = player.user_data.value.display_name
 					score
 
 		@solution['->'] \
 			(({player_id}) => Switchboard.to_score player_id),
 			({time}) -> time
+
+		@solution['->'] \
+			(({correct}) =>	if correct and @everyone_solved()	then @round_phase else []),
+			-> RoundPhase.FINISHED
 
 		@countdown = new Countdown
 		@countdown.time['<-'] @round_phase, (phase) ->
@@ -211,13 +211,14 @@ class GameSession
 	add_participant: (participant) ->
 		@participants.append participant
 		@participants_by_id.set participant.id.toString(), participant
-		@score.set participant.id.toString(), new nx.Cell
+		@score.set participant.id.toString(),	new nx.Cell
+		@who_is_who.set participant.id.toString(), participant
 		@participant.value = participant
 
 	remove_participant: (participant) ->
 		@participants.remove participant
 		@participants_by_id.delete participant.id.toString()
-		@score.delete participant.id.toString()
+		# @score.delete participant.id.toString()
 
 		if @everyone_solved()
 			@round_phase.value = RoundPhase.FINISHED
