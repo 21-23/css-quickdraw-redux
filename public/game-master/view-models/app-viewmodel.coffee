@@ -123,6 +123,6 @@ class AppViewModel
 		playerIndex = playerIds.indexOf id
 		player = rawPlayers[playerIndex]
 
-		player.solution.value.selector
+		player.solution.value?.selector
 
 module.exports = AppViewModel
