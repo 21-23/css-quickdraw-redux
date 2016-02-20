@@ -38,7 +38,13 @@ GameView = (context) ->
 							nxt.Binding context.selector_input_disabled, (disabled) ->
 								nxt.Attr 'disabled' if disabled
 
-				TimespanView context.roundTimerViewModel
+				nxt.Binding context.selector_input_disabled, (isDisabled) ->
+					if isDisabled
+						nxt.Element 'div',
+							nxt.Class 'success-marker'
+							nxt.Text '✓'
+					else
+						TimespanView context.roundTimerViewModel
 
 			MatchRendererView context.matchRenderer
 
