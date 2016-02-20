@@ -32,12 +32,9 @@ GameView = (context) ->
 					if phase is RoundPhase.IN_PROGRESS
 						nxt.Element 'input',
 							nxt.Class 'controls-selector-input'
-							nxt.Event 'input', context.selector, (event) ->
-								selector = event.target.value or ''
-								selector = selector.slice 0, 128
-
-								event.target.value = selector
+							nxt.Event 'input', context.selector, (event) -> event.target.value
 							nxt.Attr 'placeholder', 'Enter your selector here...'
+							nxt.Attr 'maxlength', '128'
 							nxt.Focus yes
 							nxt.Binding context.selector_input_disabled, (disabled) ->
 								nxt.Attr 'disabled' if disabled
