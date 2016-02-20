@@ -32,16 +32,26 @@
 				font-size 1.4em
 				line-height 1.5em
 
+				div
+					padding 5px
+					white-space nowrap
+					overflow hidden
+					text-overflow ellipsis
+
 				&.prize
 					background old-dollar
 				&.grand-prix
 					background dark-gold
 
 				.aggregate-score-player-name
-					flex-grow 4
+					flex-basis 6em
+					flex-grow 2
+
+				.aggregate-score-player-selector
+					flex-grow 3
 
 				.aggregate-score-player-score
-					flex-grow 1
+					flex-basis 3em
 					text-align right
 
 	.master-controls-timings

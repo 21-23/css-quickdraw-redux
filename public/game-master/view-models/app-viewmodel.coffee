@@ -117,4 +117,12 @@ class AppViewModel
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
 
+	getPlayerById: (id) ->
+		rawPlayers = @playersListViewModel.players.items
+		playerIds = rawPlayers.map (player) -> player.id
+		playerIndex = playerIds.indexOf id
+		player = rawPlayers[playerIndex]
+
+		player.solution.value.selector
+
 module.exports = AppViewModel
