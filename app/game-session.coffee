@@ -219,6 +219,9 @@ class GameSession
 		@participants_by_id.delete participant.id.toString()
 		@score.delete participant.id.toString()
 
+		if @everyone_solved()
+			@round_phase.value = RoundPhase.FINISHED
+
 	everyone_solved: ->
 		@participants.items
 			.map (p) -> p.id.toString()
