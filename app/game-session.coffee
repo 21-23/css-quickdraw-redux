@@ -23,6 +23,7 @@ class GameSession
 			default_score: GameSession.ROUND_DURATION
 
 		@score = new Map
+		@solvers = new Map
 
 		Switchboard =
 			to: (id, cell) =>
@@ -66,6 +67,8 @@ class GameSession
 			'->': [Switchboard.all 'round_phase']
 
 		@round_start = new nx.Cell
+			action: => do @solvers.clear
+
 		@round_start['->'] @raw_puzzle, ({puzzle_index}) => @puzzles.value[puzzle_index]
 		@round_start['->'] @round_phase, -> RoundPhase.COUNTDOWN
 
@@ -119,6 +122,9 @@ class GameSession
 				@sandbox.match
 				({result, selector, player_id}) =>
 					if result is SelectorMatchResult.POSITIVE
+						# console.log player_id
+						@solvers.set player_id, yes
+
 						player_id: player_id
 						correct:   yes
 						time:      do @get_solution_time
@@ -136,6 +142,13 @@ class GameSession
 						Switchboard.to @game_master_id.toString(), 'solution'
 					]
 			]
+
+		@solution['->'] \
+			(({correct}) =>	if correct and @everyone_solved()	then @round_phase else []),
+			-> RoundPhase.FINISHED
+
+		# @early_round_end = new nx.Cell
+		# @early_round_end['->'] @round_phase, -> RoundPhase.FINISHED
 
 		@round_phase['->'] \
 			((phase) ->
@@ -199,12 +212,17 @@ class GameSession
 		@participants.append participant
 		@participants_by_id.set participant.id.toString(), participant
 		@score.set participant.id.toString(), new nx.Cell
-
 		@participant.value = participant
 
 	remove_participant: (participant) ->
 		@participants.remove participant
 		@participants_by_id.delete participant.id.toString()
 		@score.delete participant.id.toString()
+
+	everyone_solved: ->
+		@participants.items
+			.map (p) -> p.id.toString()
+			.filter (id) => id isnt @game_master_id.toString()
+			.every (id) => @solvers.has id
 
 module.exports = GameSession
