@@ -19,10 +19,6 @@ GameView = (context) ->
 			nxt.Element 'div',
 				nxt.Class 'controls'
 
-				nxt.Element 'div',
-					nxt.Class 'qd-pearl-thread'
-					nxt.Text 'pearl thread'
-
 				nxt.Binding context.puzzle, (puzzle) ->
 					if puzzle?.banned_characters.length
 						nxt.Element 'div',
