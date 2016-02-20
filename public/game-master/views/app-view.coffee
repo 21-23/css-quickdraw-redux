@@ -46,8 +46,7 @@ AppView = (context) ->
 									nxt.Fragment scores.map ({name, score, id}, rating) ->
 										nxt.Element 'div',
 											nxt.Class 'aggregate-score-item'
-											nxt.Class 'prize' if rating < 7#TODO: configure prizes count
-											nxt.Class 'grand-prix' if rating is 0#TODO: configure prizes count
+											nxt.Class 'prize' if rating < 6#TODO: configure prizes count
 											nxt.Element 'div',
 												nxt.Class 'aggregate-score-player-name'
 												nxt.Text "#{name}"
