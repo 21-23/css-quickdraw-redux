@@ -24,6 +24,26 @@
 		.players-list, .master-controls
 			width 50%
 
+		.players-list
+			.aggregate-score-item
+				display flex
+				background black-gold
+				margin-bottom 1px
+				font-size 1.4em
+				line-height 1.5em
+
+				&.prize
+					background old-dollar
+				&.grand-prix
+					background dark-gold
+
+				.aggregate-score-player-name
+					flex-grow 4
+
+				.aggregate-score-player-score
+					flex-grow 1
+					text-align right
+
 	.master-controls-timings
 		display flex
 		align-items center
