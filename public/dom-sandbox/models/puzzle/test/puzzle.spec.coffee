@@ -62,10 +62,16 @@ describe 'Puzzle', ->
 		it 'sets `objective` to yes if node is marked as an objective node', ->
 			node = document.createElement 'input'
 			item = Puzzle.create_tag_item node, PuzzleTag.OPENING
-			should.not.exist node.objective
+			should.not.exist item.objective
 			node.__objective = yes
 			item = Puzzle.create_tag_item node, PuzzleTag.OPENING
 			item.objective.should.equal yes
+
+		it 'doesn\'t set `objective` to yes if node is a closing node', ->
+			node = document.createElement 'input'
+			node.__objective = yes
+			item = Puzzle.create_tag_item node, PuzzleTag.CLOSING
+			should.not.exist item.objective
 
 	describe 'to_tag_list', ->
 		it 'transforms puzzle data to flat node list', ->
