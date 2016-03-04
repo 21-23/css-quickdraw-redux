@@ -20,7 +20,7 @@ class Puzzle
 					attr = node.attributes.item index
 					item.attrs[attr.name] = attr.value
 
-			if node.__objective
+			if node.__objective and type isnt PuzzleTag.CLOSING
 				item.objective = yes
 
 			if node.hasChildNodes() and node.children.length is 0
