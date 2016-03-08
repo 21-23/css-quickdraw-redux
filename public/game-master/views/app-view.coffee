@@ -38,14 +38,24 @@ AppView = (context) ->
 
 				nxt.Element 'div',
 					nxt.Class 'players-list'
-					PlayersListView context.playersListViewModel
 					nxt.Binding context.round_phase, (phase) ->
 						if phase is RoundPhase.FINISHED
 							nxt.Element 'div',
+								nxt.Class 'aggregate-score'
 								nxt.Binding context.aggregate_score, (scores = []) ->
-									nxt.Fragment scores.map ({name, score}) ->
+									nxt.Fragment scores.map ({name, score}, rating) ->
 										nxt.Element 'div',
-											nxt.Text "#{name} #{formatMSS score}"
+											nxt.Class 'aggregate-score-item'
+											nxt.Class 'prize' if rating < 7#TODO: configure prizes count
+											nxt.Class 'grand-prix' if rating is 0#TODO: configure prizes count
+											nxt.Element 'div',
+												nxt.Class 'aggregate-score-player-name'
+												nxt.Text "#{name}"
+											nxt.Element 'div',
+												nxt.Class 'aggregate-score-player-score'
+												nxt.Text "#{formatMSS score}"
+						else
+							PlayersListView context.playersListViewModel
 
 				nxt.Element 'div',
 					nxt.Class 'master-controls'
@@ -71,6 +81,7 @@ AppView = (context) ->
 						nxt.Element 'span',
 							nxt.Text 'Solution: '
 						nxt.Element 'span',
+							nxt.Class 'solution-value'
 							nxt.Binding context.current_puzzle_visible_soultion, nxt.Text
 
 					nxt.Element 'div',

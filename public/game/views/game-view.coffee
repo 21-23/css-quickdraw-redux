@@ -19,10 +19,6 @@ GameView = (context) ->
 			nxt.Element 'div',
 				nxt.Class 'controls'
 
-				nxt.Element 'div',
-					nxt.Class 'qd-pearl-thread'
-					nxt.Text 'pearl thread'
-
 				nxt.Binding context.puzzle, (puzzle) ->
 					if puzzle?.banned_characters.length
 						nxt.Element 'div',
@@ -39,10 +35,16 @@ GameView = (context) ->
 							nxt.Event 'input', context.selector, (event) -> event.target.value
 							nxt.Attr 'placeholder', 'Enter your selector here...'
 							nxt.Focus yes
-							nxt.Binding context.selector_input_disabled, (disabled) ->
-								nxt.Attr 'disabled' if disabled
+							nxt.Binding context.puzzle_solved, (isSolved) ->
+								nxt.Attr 'disabled' if isSolved
 
-				TimespanView context.roundTimerViewModel
+				nxt.Binding context.puzzle_solved, (isSolved) ->
+					if isSolved
+						nxt.Element 'div',
+							nxt.Class 'success-marker'
+							nxt.Text '✓'
+					else
+						TimespanView context.roundTimerViewModel
 
 			MatchRendererView context.matchRenderer
 
