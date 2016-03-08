@@ -67,10 +67,10 @@ class AppViewModel
 		@roundTimerViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
 		@countdownViewModel = new TimespanViewModel @countdown, dateTimeFormats['s']
 
-		@selector_input_disabled = Cascade @round_phase, @match, (round_phase, match) ->
+		@puzzle_solved = Cascade @round_phase, @match, (round_phase, match) ->
 			round_phase is RoundPhase.IN_PROGRESS and match.result is SelectorMatchResult.POSITIVE
 
-		@selector_input_disabled['<-'] @round_phase, (round_phase) ->
+		@puzzle_solved['<-'] @round_phase, (round_phase) ->
 			round_phase isnt RoundPhase.IN_PROGRESS
 
 		#Keep session ID set as the last operation as it triggers the data flow
