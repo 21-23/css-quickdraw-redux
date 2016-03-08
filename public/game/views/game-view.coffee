@@ -48,4 +48,12 @@ GameView = (context) ->
 
 			MatchRendererView context.matchRenderer
 
+			nxt.Binding context.puzzle_solved, (isSolved) ->
+				if isSolved
+					nxt.Element 'div',
+						nxt.Class 'success-overlay'
+							nxt.Element 'div',
+								nxt.Class 'success-message'
+								nxt.Text 'Done!'
+
 module.exports = GameView
