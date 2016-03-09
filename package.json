@@ -11,7 +11,7 @@
     "test-backend": "NODE_ENV=test NODE_PATH=./ mocha --compilers coffee:coffee-script/register --require ./test/chai.coffee --recursive --reporter spec",
     "test-frontend": "node ./node_modules/karma/bin/karma start ./karma.conf.coffee --single-run",
     "test": "npm run test-backend && npm run test-frontend",
-    "start": "NODE_PATH=./app coffee index.coffee",
+    "start": "NODE_PATH=./app coffee index.coffee 2>cssqderr.log",
     "dev": "NODE_ENV=dev npm start",
     "dev-test": "NODE_ENV=test npm start",
     "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk index.coffee",
