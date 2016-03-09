@@ -29,3 +29,8 @@ connection.once 'open', ->
 
 	http_server = app.listen cssqdConfig.get 'service:port'
 	(new Service).start http_server
+
+process.on 'uncaughtException', (err) ->
+	console.error "#{(new Date).toUTCString()} uncaughtException: #{err.message}"
+	console.error err.stack
+	process.exit 1
