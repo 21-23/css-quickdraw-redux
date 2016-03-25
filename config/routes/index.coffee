@@ -10,7 +10,7 @@ module.exports = (app) ->
 			@cookies.set 'auth', @passport.user.role, signed: yes
 			yield next
 
-		else if cssqd_config.get('service:blind_guardian')
+		else if cssqd_config.get 'service:blind_guardian'
 			@cookies.set 'auth', 'player', signed: yes
 			yield next
 
