@@ -23,7 +23,6 @@ module.exports =
 		'bundle-game':          'game/app.coffee'
 		'bundle-game-master':   'game-master/app.coffee'
 		'bundle-quick-login':   'quick-login/app.coffee'
-		'bundle-success-login': 'login/success-login'
 		'bundle-landing':       'landing/landing.coffee'
 
 	output:
@@ -46,21 +45,9 @@ module.exports =
 			template: 'public/dom-sandbox/index.html'
 			filename: 'sandbox.html'
 		new HtmlWebpackPlugin
-			title: 'CSS Quickdraw Game Session'
-			template: 'public/game/index.html'
-			filename: 'game.html'
-		new HtmlWebpackPlugin
-			title: 'CSS Quickdraw Game Master'
-			template: 'public/game-master/index.html'
-			filename: 'game-master.html'
-		new HtmlWebpackPlugin
 			title: 'CSS Quickdraw Login'
 			template: 'public/quick-login/index.html'
 			filename: 'quick-login.html'
-		new HtmlWebpackPlugin
-			title: 'CSS Quickdraw Login Success'
-			template: 'public/login/success-login.html'
-			filename: 'success-login.html'
 	]
 
 	coffeelint:
