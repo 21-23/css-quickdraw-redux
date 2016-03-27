@@ -4,7 +4,7 @@ Router = require 'koa-router'
 router = new Router
 
 router.get '/game', ->
-	if @passport.user.role is 'game_master'
+	if @passport.user?.role is 'game_master'
 		@state.view_name = 'game-master'
 		@state.title = 'Game Master'
 	else
