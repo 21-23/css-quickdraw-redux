@@ -3,8 +3,16 @@
 Router = require 'koa-router'
 router = new Router
 
+{GameSessionModel} = require 'common/models/game-session'
+User = require 'models/User'
+
 router.get '/game', ->
-	if @passport.user?.role is 'game_master'
+	[[gameSession], {_id}] = yield [
+		GameSessionModel.find {}
+		User.findOne id: @passport.user.id
+	]
+
+	if _id.toString() is gameSession.game_master_id.toString()
 		@state.view_name = 'game-master'
 		@state.title = 'Game Master'
 	else
