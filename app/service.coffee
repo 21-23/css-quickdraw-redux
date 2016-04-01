@@ -2,6 +2,8 @@ warp = require 'nexus-warp'
 co   = require 'co'
 Nightmare = require 'nightmare'
 
+{ APP_BASE_URL } = require 'cssqd-config/constants'
+
 SessionManager = require './session-manager'
 
 Sandbox = require './facets/sandbox/sandbox'
@@ -33,8 +35,15 @@ class Service
 
 		co(->
 			nightmare = do Nightmare
+
 			yield nightmare
-				.goto 'http://localhost:3000/sandbox.html'
+				.cookies.set
+					name: 'koa:sess'
+					value: 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoic2FuZGJveCJ9fQ=='
+					url: APP_BASE_URL
+
+			yield nightmare.goto 'http://localhost:3000/sandbox.html'
+
 		).catch (err) -> console.log err
 		 .then -> console.log 'cssqd-service:ready'
 
