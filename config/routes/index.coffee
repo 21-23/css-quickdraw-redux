@@ -14,7 +14,10 @@ module.exports = (app) ->
 			if @request.path is '/game'
 				@cookies.set 'gameSessionId', @request.query.id
 
-			if (cssqd_config.get 'service:blind_guardian') and @request.query.role is 'gunslinger'
+			if cssqd_config.get 'service:blind_guardian'
+				@passport.user =
+					id: @request.query.user_id
+
 				yield next
 
 			else
