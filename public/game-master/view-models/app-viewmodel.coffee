@@ -39,7 +39,9 @@ class AppViewModel
 				puzzle_index: @current_puzzle_index.value
 
 		@command['<-'] @NextButtonViewModel.click, =>
-			nextIndex = @current_puzzle_index.value + 1
+			@current_puzzle_index.value++
+			nextIndex = @current_puzzle_index.value
+
 			if nextIndex < @puzzles.value.length
 				new GameSessionCommand \
 					GameSessionCommand.START_ROUND,
