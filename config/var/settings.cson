@@ -5,7 +5,7 @@
 		https: false
 		auth:
 			url: 'auth'
-			successRedirect: '/success-login.html'
+			successRedirect: '/game'
 			failureRedirect: '/'
 	session:
 		secret: 'cellar door'
