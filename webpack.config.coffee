@@ -76,4 +76,8 @@ module.exports =
 				test: /\.(jpg|png)$/,
 				loader: 'file-loader?name=[name].[ext]'
 			}
+			{
+				test: /\.(otf|ttf)$/,
+				loader: 'file-loader'
+			}
 		]
