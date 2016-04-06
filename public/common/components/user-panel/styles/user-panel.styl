@@ -1,27 +1,45 @@
 @import '../../../stylesheets/color-palette'
+@import '../../../stylesheets/common'
 
-bottom-line = 5px solid fresh-dollar
+bottom-separator = 1px solid separator-color
+bottom-separator-shadow = 0px 1px 4px 0px rgba(0,0,0,0.12)
 
 .user-panel
 	display flex
 	justify-content space-between
 	align-items center
-	color holy-white
 
 	box-sizing border-box
-	border-bottom bottom-line
-	background black-hole
-	padding 5px 35px
-	margin-bottom 10px
-	
+	padding 0px main-left-offset 0px main-right-offset
+	border-bottom bottom-separator
+	box-shadow bottom-separator-shadow
+	background url('../img/header-bg.png') repeat-x
+
 	.logo
 		flex-grow 1
-		min-width 100px
-		
+		color holy-white
+
 	.user-info
 		flex-grow 5
 		text-align right
-	
+		color holy-white
+		&:before
+			content '\f007'
+			font-family AwesomeIcon
+			margin-right 5px
+			color secondary-action-color
+
 	.log-out
-		min-width 100px
-		text-align right
+		color secondary-action-color
+		border 2px solid secondary-action-border-color
+		text-decoration none
+		margin-left 20px
+		border-radius 1em
+		padding 2px 15px
+		&:after
+			content '\f08b'
+			font-family AwesomeIcon
+			margin-left 5px
+
+		&:hover
+			background secondary-action-background-color
