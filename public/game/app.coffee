@@ -1,5 +1,6 @@
 require 'normalize.css'
 require './styles/index.styl'
+require '../common/fonts/families.styl'
 
 require 'nexus'
 #backspace-block should be replaced with more flexible npm module
