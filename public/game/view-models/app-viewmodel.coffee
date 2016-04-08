@@ -15,6 +15,7 @@ TimespanViewModel = (require 'common/components/timespan').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
+		@SELECTOR_MAX_LENGTH = 128
 
 		@user_data = new nx.Cell
 		@game_session_id = new nx.Cell
