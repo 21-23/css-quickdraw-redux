@@ -58,4 +58,3 @@ describe 'ToggleListViewModel', ->
 			toggle_list.toggle_update.value.should.deep.equal
 				set:   [2]
 				unset: [0]
-

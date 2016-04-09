@@ -37,4 +37,3 @@ class Scorekeeper
 		score
 
 module.exports = Scorekeeper
-
