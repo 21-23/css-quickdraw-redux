@@ -36,7 +36,7 @@ class AppViewModel
 					nx.Identity
 				]
 
-		new warp.Client
+		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
 				user_data:       @user_data
