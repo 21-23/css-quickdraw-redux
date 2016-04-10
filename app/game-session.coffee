@@ -107,7 +107,7 @@ class GameSession
 		@selector = new nx.Cell
 			'->': [@sandbox.selector]
 
-		@sandbox.match['->'] ({player_id}) =>
+		@sandbox.match['->'] ({player_id}) ->
 			Switchboard.to player_id, 'match'
 
 		@solution = new nx.Cell
@@ -166,7 +166,7 @@ class GameSession
 
 
 		@solution['->'] \
-			(({player_id}) => Switchboard.to_score player_id),
+			(({player_id}) -> Switchboard.to_score player_id),
 			({time}) -> time
 
 		@countdown = new Countdown
