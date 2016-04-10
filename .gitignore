@@ -1,5 +1,5 @@
 node_modules
 public/lib
 public/dist
-.npm-debug.log
+npm-debug.log
 cssqderr.log
