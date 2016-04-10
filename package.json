@@ -69,7 +69,7 @@
     "nconf": "^0.7.1",
     "nexus-node": "DaQuirm/nexus",
     "nexus-warp": "DaQuirm/nexus-warp",
-    "nightmare": "segmentio/nightmare#7a33d263",
+    "nightmare": "^2.3.0",
     "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",
     "passport-github": "^1.0.0",
