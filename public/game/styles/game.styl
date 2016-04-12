@@ -1,17 +1,23 @@
 @import '../../common/stylesheets/color-palette'
 @import '../../common/stylesheets/common'
 
+light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
+
 .game-screen
 	.user-panel
 		width 100%
 		height user-panel-height
 
 .game-screen-container
-	width 80%
-	margin auto
+	padding 0 main-left-offset 0 main-right-offset
 
-	.qd-pearl-thread
-		width 100%
+	.levels-info-num
+		color secondary-text-color
+		text-shadow light-shadow
+
+	.levels-info-name
+		color main-text
+		font-weight bold
 
 	.controls
 		width 100%
