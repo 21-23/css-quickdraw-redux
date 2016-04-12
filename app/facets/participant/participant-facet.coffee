@@ -29,12 +29,6 @@ class ParticipantFacet
 							do @player.get_entities
 			]
 
-	salvage: ->
-		@participant.storage.value
-
-	recover: (data) ->
-		@participant.recovery.value = data
-
 	destroy: (session) ->
 		@participant.disconnected.value = yes
 

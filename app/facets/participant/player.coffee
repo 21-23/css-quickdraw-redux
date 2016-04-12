@@ -30,14 +30,6 @@ class Player
 				{solution} = do @get_current_round
 				solution
 
-		@participant.recovery['->'] \
-			@participant.rounds.command
-			({rounds}) ->	new nx.Command 'reset', items:rounds
-
-		@participant.disconnected['->'] @participant.storage, =>
-			rounds: @participant.rounds.items
-
-
 	get_current_round: ->
 		@participant.rounds.items[@participant.puzzle.value.index]
 
