@@ -41,10 +41,8 @@ GameView = (context) ->
 					if puzzle?.banned_characters.length
 						nxt.Element 'div',
 							nxt.Class 'controls-selector-banned-container'
-								nxt.Element 'div',
-									nxt.Class 'controls-selector-banned-container'
-									nxt.Text 'Banned characters'
-									OccurrenceIndicatorView context.occurrenceIndicator
+							nxt.Text 'Banned characters'
+							OccurrenceIndicatorView context.occurrenceIndicator
 
 				nxt.Binding context.round_phase, (phase) ->
 					if phase is RoundPhase.IN_PROGRESS

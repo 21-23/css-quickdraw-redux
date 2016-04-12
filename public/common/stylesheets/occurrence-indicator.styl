@@ -1,17 +1,33 @@
 @import './color-palette.styl'
 
+light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
+pattern-box-background = #426f6a
+pattern-box-matched-background = #745a57
+pattern-box-matched-border-stub = 2px solid transparent
+pattern-box-matched-border = 2px solid rgba(238, 84, 84, 0.45)
+
+//fix with complete font size integration
+pattern-box-size = 25px
+
 .qd-occurrence-indicator
 	display flex
 	flex 1
 	padding 5px
 
 	.qd-pattern
-		padding .2em
+		padding 1px
 		text-align center
 		transition background .1s
 		margin 5px
-		border 1px solid boggart-nectarine
 		border-radius 3px
+		background pattern-box-background
+		color holy-white
+		text-shadow light-shadow
+		min-width pattern-box-size
+		min-height pattern-box-size
+		box-sizing border-box
+		border pattern-box-matched-border-stub
 
 		&.-matched
-			background nectarine
+			background pattern-box-matched-background
+			border pattern-box-matched-border
