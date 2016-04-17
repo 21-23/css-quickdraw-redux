@@ -17,17 +17,34 @@ GameView = (context) ->
 			nxt.Class 'game-screen-container'
 
 			nxt.Element 'div',
+				nxt.Text 'thread'
+
+			nxt.Element 'div',
+				nxt.Class 'levels-info'
+
+				nxt.Element 'p',
+					nxt.Class 'levels-info-num'
+					nxt.Binding context.puzzle, (puzzle) ->
+						if puzzle?
+							nxt.Text "Level #{puzzle.index + 1}:"
+
+				nxt.Element 'p',
+					nxt.Class 'levels-info-name'
+					nxt.Binding context.puzzle, (puzzle) ->
+						if puzzle?
+							nxt.Text 'PUZZLE NAME STUB'
+
+			nxt.Element 'div',
 				nxt.Class 'controls'
 
 				nxt.Binding context.puzzle, (puzzle) ->
 					if puzzle?.banned_characters.length
 						nxt.Element 'div',
 							nxt.Class 'controls-selector-banned-container'
-								nxt.Element 'div',
-									nxt.Class 'controls-selector-banned-container'
-									nxt.Text 'Banned characters'
-									OccurrenceIndicatorView context.occurrenceIndicator
+							nxt.Text 'Banned characters'
+							OccurrenceIndicatorView context.occurrenceIndicator
 
+				#TODO: move input to a separate component
 				nxt.Binding context.round_phase, (phase) ->
 					if phase is RoundPhase.IN_PROGRESS
 						nxt.Element 'input',
@@ -48,13 +65,5 @@ GameView = (context) ->
 						TimespanView context.roundTimerViewModel
 
 			MatchRendererView context.matchRenderer
-
-			nxt.Binding context.puzzle_solved, (isSolved) ->
-				if isSolved
-					nxt.Element 'div',
-						nxt.Class 'success-overlay'
-							nxt.Element 'div',
-								nxt.Class 'success-message'
-								nxt.Text 'Done!'
 
 module.exports = GameView
