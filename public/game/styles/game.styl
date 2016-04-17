@@ -44,15 +44,11 @@ light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
 		border-radius 3px
 		color holy-white
 
-		&[disabled]
+		&:disabled
 			background lighter-than-background-disabled
 			color holy-white-disabled
 
-		&::-webkit-input-placeholder
-			color secondary-text-color
-		&::-moz-placeholder
-			color secondary-text-color
-		&:-ms-input-placeholder
+		&::placeholder
 			color secondary-text-color
 
 	.timespan
