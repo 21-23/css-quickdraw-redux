@@ -2,6 +2,7 @@
 @import '../../common/stylesheets/common'
 
 light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
+user-list-column-max-width = 300px
 
 .game-master-screen
 	.user-panel
@@ -16,7 +17,12 @@ light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
 		justify-content space-between
 
 		.controls-column
-			flex-grow 1.8
+			flex-grow 1.5
+
+			.level-control-info
+				display flex
+				justify-content space-between
+				margin-bottom 20px
 
 			.levels-info-num
 				color secondary-text-color
@@ -28,13 +34,7 @@ light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
 
 		.user-list-column
 			flex-grow 1
-			max-width 150px
-
-	.client-url
-		width 70%
-		background black-velours
-		border 1px solid holy-white
-		padding 2px 5px
+			max-width user-list-column-max-width
 
 	.qd-pearl-thread
 		width 100%
@@ -43,57 +43,9 @@ light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
 	.master-controls-container
 		display flex
 
-		.players-list, .master-controls
-			width 50%
-
 		.master-controls-solution-container
 			font-size 1.5em
 			margin-top 0.5em
-
-			.solution-value
-				color fresh-dollar
-
-		.controls-selector-banned-container
-			font-size 1.5em
-
-			.qd-occurrence-indicator
-				color nectarine
-
-		.players-list
-			.aggregate-score-item
-				display flex
-				background black-gold
-				margin-bottom 1px
-				font-size 1.4em
-				line-height 1.5em
-
-				&.prize
-					background old-dollar
-				&.grand-prix
-					background dark-gold
-
-				.aggregate-score-player-name
-					flex-grow 4
-
-				.aggregate-score-player-score
-					flex-grow 1
-					text-align right
-
-	.master-controls-timings
-		display flex
-		align-items center
-
-		.round-title
-			flex-grow 4
-			line-height 1.2em
-			font-size 1.5em
-			overflow hidden
-
-		.timespan
-			font-size 3em
-			margin-left 0.5em
-			line-height 1.2em
-			color holy-white
 
 	.master-controls-gameplay
 		display flex
