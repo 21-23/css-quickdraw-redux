@@ -18,13 +18,6 @@ AppView = (context) ->
 		nxt.Element 'div',
 			nxt.Class 'game-master-screen-container'
 
-				nxt.Element 'input',
-					nxt.Attr 'readonly', 'readonly'
-					nxt.Class 'client-url'
-					nxt.Event 'focus', -> do @select
-					nxt.Binding context.game_session_id, (sessionId) ->
-						nxt.Attr 'value', "#{location.origin}/game.html?id=#{sessionId}"
-
 				nxt.Binding context.puzzles, (puzzles) ->
 					nxt.Element 'div',
 						nxt.Class 'qd-pearl-thread'
@@ -32,6 +25,29 @@ AppView = (context) ->
 							nxt.Element 'div',
 								nxt.Text puzzle.name
 								nxt.Event 'click', context.current_puzzle_index, -> index
+
+				nxt.Element 'div',
+					nxt.Class 'game-master-screen-columns'
+
+					nxt.Element 'div',
+						nxt.Class 'controls-column'
+
+						nxt.Element 'div',
+							nxt.Class 'levels-info'
+
+							nxt.Element 'p',
+								nxt.Class 'levels-info-num'
+								nxt.Binding context.current_puzzle_index, (index) ->
+									nxt.Text "Level #{index + 1}:"
+
+							nxt.Element 'p',
+								nxt.Class 'levels-info-name'
+								nxt.Binding context.current_puzzle, (puzzle) ->
+									if puzzle?
+										nxt.Text puzzle.name
+
+					nxt.Element 'div',
+						nxt.Class 'user-list-column'
 
 			nxt.Element 'div',
 				nxt.Class 'master-controls-container'
