@@ -39,7 +39,11 @@ PlayersListView = (context) ->
 				nxt.Element 'div',
 					nxt.Class '-time'
 					nxt.Text 'Time'
+				nxt.Element 'div',
+					nxt.Class '-time'
+					nxt.Text 'Length'
 
+			#TODO: make an abstract rendering component and re-use for agregate score list
 			nxt.Collection context.players, (player) ->
 				nxt.Element 'div',
 					nxt.Class 'item'
@@ -55,5 +59,10 @@ PlayersListView = (context) ->
 						nxt.Binding player.solution, (solution) ->
 							if solution?
 								nxt.Text formatMSS solution.time
+					nxt.Element 'div',
+						nxt.Class '-length'
+						nxt.Binding player.solution, (solution) ->
+							if solution? and solution.selector?
+								nxt.Text solution.selector.length
 
 module.exports = PlayersListView

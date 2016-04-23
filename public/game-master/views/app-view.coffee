@@ -83,18 +83,24 @@ AppView = (context) ->
 					nxt.Element 'div',
 						nxt.Class 'user-list-column'
 
-						nxt.Element 'div',
-						nxt.Class 'players-list'
 						nxt.Binding context.round_phase, (phase) ->
 							if phase is RoundPhase.FINISHED
 								nxt.Element 'div',
 									nxt.Class 'aggregate-score'
+
+									nxt.Element 'div',
+										nxt.Class 'header'
+										nxt.Element 'div',
+											nxt.Class '-name'
+											nxt.Text 'Player Name'
+										nxt.Element 'div',
+											nxt.Class '-time'
+											nxt.Text 'Time'
+
 									nxt.Binding context.aggregate_score, (scores = []) ->
 										nxt.Fragment scores.map ({name, score}, rating) ->
 											nxt.Element 'div',
 												nxt.Class 'aggregate-score-item'
-												nxt.Class 'prize' if rating < 7#TODO: configure prizes count
-												nxt.Class 'grand-prix' if rating is 0#TODO: configure prizes count
 												nxt.Element 'div',
 													nxt.Class 'aggregate-score-player-name'
 													nxt.Text "#{name}"
