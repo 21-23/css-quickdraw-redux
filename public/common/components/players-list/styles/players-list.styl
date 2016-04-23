@@ -1,38 +1,50 @@
 @import '../../../stylesheets/color-palette'
+@import '../../../stylesheets/common'
 
-.players-list-table
-	table-layout fixed
-	border-spacing 1px
-	border-collapse separate
-	width 100%
-	white-space nowrap
-	color holy-white
+meta-separator = 1px solid separator-color
+list-item-separator = 2px solid separator-color
 
-	.col-player-name
-		width 70%
-	.col-player-time
-		width 15%
-	.col-player-length
-		width 15%
+.players-list
 
-	td, th
-		background black-gold
+	.players-list-meta
+		display flex
 
-	th
-		font-size 1.3em
-		line-height 1.6em
+		.sub-meta
+			flex-grow 1
+			display flex
+			justify-content center
 
-	tr
-		&.row-player-correct
-			color fresh-dollar
+			&.-total
+				color holy-white
+				border-right meta-separator
 
-	td
-		white-space nowrap
-		overflow hidden
-		text-overflow ellipsis
-		font-size 1.3em
-		line-height 1.6em
-		padding 0 5px
+			&.-passed
+				color success-green
 
-		&.cell-player-time, &.cell-player-length
-			text-align center
+			.amount
+				font-size 3em
+				margin-right 10px
+
+			.text
+				line-height 150%
+
+				&:before
+					content '\f0c0'
+					font-family AwesomeIcon
+					display block
+
+	.players-list-table
+		.header, .item
+			display flex
+			justify-content space-between
+			border-bottom list-item-separator
+			line-height 2.5em
+
+		.header
+			color secondary-text-color
+
+		.item
+			color holy-white
+
+			&.-passed
+				color success-green
