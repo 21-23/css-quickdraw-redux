@@ -72,11 +72,15 @@ class GameSession
 		@round_start_time = new nx.Cell
 			'<-': [@round_start, -> do Date.now + GameSession.COUNTDOWN_DURATION]
 
+		@round_end = new nx.Cell
+		@round_end['->'] @round_phase, -> RoundPhase.FINISHED
+
 		@command = new nx.Cell
 			'->': [
 				(({action}) =>
-					if action is GameSessionCommand.START_ROUND
-						@round_start),
+					switch action
+							when GameSessionCommand.START_ROUND then @round_start
+							when GameSessionCommand.END_ROUND then @round_end),
 				({data}) -> data
 			]
 
