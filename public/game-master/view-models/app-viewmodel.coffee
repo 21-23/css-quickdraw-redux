@@ -38,11 +38,10 @@ class AppViewModel
 
 		@command['<-'] @gameControlButtonViewModel.click, =>
 			if @round_phase.value is RoundPhase.IN_PROGRESS
-				return new GameSessionCommand GameSessionCommand.END_ROUND
-
-			if -1 <= @current_puzzle_index.value < @puzzles.value.length - 1
+				new GameSessionCommand GameSessionCommand.END_ROUND
+			else if -1 <= @current_puzzle_index.value < @puzzles.value.length - 1
 				@current_puzzle_index.value++
-				return new GameSessionCommand GameSessionCommand.START_ROUND, puzzle_index: @current_puzzle_index.value
+				new GameSessionCommand GameSessionCommand.START_ROUND, puzzle_index: @current_puzzle_index.value
 
 
 
