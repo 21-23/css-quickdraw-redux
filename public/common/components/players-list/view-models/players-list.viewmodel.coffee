@@ -1,11 +1,5 @@
-class UserPanelViewModel
+class PlayersListViewModel
 	constructor: (@players) ->
-		@totalCount = new nx.Cell
-			'<-': [
-				@players,
-				(players) -> if players? then players.length else 0
-			]
-
 		#temporary not working
 		@passedCount = new nx.Cell
 			'<-': [
@@ -18,4 +12,4 @@ class UserPanelViewModel
 			]
 
 
-module.exports = UserPanelViewModel
+module.exports = PlayersListViewModel

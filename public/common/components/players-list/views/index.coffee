@@ -13,7 +13,7 @@ PlayersListView = (context) ->
 				nxt.Class 'sub-meta'
 				nxt.Element 'div',
 					nxt.Class 'amount'
-					nxt.Binding context.totalCount, nxt.Text
+					nxt.Binding context.players.length, nxt.Text
 				nxt.Element 'div',
 					nxt.Class 'text'
 					nxt.Text 'Joined'
@@ -62,7 +62,7 @@ PlayersListView = (context) ->
 					nxt.Element 'div',
 						nxt.Class '-length'
 						nxt.Binding player.solution, (solution) ->
-							if solution? and solution.selector?
+							if solution?.selector?
 								nxt.Text solution.selector.length
 
 module.exports = PlayersListView
