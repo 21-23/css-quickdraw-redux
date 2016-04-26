@@ -28,13 +28,25 @@ class AppViewModel
 		@aggregate_score = new nx.Cell
 
 		@current_puzzle_index = new nx.Cell
-			value: 0
+			value: -1
 
 		@StartButtonViewModel = new ButtonViewModel 'Start'
 		@StopButtonViewModel = new ButtonViewModel 'Stop'
 		@NextButtonViewModel = new ButtonViewModel 'Next'
 
 		@gameControlButtonViewModel = new GameControlButtonViewModel @round_phase
+
+		@command['<-'] @gameControlButtonViewModel.click, =>
+			if @round_phase.value is RoundPhase.IN_PROGRESS
+				return new GameSessionCommand GameSessionCommand.END_ROUND
+
+			if -1 <= @current_puzzle_index.value < @puzzles.value.length - 1
+				@current_puzzle_index.value++
+				return new GameSessionCommand GameSessionCommand.START_ROUND, puzzle_index: @current_puzzle_index.value
+
+
+
+
 
 		@command['<-'] @StartButtonViewModel.click, =>
 			new GameSessionCommand \
@@ -53,6 +65,9 @@ class AppViewModel
 				new GameSessionCommand \
 					GameSessionCommand.START_ROUND,
 					puzzle_index: nextIndex
+
+
+
 
 		@current_puzzle = new nx.Cell
 			'<-': [
