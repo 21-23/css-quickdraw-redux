@@ -1,4 +1,5 @@
-quick-login-bg-image = 'img/quick-login-bg.jpg'
+@import '~common/stylesheets/common'
+
 quick-login-bg-color = #010101
 quick-login-main-color = #fff
 
@@ -9,16 +10,18 @@ quick-login-sub-title-top = 30%
 quick-login-sub-title-font-size = 2.5em
 
 quick-login-panel-top = 50%
-quick-login-panel-background = rgba(0, 0, 0, 0.7)
+quick-login-panel-background = rgba(0, 0, 0, 0.2)
 quick-login-panel-icon-margin = 20px 10px
 quick-login-panel-icon-height = 80px
 quick-login-panel-icon-width = 80px
 
 quick-login-main-font = Helvetica, "Helvetica Neue", Arial
 
+html
+	min-height 100%
+	background game-background
+
 body
-	background url(quick-login-bg-image) quick-login-bg-color no-repeat
-	background-size cover
 	font-family quick-login-main-font
 	color quick-login-main-color
 
