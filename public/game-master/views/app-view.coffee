@@ -1,6 +1,7 @@
 UserPanelView = (require 'common/components/user-panel').View
 TimespanView = (require 'common/components/timespan').View
 ButtonView = (require 'common/components/button').View
+GameControlButtonView = (require 'common/components/game-control-button').View
 PlayersListView = (require 'common/components/players-list').View
 MatchRendererView       = (require 'common/components/match-renderer').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
@@ -118,6 +119,8 @@ AppView = (context) ->
 
 					nxt.Element 'div',
 						nxt.Class 'master-controls-gameplay'
+
+						GameControlButtonView context.gameControlButtonViewModel
 
 						ButtonView context.StartButtonViewModel
 						ButtonView context.StopButtonViewModel

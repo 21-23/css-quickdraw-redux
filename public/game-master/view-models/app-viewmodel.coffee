@@ -8,6 +8,7 @@ GameSessionCommand = require 'cssqd-shared/models/game-session-command'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
+GameControlButtonViewModel = (require 'common/components/game-control-button').ViewModel
 PlayersListViewModel = (require 'common/components/players-list').ViewModel
 MatchRenderer = require 'common/components/match-renderer'
 OccurrenceIndicator = require 'common/components/occurrence-indicator'
@@ -27,11 +28,24 @@ class AppViewModel
 		@aggregate_score = new nx.Cell
 
 		@current_puzzle_index = new nx.Cell
-			value: 0
+			value: -1
 
 		@StartButtonViewModel = new ButtonViewModel 'Start'
 		@StopButtonViewModel = new ButtonViewModel 'Stop'
 		@NextButtonViewModel = new ButtonViewModel 'Next'
+
+		@gameControlButtonViewModel = new GameControlButtonViewModel @round_phase
+
+		@command['<-'] @gameControlButtonViewModel.click, =>
+			if @round_phase.value is RoundPhase.IN_PROGRESS
+				new GameSessionCommand GameSessionCommand.END_ROUND
+			else if -1 <= @current_puzzle_index.value < @puzzles.value.length - 1
+				@current_puzzle_index.value++
+				new GameSessionCommand GameSessionCommand.START_ROUND, puzzle_index: @current_puzzle_index.value
+
+
+
+
 
 		@command['<-'] @StartButtonViewModel.click, =>
 			new GameSessionCommand \
@@ -50,6 +64,9 @@ class AppViewModel
 				new GameSessionCommand \
 					GameSessionCommand.START_ROUND,
 					puzzle_index: nextIndex
+
+
+
 
 		@current_puzzle = new nx.Cell
 			'<-': [
