@@ -1,5 +1,8 @@
-@import '../../common/stylesheets/color-palette'
-@import '../../common/stylesheets/common'
+@import '~common/stylesheets/color-palette'
+@import '~common/stylesheets/common'
+
+light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
+user-list-column-max-width = 300px
 
 .game-master-screen
 	.user-panel
@@ -7,15 +10,44 @@
 		height user-panel-height
 
 .game-master-screen-container
-	width 96%
-	margin auto
-	color holy-white
+	padding 0 main-left-offset 0 main-right-offset
 
-	.client-url
-		width 70%
-		background black-velours
-		border 1px solid holy-white
-		padding 2px 5px
+	.game-master-screen-columns
+		display flex
+		justify-content space-between
+
+		.controls-column
+			flex-grow 1.5
+
+			.level-control-info
+				display flex
+				justify-content space-between
+				margin-bottom 20px
+
+			.levels-info-num
+				color secondary-text-color
+				text-shadow light-shadow
+
+			.levels-info-name
+				color main-text
+				font-weight bold
+
+		.user-list-column
+			flex-grow 1
+			max-width user-list-column-max-width
+
+			.aggregate-score
+				.header, .aggregate-score-item
+					display flex
+					justify-content space-between
+					line-height 2.5em
+					border-bottom 2px solid separator-color
+
+				.header
+					color secondary-text-color
+
+				.aggregate-score-item
+					color holy-white
 
 	.qd-pearl-thread
 		width 100%
@@ -24,57 +56,9 @@
 	.master-controls-container
 		display flex
 
-		.players-list, .master-controls
-			width 50%
-
 		.master-controls-solution-container
 			font-size 1.5em
 			margin-top 0.5em
-
-			.solution-value
-				color fresh-dollar
-
-		.controls-selector-banned-container
-			font-size 1.5em
-
-			.qd-occurrence-indicator
-				color nectarine
-
-		.players-list
-			.aggregate-score-item
-				display flex
-				background black-gold
-				margin-bottom 1px
-				font-size 1.4em
-				line-height 1.5em
-
-				&.prize
-					background old-dollar
-				&.grand-prix
-					background dark-gold
-
-				.aggregate-score-player-name
-					flex-grow 4
-
-				.aggregate-score-player-score
-					flex-grow 1
-					text-align right
-
-	.master-controls-timings
-		display flex
-		align-items center
-
-		.round-title
-			flex-grow 4
-			line-height 1.2em
-			font-size 1.5em
-			overflow hidden
-
-		.timespan
-			font-size 3em
-			margin-left 0.5em
-			line-height 1.2em
-			color holy-white
 
 	.master-controls-gameplay
 		display flex
