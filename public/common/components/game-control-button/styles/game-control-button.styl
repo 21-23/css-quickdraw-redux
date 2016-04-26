@@ -1,0 +1,14 @@
+@import '../../../stylesheets/color-palette'
+@import '../../../stylesheets/common'
+
+.game-control-button
+	rounded-iconed-button()
+
+	&:after
+		content '\f061'
+
+	&.in_progress
+		&:before
+			content '\f04d'
+		&:after
+			content ''
