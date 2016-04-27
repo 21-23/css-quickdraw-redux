@@ -8,12 +8,12 @@ CountdownCircleView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'countdown-circle'
 
-		nxt.Element 'svg',
+		nxt.SvgElement 'svg',
 			nxt.Class 'circle-container'
 			nxt.Attr 'width', size
 			nxt.Attr 'height', size
 
-			nxt.Element 'circle',
+			nxt.SvgElement 'circle',
 				nxt.Class 'circle-elapsed'
 				nxt.Attr 'cx', "#{size / 2}"
 				nxt.Attr 'cy', "#{size / 2}"
@@ -21,7 +21,7 @@ CountdownCircleView = (context) ->
 				nxt.Attr 'fill', 'none'
 				nxt.Attr 'stroke-width', "#{context.circleOptions.strokeWidth - 1}"
 
-			nxt.Element 'circle',
+			nxt.SvgElement 'circle',
 				nxt.Class 'circle-remaining'
 				nxt.Attr 'cx', "#{size / 2}"
 				nxt.Attr 'cy', "#{size / 2}"
