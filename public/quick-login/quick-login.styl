@@ -1,4 +1,6 @@
-quick-login-bg-image = 'img/quick-login-bg.jpg'
+@import '~common/stylesheets/common'
+@import '~common/stylesheets/color-palette'
+
 quick-login-bg-color = #010101
 quick-login-main-color = #fff
 
@@ -9,16 +11,18 @@ quick-login-sub-title-top = 30%
 quick-login-sub-title-font-size = 2.5em
 
 quick-login-panel-top = 50%
-quick-login-panel-background = rgba(0, 0, 0, 0.7)
-quick-login-panel-icon-margin = 20px 10px
+quick-login-panel-background = rgba(0, 0, 0, 0.2)
+quick-login-panel-icon-margin = 20px 20px
 quick-login-panel-icon-height = 80px
 quick-login-panel-icon-width = 80px
 
-quick-login-main-font = Helvetica, "Helvetica Neue", Arial
+quick-login-main-font = Helvetica, 'Helvetica Neue', Arial
+
+html
+	min-height 100%
+	background game-background
 
 body
-	background url(quick-login-bg-image) quick-login-bg-color no-repeat
-	background-size cover
 	font-family quick-login-main-font
 	color quick-login-main-color
 
@@ -48,15 +52,7 @@ body
 	vertical-align middle
 	margin quick-login-panel-icon-margin
 	width quick-login-panel-icon-width
-	height quick-login-panel-icon-height
-	background-size contain
-	background-repeat no-repeat
-
-	&.fb
-		background-image url(./img/fb-white.png)
-	&.gh
-		background-image url(./img/gh-white.png)
-	&.gp
-		background-image url(./img/gp-white.png)
-	&.tw
-		background-image url(./img/tw-white.png)
+	font-family AwesomeIcon
+	text-decoration none
+	font-size quick-login-panel-icon-height
+	color holy-white
