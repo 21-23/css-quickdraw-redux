@@ -2,7 +2,6 @@ SelectorMatchResult = require 'cssqd-shared/models/selector-match-result'
 
 MatchRendererView       = (require 'common/components/match-renderer').View
 UserPanelView           = (require 'common/components/user-panel').View
-TimespanView            = (require 'common/components/timespan').View
 CountdownCircleView     = (require 'common/components/countdown-circle').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
 
