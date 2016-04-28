@@ -7,6 +7,7 @@ CountdownCircleView = (context) ->
 
 	nxt.Element 'div',
 		nxt.Class 'countdown-circle'
+		nxt.Style 'width': "#{size}px", 'height': "#{size}px"
 
 		nxt.SvgElement 'svg',
 			nxt.Class 'circle-container'
@@ -28,6 +29,7 @@ CountdownCircleView = (context) ->
 				nxt.Attr 'r', "#{context.circleOptions.radius}"
 				nxt.Attr 'fill', 'none'
 				nxt.Attr 'stroke-width', "#{context.circleOptions.strokeWidth}"
+				nxt.Attr 'stroke-linecap', 'round'
 				nxt.Style 'stroke-dasharray': context.dashArraySize
 				nxt.Binding context.remainingCell, (remaining) ->
 					remainingPercent = remaining / context.fullTime
