@@ -1,4 +1,4 @@
-CSSQDConfig = require 'cssqd-config'
+CSSQDConfig = require './'
 
 https = CSSQDConfig.get 'service:https'
 protocol = if https then 'https' else 'http'
