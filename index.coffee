@@ -1,3 +1,6 @@
+{ spawn }   = require 'child_process'
+electron    = require 'electron-prebuilt'
+
 cssqdConfig = require 'cssqd-config'
 path        = require 'path'
 koa         = require 'koa'
@@ -29,6 +32,11 @@ connection.once 'open', ->
 
 	http_server = app.listen cssqdConfig.get 'service:port'
 	(new Service).start http_server
+
+
+electron_process = spawn electron, ['./electron'],
+	stdio:'inherit'
+	cwd: path.join __dirname, 'app'
 
 process.on 'uncaughtException', (err) ->
 	console.error "#{(new Date).toUTCString()} uncaughtException: #{err.message}"
