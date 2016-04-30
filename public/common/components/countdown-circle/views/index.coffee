@@ -11,28 +11,31 @@ CountdownCircleView = (context) ->
 
 		nxt.SvgElement 'svg',
 			nxt.Class 'circle-container'
-			nxt.Attr 'width', size
-			nxt.Attr 'height', size
+			nxt.Attr
+				'width': size
+				'height': size
 
 			nxt.SvgElement 'circle',
 				nxt.Class 'circle-elapsed'
-				nxt.Attr 'cx', "#{size / 2}"
-				nxt.Attr 'cy', "#{size / 2}"
-				nxt.Attr 'r', "#{context.circleOptions.radius}"
-				nxt.Attr 'fill', 'none'
-				nxt.Attr 'stroke-width', "#{context.circleOptions.strokeWidth - 1}"
+				nxt.Attr
+					'cx': "#{size / 2}"
+					'cy': "#{size / 2}"
+					'r': "#{context.circleOptions.radius}"
+					'fill': 'none'
+					'stroke-width': "#{context.circleOptions.strokeWidth - 1}"
 
 			nxt.SvgElement 'circle',
 				nxt.Class 'circle-remaining'
-				nxt.Attr 'cx', "#{size / 2}"
-				nxt.Attr 'cy', "#{size / 2}"
-				nxt.Attr 'r', "#{context.circleOptions.radius}"
-				nxt.Attr 'fill', 'none'
-				nxt.Attr 'stroke-width', "#{context.circleOptions.strokeWidth}"
-				nxt.Attr 'stroke-linecap', 'round'
-				nxt.Style 'stroke-dasharray': context.dashArraySize
+				nxt.Attr
+					'cx': "#{size / 2}"
+					'cy': "#{size / 2}"
+					'r': "#{context.circleOptions.radius}"
+					'fill': 'none'
+					'stroke-width': "#{context.circleOptions.strokeWidth}"
+					'stroke-linecap': 'round'
+					'stroke-dasharray': context.dashArraySize
 				nxt.Binding context.remainingCell, (remaining) ->
-					remainingPercent = remaining / context.fullTime
+					remainingPercent = remaining / context.fullTime.value
 					nxt.Style 'stroke-dashoffset': context.dashArraySize - Math.round remainingPercent * context.dashArraySize
 
 		TimespanView context.timespanViewModel

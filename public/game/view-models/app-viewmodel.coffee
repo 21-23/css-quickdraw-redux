@@ -23,6 +23,7 @@ class AppViewModel
 		@round_phase = new nx.Cell
 		@puzzle = new nx.Cell
 		@countdown = new nx.Cell
+		@currentRoundTimeLimit = new nx.Cell
 		@role = new nx.Cell
 
 		@selector = new nx.Cell
@@ -60,7 +61,12 @@ class AppViewModel
 		@occurrenceIndicator.string['<-'] @selector
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
-		@roundTimerViewModel = new CountdownCircleViewModel @countdown, 2 * 60 * 1000, dateTimeFormats['m:ss'], { radius: 40, strokeWidth: 5 }
+
+		@currentRoundTimeLimit['<-'] @puzzle, (puzzle) -> puzzle.time_limit
+		@roundTimerViewModel = new CountdownCircleViewModel @countdown,
+			@currentRoundTimeLimit
+			dateTimeFormats['m:ss']
+			{ radius: 40, strokeWidth: 5 }
 		@countdownViewModel = new TimespanViewModel @countdown, dateTimeFormats['s']
 
 		@puzzle_solved = Cascade @round_phase, @match, (round_phase, match) ->
