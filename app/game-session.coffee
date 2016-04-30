@@ -55,6 +55,8 @@ class GameSession
 			'<-': [
 				@node_list
 				(node_list) =>
+					name: @raw_puzzle.value.name
+					time_limit: GameSession.ROUND_DURATION
 					index: @round_start.value.puzzle_index
 					tags: node_list
 					banned_characters: @raw_puzzle.value.banned

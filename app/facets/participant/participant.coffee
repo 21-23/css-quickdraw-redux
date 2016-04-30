@@ -52,9 +52,6 @@ class Participant
 		@countdown = new nx.Cell
 		@solution = new nx.Cell
 
-		@storage = new nx.Cell
-		@recovery = new nx.Cell
-
 		@disconnected = new nx.Cell
 			action: =>
 				@game_session.value?.remove_participant @
