@@ -1,0 +1,32 @@
+@import '../../../stylesheets/color-palette'
+@import '../../../stylesheets/common'
+
+.countdown-circle
+	position relative
+
+	&:before
+		content ''
+		display inline-block
+		height 100%
+		vertical-align middle
+
+	.timespan
+		color main-text
+		text-align center
+		vertical-align middle
+		display inline-block
+		width 100%
+
+	.circle-container
+		position absolute
+		transform rotate(-270deg)
+
+		.circle-elapsed
+			stroke secondary-text-color
+
+		.circle-remaining
+			stroke main-text
+			stroke-dashoffset 0
+			transform rotateY(180deg)//force the timer to move clockwise
+			transform-origin 50% 50%
+			transition all 1s linear
