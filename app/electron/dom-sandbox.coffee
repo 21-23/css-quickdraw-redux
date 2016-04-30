@@ -18,4 +18,4 @@ app.on 'ready', ->
 			console.log err
 		else
 			window.loadURL "#{APP_BASE_URL}/sandbox.html"
-			console.log 'cssqd:ready'
+			console.log 'cssqd-service:ready'
