@@ -53,12 +53,19 @@ module.exports =
 	coffeelint:
 		configFile: path.join __dirname, './coffeelint.json'
 
+	stylint:
+		config: path.join __dirname, './stylint.json'
+
 	module:
 
 		preLoaders: [
 			{
 				test: /\.coffee?$/
 				loader: 'coffee-lint-loader'
+			}
+			{
+				test: /\.styl$/
+				loader: 'stylint-loader'
 			}
 		]
 
