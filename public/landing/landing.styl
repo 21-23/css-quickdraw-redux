@@ -18,7 +18,7 @@ main-background = #212121
 
 main-app-name-color = #fff
 main-app-name-font-size = 3em
-main-app-description-color = rgba(255, 255, 255, 0.7)
+main-app-description-color = rgba(255, 255, 255, .7)
 
 main-space-width = 80%
 main-space-left-offset = (100% - main-space-width) / 2
@@ -30,7 +30,7 @@ main-login-icon-spacing = 10px
 
 footer-background = #1f1f1f
 footer-height = 70px
-footer-color = rgba(255, 255, 255 0.8)
+footer-color = rgba(255, 255, 255 .8)
 
 green-main = #349161
 
@@ -49,10 +49,10 @@ body
 	position absolute
 	top 0
 	left 0
-	
+
 	.line
-		margin 0.5em
-	
+		margin .5em
+
 	.line-2
 		margin-left landing-tagline-font-size
 
@@ -64,7 +64,7 @@ body
 	height landing-scroll-down-arrow-height
 	margin auto
 	cursor pointer
-	
+
 	.scroll-down-arrows
 		width 100%
 		height 100%
@@ -76,20 +76,20 @@ body
 			fill transparent
 			stroke-width 3px
 			animation scroll-down-arrow 1.5s infinite
-			
+
 			&.arrow-1
-				animation-delay -0.6s
+				animation-delay -.6s
 			&.arrow-2
-				animation-delay -0.3s
+				animation-delay -.3s
 			&.arrow-3
 				animation-delay 0s
-	
+
 .scroll-login-panel
 	position absolute
 	bottom landing-scroll-items-bttom-offset
 	right 0
 	height landing-scroll-login-panel-height
-	
+
 	.icon
 		display inline-block
 		width landing-scroll-login-icon-width
@@ -97,7 +97,7 @@ body
 		margin landing-scroll-login-icon-spacing
 		background-size contain
 		background-repeat no-repeat
-		
+
 		&.fb
 			background-image url(./img/fb-white.png)
 		&.gh
@@ -106,7 +106,7 @@ body
 			background-image url(./img/gp-white.png)
 		&.tw
 			background-image url(./img/tw-white.png)
-	
+
 @keyframes scroll-down-arrow
 	0%
 		opacity 0
@@ -128,7 +128,7 @@ main
 	text-align center
 	background main-background
 	color #fff
-	
+
 	.app-name
 		color main-app-name-color
 		background landing-background-color
@@ -137,7 +137,7 @@ main
 		font-size main-app-name-font-size
 		line-height main-app-name-font-size / 2
 		box-shadow 0 1px 0 0 darken(green-main, 50%)
-	
+
 	.app-description
 		display flex
 		justify-content space-between
@@ -145,11 +145,11 @@ main
 		width main-space-width
 		margin auto
 		color main-app-description-color
-		
+
 		.new-game-flow-description, .play-flow-description
 			width 45%
 			text-align justify
-			
+
 			h2
 				text-align center
 				margin 0
@@ -158,7 +158,7 @@ main
 	.demo
 		width main-space-width
 		margin 1em auto
-		
+
 		.demo-image
 			width 100%
 
@@ -168,7 +168,7 @@ main
 	align-items stretch
 	padding 0 main-space-left-offset
 	background main-login-panel-background
-	
+
 	.icon
 		display inline-block
 		width main-login-icon-width
@@ -176,7 +176,7 @@ main
 		margin main-login-icon-spacing
 		background-size contain
 		background-repeat no-repeat
-		
+
 		&.fb
 			background-image url(./img/fb-white.png)
 		&.gh
@@ -194,6 +194,6 @@ footer
 	line-height footer-height
 	text-align center
 	font-weight bold
-	
+
 	.info
 		margin 10px
