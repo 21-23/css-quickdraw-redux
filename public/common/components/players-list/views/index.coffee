@@ -23,10 +23,10 @@ PlayersListView = (context) ->
 				nxt.Class 'sub-meta'
 				nxt.Element 'div',
 					nxt.Class 'amount'
-					nxt.Binding context.passedCount, nxt.Text
+					nxt.Binding context.solvedCount, nxt.Text
 				nxt.Element 'div',
 					nxt.Class 'text'
-					nxt.Text 'Passed'
+					nxt.Text 'Solved'
 
 		nxt.Element 'div',
 			nxt.Class 'players-list-table'

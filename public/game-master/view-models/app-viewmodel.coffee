@@ -25,6 +25,7 @@ class AppViewModel
 		@countdown = new nx.Cell
 		@role      = new nx.Cell
 		@players = new nx.Collection
+			transform: nx.LiveTransform ['solution']
 		@aggregate_score = new nx.Cell
 
 		@current_puzzle_index = new nx.Cell
