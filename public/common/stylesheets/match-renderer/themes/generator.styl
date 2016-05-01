@@ -1,19 +1,21 @@
 generate-theme(themeName)
 	@import themeName
+	light-shadow = 0 1px 4px 0 rgba(0, 0, 0, 0.12)
 
 	&[theme={themeName}]
 		color text-color
 		background background-color
 
 		.row.objective
-			box-shadow positive-match-color 0px 0px 0px 1px inset
 			background objective-background
+			box-shadow light-shadow
 
 		.row.-matched-negative
 			background negative-match-color
 
 		.row.-matched-positive
 			background positive-match-color
+			box-shadow light-shadow
 
 		.tagname
 			color tagname-color
