@@ -14,7 +14,7 @@
     "start": "NODE_PATH=./app coffee index.coffee 2>>cssqderr.log",
     "dev": "NODE_ENV=dev npm start",
     "dev-test": "NODE_ENV=test npm start",
-		"prod": "NODE_ENV=prod npm start",
+    "prod": "NODE_ENV=prod npm start",
     "debug": "node-inspector 2>/dev/null && NODE_PATH=./app NODE_ENV=dev coffee --nodejs --debug-brk index.coffee",
     "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint"
   },
