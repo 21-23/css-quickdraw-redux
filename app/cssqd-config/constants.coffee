@@ -8,4 +8,9 @@ port = CSSQDConfig.get 'service:port'
 
 authPath = CSSQDConfig.get 'service:auth:url'
 
-exports.APP_BASE_URL = "#{protocol}://#{host}:#{port}"
+APP_BASE_URL = "#{protocol}://#{host}"
+
+unless process.env.NODE_ENV is 'prod'
+	APP_BASE_URL = "#{APP_BASE_URL}:#{port}"
+
+exports.APP_BASE_URL = APP_BASE_URL
