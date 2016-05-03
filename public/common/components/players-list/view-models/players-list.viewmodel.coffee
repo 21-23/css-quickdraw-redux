@@ -1,15 +1,21 @@
+Functor = require 'cssqd-shared/nx/cell-functor'
+CounterCommand = require 'cssqd-shared/nx/counter-command'
+
 class PlayersListViewModel
+
 	constructor: (@players) ->
-		#temporary not working
-		@passedCount = new nx.Cell
-			'<-': [
-				@players,
-				(players) ->
-					if players?
-						players.filter((player) -> player.solution?.correct).length
-					else
-						0
-			]
+		@solvedCount = Functor
+			cell:
+				value: 0
+			map:
+				'<-': [
+					@players.transform.change
+					({ value: {correct} }) ->
+						if correct
+							CounterCommand.INCREASE
+						else
+							CounterCommand.RETAIN
+				]
 
 
 module.exports = PlayersListViewModel

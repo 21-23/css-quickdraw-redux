@@ -1,7 +1,7 @@
 @import '~common/stylesheets/color-palette'
 @import '~common/stylesheets/common'
 
-light-shadow = 0 1px 4px 0 rgba(0, 0, 0, 0.15)
+light-shadow = 0 1px 4px rgba(0, 0, 0, .15)
 
 .game-screen
 	.user-panel
@@ -14,11 +14,15 @@ light-shadow = 0 1px 4px 0 rgba(0, 0, 0, 0.15)
 	.levels-info-num
 		color secondary-text-color
 		text-shadow light-shadow
+		font-size 1.2em
+		margin 0
 
 	.levels-info-name
 		color main-text
 		font-weight bold
 		text-shadow light-shadow
+		margin .4em 0
+		font-size 1.5em
 
 	.controls
 		width 100%
@@ -50,8 +54,8 @@ light-shadow = 0 1px 4px 0 rgba(0, 0, 0, 0.15)
 			background lighter-than-background-disabled
 			color holy-white-disabled
 		&:focus
-			border 1px solid alpha(main-text, 0.4)
-			box-shadow 0 0 4px 0px alpha(main-text, 0.2) inset, 0 0 4px 0px alpha(main-text, 0.2)
+			border 1px solid alpha(main-text, .4)
+			box-shadow 0 0 4px 0px alpha(main-text, .2) inset, 0 0 4px 0px alpha(main-text, .2)
 
 		&::placeholder
 			color secondary-text-color
