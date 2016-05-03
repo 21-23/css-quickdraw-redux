@@ -1,12 +1,15 @@
 { app, BrowserWindow, session } = require 'electron'
-{ APP_BASE_URL } = require '../cssqd-config/constants'
+CSSQDConfig = require '../cssqd-config'
 
 window = null
 
-do app.dock.hide
+port = CSSQDConfig.get 'service:port'
+app_url = "http://127.0.0.1:#{port}"
+
+do app.dock?.hide
 
 session_config =
-	url: APP_BASE_URL
+	url: app_url
 	name: 'koa:sess'
 	value: 'eyJwYXNzcG9ydCI6eyJ1c2VyIjoic2FuZGJveCJ9fQ=='
 
@@ -17,5 +20,5 @@ app.on 'ready', ->
 		if err
 			console.log err
 		else
-			window.loadURL "#{APP_BASE_URL}/sandbox.html"
+			window.loadURL "#{app_url}/sandbox.html"
 			console.log 'cssqd-service:ready'
