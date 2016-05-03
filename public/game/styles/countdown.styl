@@ -1,7 +1,7 @@
 @import '~common/stylesheets/color-palette'
 @import '~common/stylesheets/common'
 
-light-shadow = 0 1px 4px 0 rgba(0, 0, 0, 0.15)
+light-shadow = 0 1px 4px rgba(0, 0, 0, .15)
 
 .game-countdown
 	.user-panel
@@ -14,10 +14,15 @@ light-shadow = 0 1px 4px 0 rgba(0, 0, 0, 0.15)
 	.levels-info-num
 		color secondary-text-color
 		text-shadow light-shadow
+		font-size 1.2em
+		margin 0
 
 	.levels-info-name
 		color main-text
 		font-weight bold
+		text-shadow light-shadow
+		margin .4em 0
+		font-size 1.5em
 
 	.controls
 		width 100%

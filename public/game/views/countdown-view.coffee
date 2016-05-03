@@ -21,9 +21,7 @@ GameView = (context) ->
 
 				nxt.Element 'p',
 					nxt.Class 'levels-info-name'
-					nxt.Binding context.puzzle, (puzzle) ->
-						if puzzle?
-							nxt.Text 'PUZZLE NAME STUB'
+					nxt.Binding context.puzzle, (puzzle) -> nxt.Text puzzle?.name or "Puzzle #{puzzle?.index}"
 
 			nxt.Element 'div',
 				nxt.Class 'controls'
