@@ -25,6 +25,7 @@ class AppViewModel
 		@countdown = new nx.Cell
 		@role      = new nx.Cell
 		@players = new nx.Collection
+			transform: nx.LiveTransform ['solution']
 		@aggregate_score = new nx.Cell
 
 		@current_puzzle_index = new nx.Cell
@@ -113,7 +114,19 @@ class AppViewModel
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 		@remainingTimeViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
+
 		@playersListViewModel = new PlayersListViewModel @players
+
+		@round_countdown = new nx.Cell
+		@round_phase['->'] \
+			((phase) =>
+				if phase is RoundPhase.COUNTDOWN
+					@round_countdown
+				else
+					[]),
+			-> yes
+
+		@playersListViewModel.solvedCount['<-'] @round_countdown, -> 0
 
 		@matchRenderer = new MatchRenderer.ViewModel
 		@matchRenderer.tag_list['<-'] @puzzle,	({tags}) -> tags
