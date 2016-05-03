@@ -27,7 +27,7 @@ class GameSession
 		Switchboard =
 			to: (id, cell) =>
 				participant = @participants_by_id.get id
-				participant[cell]
+				participant?[cell] or Switchboard.nobody
 
 			to_score: (id) =>
 				@score.get id
