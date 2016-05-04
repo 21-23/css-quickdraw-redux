@@ -1,5 +1,6 @@
-warp = require 'nexus-warp'
-co   = require 'co'
+warp   = require 'nexus-warp'
+co     = require 'co'
+bunyan = require 'bunyan'
 
 { APP_BASE_URL } = require 'cssqd-config/constants'
 
@@ -26,10 +27,23 @@ class Service
 						new GameSession session, @sandbox
 					]
 
+		logger = bunyan.createLogger
+			name: 'cssqd-warp'
+			streams: [
+				path: "#{__dirname}/../cssqd-warp-log.json"
+			]
 
+		@log = ({type, session, data}) ->
+			logger.info
+				type: type
+				user_id: session.facet.participant?.id or 'sandbox'
+				data: data
+
+		logger.info 'service-start'
 		new warp.Service
 			transport:         new warp.WebSocketTransport
 				http_server:     http_server
 				session_manager: new SessionManager @
+			log: @log
 
 module.exports = Service

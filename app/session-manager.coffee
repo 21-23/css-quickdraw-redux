@@ -24,6 +24,7 @@ class SessionManager
 				id:        id
 				facet:     facet
 				transport: transport
+				log:       @service.log
 			done session
 		else
 			User.findOne id:user_id, (err, user) =>
@@ -33,6 +34,7 @@ class SessionManager
 					id:        id
 					facet:     facet
 					transport: transport
+					log:       @service.log
 
 				@sessions.set user_id, session
 				done session

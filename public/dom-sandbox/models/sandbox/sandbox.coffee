@@ -16,8 +16,10 @@ class Sandbox
 				@selector,
 				({selector, player_id}) =>
 					puzzle = @puzzle.value
+					time = do performance.now
 					match = puzzle.match selector
 					match.player_id = player_id
+					match.time = performance.now() - time
 					match
 			]
 

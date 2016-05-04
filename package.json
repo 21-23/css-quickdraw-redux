@@ -58,6 +58,7 @@
     "webpack-notifier": "^1.2.1"
   },
   "dependencies": {
+    "bunyan": "^1.8.1",
     "co": "^4.6.0",
     "cson": "^3.0.1",
     "cssqd-shared": "file:./shared",
