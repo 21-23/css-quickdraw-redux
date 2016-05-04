@@ -136,6 +136,14 @@ class AppViewModel
 					[]),
 			-> yes
 
+		@round_phase['->'] \
+			((phase) =>
+				if phase is RoundPhase.FINISHED
+					@playersListViewModel.players.items.map (player) -> player.solution
+				else
+					[]),
+			-> {}
+
 		@playersListViewModel.solvedCount['<-'] @round_countdown, -> 0
 
 		@matchRenderer = new MatchRenderer.ViewModel
