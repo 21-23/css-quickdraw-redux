@@ -1,8 +1,8 @@
 @import '~common/stylesheets/color-palette'
 @import '~common/stylesheets/common'
 
-light-shadow = 0px 1px 1px rgba(0, 0, 0, 0.5)
-user-list-column-max-width = 300px
+light-shadow = 0 1px 4px rgba(0, 0, 0, .15)
+user-list-column-max-width = 400px
 
 .game-master-screen
 	.user-panel
@@ -24,30 +24,40 @@ user-list-column-max-width = 300px
 				justify-content space-between
 				margin-bottom 20px
 
+				.countdown-circle
+					font-size 1.5em
+
 			.levels-info-num
 				color secondary-text-color
 				text-shadow light-shadow
+				font-size 1.2em
+				margin 0
 
 			.levels-info-name
 				color main-text
 				font-weight bold
+				text-shadow light-shadow
+				font-size 1.5em
+				margin .4em 0
 
 		.user-list-column
 			flex-grow 1
 			max-width user-list-column-max-width
+			margin-left 5%
 
 			.aggregate-score
 				.header, .aggregate-score-item
 					display flex
 					justify-content space-between
 					line-height 2.5em
-					border-bottom 2px solid separator-color
 
 				.header
 					color secondary-text-color
+					border-bottom 2px solid separator-color
 
 				.aggregate-score-item
 					color holy-white
+					border-bottom 1px solid separator-color
 
 	.qd-pearl-thread
 		width 100%
@@ -56,9 +66,17 @@ user-list-column-max-width = 300px
 	.master-controls-container
 		display flex
 
-		.master-controls-solution-container
-			font-size 1.5em
-			margin-top 0.5em
+	.master-controls-solution-container
+		.solution-container
+			color secondary-text-color
+			text-shadow light-shadow
+
+			.solution-value
+				font-weight bold
+				color main-text
+
+		.match-renderer
+			border-top 1px solid separator-color
 
 	.master-controls-gameplay
 		display flex
@@ -67,6 +85,8 @@ user-list-column-max-width = 300px
 	.controls-selector-banned-container
 		display flex
 		align-items center
+		color secondary-text-color
+		text-shadow light-shadow
 
 //NON-PRODUCTION styles; only for testing
 .qd-pearl-thread

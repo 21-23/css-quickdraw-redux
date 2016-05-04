@@ -12,6 +12,7 @@ GameControlButtonViewModel = (require 'common/components/game-control-button').V
 PlayersListViewModel = (require 'common/components/players-list').ViewModel
 MatchRenderer = require 'common/components/match-renderer'
 OccurrenceIndicator = require 'common/components/occurrence-indicator'
+CountdownCircleViewModel = (require 'common/components/countdown-circle').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -27,6 +28,7 @@ class AppViewModel
 		@players = new nx.Collection
 			transform: nx.LiveTransform ['solution']
 		@aggregate_score = new nx.Cell
+		@currentRoundTimeLimit = new nx.Cell
 
 		@current_puzzle_index = new nx.Cell
 			value: -1
@@ -113,7 +115,15 @@ class AppViewModel
 				aggregate_score: @aggregate_score
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
-		@remainingTimeViewModel = new TimespanViewModel @countdown, dateTimeFormats['m:ss']
+
+		@currentRoundTimeLimit['<-'] [ @puzzle, @round_phase ],
+			(puzzle, phase) ->
+				if phase is RoundPhase.IN_PROGRESS then puzzle.time_limit else puzzle?.countdown_limit or 0
+
+		@roundTimerViewModel = new CountdownCircleViewModel @countdown,
+			@currentRoundTimeLimit
+			dateTimeFormats['m:ss']
+			{ radius: 40, strokeWidth: 5 }
 
 		@playersListViewModel = new PlayersListViewModel @players
 

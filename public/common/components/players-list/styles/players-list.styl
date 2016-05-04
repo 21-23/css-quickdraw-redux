@@ -2,7 +2,8 @@
 @import '../../../stylesheets/common'
 
 meta-separator = 1px solid separator-color
-list-item-separator = 2px solid separator-color
+list-header-separator = 2px solid separator-color
+list-item-separator = 1px solid separator-color
 
 .players-list
 
@@ -37,20 +38,25 @@ list-item-separator = 2px solid separator-color
 		.header, .item
 			display flex
 			justify-content space-between
-			border-bottom list-item-separator
 			line-height 2.5em
 
 		.header
 			color secondary-text-color
+			border-bottom list-header-separator
 
 		.item
 			color holy-white
+			border-bottom list-item-separator
 
 			&.-passed
 				color success-green
 
 		.-name
 			flex-grow 3
+			white-space nowrap
+			overflow hidden
+			text-overflow ellipsis
+			flex-basis 100%
 		.-time, .-length
 			flex-grow 1
 			flex-basis 3em
