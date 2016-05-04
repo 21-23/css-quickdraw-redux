@@ -1,5 +1,7 @@
 {nx} = require 'nexus-node'
 
+fs = require 'fs'
+
 RoundPhase          = require 'cssqd-shared/models/round-phase'
 SelectorMatchResult = require 'cssqd-shared/models/selector-match-result'
 GameSessionCommand  = require 'cssqd-shared/models/game-session-command'
@@ -152,6 +154,9 @@ class GameSession
 			'->': [
 				=> Switchboard.to @game_master_id.toString(), 'aggregate_score'
 			]
+
+		@aggregate_score.onvalue.add (value) ->
+			fs.writeFile "./score-#{Date.now()}.json", (JSON.stringify value), (err, data) -> console.log err, data
 
 		@round_phase['->'] \
 			((phase) =>
