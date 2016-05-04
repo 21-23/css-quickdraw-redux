@@ -33,14 +33,7 @@ connection.once 'open', ->
 	http_server = app.listen cssqdConfig.get 'service:port'
 	(new Service).start http_server
 
-if process.env.NODE_ENV is 'prod'
-	electron_spawn_command = 'xvfb-run'
-	electron_spawn_args    = [electron, './electron']
-else
-	electron_spawn_command = electron
-	electron_spawn_args    = './electron'
-
-electron_process = spawn electron_spawn_command, electron_spawn_args,
+electron_process = spawn electron, ['./electron'],
 	stdio:'inherit'
 	cwd: path.join __dirname, 'app'
 
