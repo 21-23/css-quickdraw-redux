@@ -25,7 +25,9 @@ pattern-box-size = 25px
 		min-height pattern-box-size
 		box-sizing border-box
 		border pattern-box-matched-border-stub
+		transition transform 150ms
 
 		&.-matched
 			background pattern-box-matched-background
 			border pattern-box-matched-border
+			transform scale(1.5)
