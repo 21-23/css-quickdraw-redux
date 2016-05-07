@@ -30,7 +30,10 @@ class GameSession
 				participant?[cell] or Switchboard.nobody
 
 			to_score: (id) =>
-				@score.get id
+				if @score.has id
+					@score.get id
+				else
+					Switchboard.nobody
 
 			all_scores: =>
 				cells = []
