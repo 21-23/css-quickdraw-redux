@@ -3,11 +3,11 @@ CountdownCircleView     = (require 'common/components/countdown-circle').View
 ButtonView = (require 'common/components/button').View
 ToggleButtonView = (require 'common/components/toggle-button').View
 GameControlButtonView = (require 'common/components/game-control-button').View
-{ PlayersListView, PlayersSolutionsListView, PlayersScoreListView } = (require 'common/components/players-list')
+{ PlayersListView, PlayersSolutionsListView, PlayersScoreListView } = require 'common/components/players-list'
 MatchRendererView       = (require 'common/components/match-renderer').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
 
-{ formatMSS } = (require '../../common/utils/date-time-utils')
+{ formatMSS } = require '../../common/utils/date-time-utils'
 
 RoundPhase = require 'cssqd-shared/models/round-phase'
 

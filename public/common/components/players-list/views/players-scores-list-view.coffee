@@ -1,5 +1,5 @@
 require '../styles/players-list.styl'
-{ formatMSS } = (require '../../../utils/date-time-utils')
+{ formatMSS } = require '../../../utils/date-time-utils'
 
 PlayersListView = (context) ->
 	nxt.Element 'div',
