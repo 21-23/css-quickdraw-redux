@@ -8,8 +8,9 @@ GameSessionCommand = require 'cssqd-shared/models/game-session-command'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
+ToggleButtonViewModel = (require 'common/components/toggle-button').ViewModel
 GameControlButtonViewModel = (require 'common/components/game-control-button').ViewModel
-PlayersListViewModel = (require 'common/components/players-list').ViewModel
+{ PlayersListViewModel, PlayersScoresListViewModel } = (require 'common/components/players-list')
 MatchRenderer = require 'common/components/match-renderer'
 OccurrenceIndicator = require 'common/components/occurrence-indicator'
 CountdownCircleViewModel = (require 'common/components/countdown-circle').ViewModel
@@ -36,6 +37,8 @@ class AppViewModel
 		@StartButtonViewModel = new ButtonViewModel 'Start'
 		@StopButtonViewModel = new ButtonViewModel 'Stop'
 		@NextButtonViewModel = new ButtonViewModel 'Next'
+
+		@showScoresTogglerViewModel = new ToggleButtonViewModel '', no
 
 		@gameControlButtonViewModel = new GameControlButtonViewModel @round_phase
 
@@ -126,6 +129,7 @@ class AppViewModel
 			{ radius: 40, strokeWidth: 5 }
 
 		@playersListViewModel = new PlayersListViewModel @players
+		@playersScoresListViewModel = new PlayersScoresListViewModel @aggregate_score
 
 		@round_countdown = new nx.Cell
 		@round_phase['->'] \
@@ -138,7 +142,7 @@ class AppViewModel
 
 		@round_phase['->'] \
 			((phase) =>
-				if phase is RoundPhase.FINISHED
+				if phase is RoundPhase.COUNTDOWN
 					@playersListViewModel.players.items.map (player) -> player.solution
 				else
 					[]),

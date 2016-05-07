@@ -10,11 +10,17 @@ user-list-column-max-width = 400px
 		height user-panel-height
 
 .game-master-screen-container
+	position absolute
+	top user-panel-height
+	bottom 0
+	left 0
+	right 0
 	padding 0 main-left-offset 0 main-right-offset
 
 	.game-master-screen-columns
 		display flex
 		justify-content space-between
+		max-height 80%
 
 		.controls-column
 			flex-grow 1.5
@@ -44,20 +50,45 @@ user-list-column-max-width = 400px
 			flex-grow 1
 			max-width user-list-column-max-width
 			margin-left 5%
+			position relative
+			overflow-y auto
+			overflow-x hidden
+			white-space nowrap
 
-			.aggregate-score
-				.header, .aggregate-score-item
-					display flex
-					justify-content space-between
-					line-height 2.5em
+			.players-list, .players-scores-list
+				vertical-align top
+				display inline-block
+				width 100%
+				transform translateX(0)
+				transition transform 250ms
 
-				.header
-					color secondary-text-color
-					border-bottom 2px solid separator-color
+			&.-score-view
+				.players-list, .players-scores-list
+					transform translateX(-100%)
 
-				.aggregate-score-item
-					color holy-white
-					border-bottom 1px solid separator-color
+	.scores-toggle-button-container
+		position absolute
+		right main-right-offset * 0.5
+		top 0
+		height 100%
+		display flex
+
+		.toggle-button
+			color secondary-action-color
+			background alpha(holy-white, .15)
+			font-size 3em
+			padding 0 .1em
+			align-self center
+
+			&:before
+				content '\f104'
+				font-family AwesomeIcon
+			&.-toggled
+				&:before
+					content '\f105'
+
+			&:hover
+				background secondary-action-background-color
 
 	.qd-pearl-thread
 		width 100%
