@@ -3,6 +3,6 @@
 		host: "mongodb://localhost"
 		db: "cssqd"
 	service:
-		host: 'localhost'
+		host: 'cssqd.io'
 		port: 3000
 }
