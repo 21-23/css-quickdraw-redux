@@ -5,6 +5,7 @@ RoundPhase = require 'cssqd-shared/models/round-phase'
 
 Player = require '../models/player'
 GameSessionCommand = require 'cssqd-shared/models/game-session-command'
+{ COUNTDOWN_TIMER_STEP } = require 'cssqd-shared/constants'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 ButtonViewModel = (require 'common/components/button').ViewModel
@@ -125,6 +126,7 @@ class AppViewModel
 
 		@roundTimerViewModel = new CountdownCircleViewModel @countdown,
 			@currentRoundTimeLimit
+			COUNTDOWN_TIMER_STEP
 			dateTimeFormats['m:ss']
 			{ radius: 40, strokeWidth: 5 }
 

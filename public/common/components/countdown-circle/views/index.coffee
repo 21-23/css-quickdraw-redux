@@ -35,7 +35,8 @@ CountdownCircleView = (context) ->
 					'stroke-linecap': 'round'
 					'stroke-dasharray': context.dashArraySize
 				nxt.Binding context.remainingCell, (remaining) ->
-					remainingPercent = remaining / context.fullTime.value
+					correctedRemaining = if remaining > 0 then (remaining - context.shear) else 0
+					remainingPercent = correctedRemaining / context.fullTime.value
 					nxt.Style 'stroke-dashoffset': context.dashArraySize - Math.round remainingPercent * context.dashArraySize
 
 		TimespanView context.timespanViewModel

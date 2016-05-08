@@ -3,6 +3,7 @@ warp = require 'nexus-warp'
 
 Cascade = require 'cssqd-shared/nx/cascade'
 RoundPhase = require 'cssqd-shared/models/round-phase'
+{ COUNTDOWN_TIMER_STEP } = require 'cssqd-shared/constants'
 SelectorMatchResult = require 'cssqd-shared/models/selector-match-result'
 
 dateTimeFormats = (require 'common/utils/date-time-utils').formats
@@ -65,6 +66,7 @@ class AppViewModel
 		@currentRoundTimeLimit['<-'] @puzzle, (puzzle) -> puzzle.time_limit
 		@roundTimerViewModel = new CountdownCircleViewModel @countdown,
 			@currentRoundTimeLimit
+			COUNTDOWN_TIMER_STEP
 			dateTimeFormats['m:ss']
 			{ radius: 40, strokeWidth: 5 }
 		@countdownViewModel = new TimespanViewModel @countdown, dateTimeFormats['s']
