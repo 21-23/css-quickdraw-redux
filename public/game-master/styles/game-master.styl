@@ -105,12 +105,19 @@ user-list-column-max-width = 400px
 
 	.master-controls-solution-container
 		.solution-container
+			display inline-block
 			color secondary-text-color
 			text-shadow light-shadow
 
 			.solution-value
 				font-weight bold
 				color main-text
+				opacity 0
+
+			&:hover
+				.solution-value
+					opacity 1
+					transition opacity 100ms 500ms
 
 		.match-renderer
 			border-top 1px solid separator-color
