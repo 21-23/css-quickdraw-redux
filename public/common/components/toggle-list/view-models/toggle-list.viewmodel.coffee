@@ -8,6 +8,15 @@ class ToggleListViewModel
 		@items = new nx.Cell
 		@pick = new nx.Cell
 
+		pick = new nx.Cell
+			value: []
+			'<-': [
+				@pick
+				(new_pick) -> [new_pick, pick.value[0]]
+			]
+
+		pick['<-'] @items, -> []
+
 		@toggles = new nx.Cell
 			'<-': [
 				@items
@@ -16,8 +25,8 @@ class ToggleListViewModel
 
 		@toggle_update = new nx.Cell
 			'<-': [
-				@pick
-				(pick, old_pick = []) ->
+				pick
+				([pick = [], old_pick = []]) ->
 					set:   pick.filter (index) -> not (index in old_pick)
 					unset: old_pick.filter (index) -> not (index in pick)
 			]
