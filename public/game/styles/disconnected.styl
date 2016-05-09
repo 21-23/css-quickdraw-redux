@@ -1,0 +1,21 @@
+@import '~common/stylesheets/color-palette'
+@import '~common/stylesheets/common'
+
+.game-disconnected-screen-container
+	padding 0 main-left-offset 0 main-right-offset
+
+	.disconnected-message
+		color holy-white
+		text-align center
+
+	.refresh-button-container
+		.button
+			rounded-icon-button()
+			width 1em
+			font-size 5em
+			margin 1em auto 0 auto
+			text-align center
+
+			&:before
+				content '\f021'
+				margin-right 0

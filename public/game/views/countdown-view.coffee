@@ -1,7 +1,7 @@
 TimespanView 						= (require 'common/components/timespan').View
 UserPanelView           = (require 'common/components/user-panel').View
 
-GameView = (context) ->
+CountdownView = (context) ->
 	nxt.Element 'div',
 		nxt.Class 'game-countdown'
 
@@ -37,4 +37,4 @@ GameView = (context) ->
 
 			TimespanView context.countdownViewModel
 
-module.exports = GameView
+module.exports = CountdownView

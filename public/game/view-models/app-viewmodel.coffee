@@ -14,6 +14,7 @@ OccurrenceIndicator = require 'common/components/occurrence-indicator'
 UserPanelViewModel = (require 'common/components/user-panel').ViewModel
 TimespanViewModel = (require 'common/components/timespan').ViewModel
 CountdownCircleViewModel = (require 'common/components/countdown-circle').ViewModel
+ButtonViewModel = (require 'common/components/button').ViewModel
 
 class AppViewModel
 	constructor: (sessionId) ->
@@ -50,6 +51,8 @@ class AppViewModel
 				selector: @selector
 				match:    @match
 
+		@listenToConnectionClose @warp_client.transport
+
 		@matchRenderer = new MatchRenderer.ViewModel
 		@matchRenderer.tag_list['<-'] @puzzle, ({tags}) -> tags
 		@matchRenderer.match['<-'] @match
@@ -77,7 +80,18 @@ class AppViewModel
 		@puzzle_solved['<-'] @round_phase, (round_phase) ->
 			round_phase isnt RoundPhase.IN_PROGRESS
 
+		@RefreshButtonViewModel = new ButtonViewModel ''
+		@RefreshButtonViewModel.click.onvalue.add ->
+			do window.location.reload
+
 		#Keep session ID set as the last operation as it triggers the data flow
 		@game_session_id.value = sessionId
+
+	listenToConnectionClose: (transport) ->
+		if transport.socket
+			transport.socket.onclose = (event) =>
+				#check event.code https://developer.mozilla.org/en-US/docs/Web/API/CloseEvent ?
+				@view.value = RoundPhase.DISCONNECTED
+
 
 module.exports = AppViewModel
