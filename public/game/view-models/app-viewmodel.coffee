@@ -21,6 +21,7 @@ class AppViewModel
 		@SELECTOR_MAX_LENGTH = 128
 
 		@user_data = new nx.Cell
+		@session_info = new nx.Cell
 		@game_session_id = new nx.Cell
 		@round_phase = new nx.Cell
 		@puzzle = new nx.Cell
@@ -43,6 +44,7 @@ class AppViewModel
 			entities:
 				user_data:       @user_data
 				game_session_id: @game_session_id
+				session_info:    @session_info
 				round_phase:     @round_phase
 				puzzle:          @puzzle
 				countdown:       @countdown

@@ -17,11 +17,19 @@ class Player
 
 		@participant.match = new nx.Cell
 
-	get_entities: ->
-		round_phase: @participant.round_phase
-		puzzle:      @participant.puzzle
+		@participant.session_info = new nx.Cell
+			'<<-': [
+				@participant.puzzles
+				(puzzles) ->
+					puzzle_names: puzzles.map ({name}) -> name
+			]
 
-		countdown:   @participant.countdown
+	get_entities: ->
+		session_info: @participant.session_info
+		round_phase:  @participant.round_phase
+		puzzle:       @participant.puzzle
+
+		countdown: @participant.countdown
 
 		selector: @participant.selector # Player only
 		match:    @participant.match    # Player only
