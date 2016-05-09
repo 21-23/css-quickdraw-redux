@@ -16,6 +16,7 @@ PuzzlesProgressView = (context) ->
 					nxt.Element 'div',
 						nxt.Class 'puzzles-progress-indicator'
 						nxt.Class context.getPuzzleClass index, current_index
+						nxt.Event 'click', context.select, -> index
 
 						nxt.Element 'div',
 							nxt.Class 'puzzles-progress-indicator-content'

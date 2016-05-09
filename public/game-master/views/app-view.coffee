@@ -23,14 +23,6 @@ AppView = (context) ->
 
 				PuzzlesProgress context.puzzlesProgressViewModel
 
-				nxt.Binding context.puzzles, (puzzles) ->
-					nxt.Element 'div',
-						nxt.Class 'qd-pearl-thread'
-						puzzles?.map (puzzle, index) ->
-							nxt.Element 'div',
-								nxt.Text puzzle.name
-								nxt.Event 'click', context.current_puzzle_index, -> index
-
 				nxt.Element 'div',
 					nxt.Class 'game-master-screen-columns'
 

@@ -17,6 +17,8 @@ class PuzzlesProgressViewModel
 					[ puzzles, current_index ]
 			]
 
+		@select = new nx.Cell
+
 	getPuzzleClass: (puzzle_index, current_index) ->
 		if puzzle_index < current_index
 			'-solved'

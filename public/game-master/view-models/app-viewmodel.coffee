@@ -139,6 +139,8 @@ class AppViewModel
 		@puzzlesProgressViewModel = new PuzzlesProgressViewModel @puzzles, @current_puzzle_index
 		@playersScoresListViewModel = new PlayersScoresListViewModel @aggregate_score
 
+		@puzzlesProgressViewModel.select['->'] @current_puzzle_index
+
 		@round_countdown = new nx.Cell
 		@round_phase['->'] \
 			((phase) =>
