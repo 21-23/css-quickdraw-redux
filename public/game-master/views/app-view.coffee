@@ -109,7 +109,4 @@ AppView = (context) ->
 						ButtonView context.StopButtonViewModel
 						ButtonView context.NextButtonViewModel
 
-		nxt.Element 'div',
-			nxt.Binding context.current_puzzle_index, nxt.Text
-
 module.exports = AppView

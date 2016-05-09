@@ -98,7 +98,10 @@ user-list-column-max-width = 400px
 		margin-bottom 1em
 
 	.master-controls-container
-		display flex
+		position absolute
+		left 0
+		bottom 0
+		opacity .1
 
 	.master-controls-solution-container
 		.solution-container
@@ -115,6 +118,7 @@ user-list-column-max-width = 400px
 	.master-controls-gameplay
 		display flex
 		justify-content space-between
+		flex-direction column
 
 	.controls-selector-banned-container
 		display flex
