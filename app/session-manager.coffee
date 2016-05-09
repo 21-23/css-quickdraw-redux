@@ -36,6 +36,10 @@ class SessionManager
 					transport: transport
 					log:       @service.log
 
+				if @sessions.has user_id
+					old_session = @sessions.get user_id
+					old_session.facet.active = no
+
 				@sessions.set user_id, session
 				done session
 

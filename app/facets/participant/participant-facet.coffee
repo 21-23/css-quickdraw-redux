@@ -8,6 +8,8 @@ GameRole    = require 'cssqd-shared/models/game-role'
 class ParticipantFacet
 
 	constructor: (@service, user) ->
+		@active = yes
+
 		@participant = new Participant @service, user
 
 		@entities =
@@ -30,7 +32,8 @@ class ParticipantFacet
 			]
 
 	destroy: (session) ->
-		@participant.disconnected.value = yes
+		if @active
+			@participant.disconnected.value = yes
 
 	get_model: -> @participant
 
