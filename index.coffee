@@ -37,6 +37,10 @@ electron_process = spawn electron, ['./electron'],
 	stdio:'inherit'
 	cwd: path.join __dirname, 'app'
 
+process.on 'SIGINT', ->
+	electron_process.kill()
+	process.exit()
+
 process.on 'uncaughtException', (err) ->
 	console.error "#{(new Date).toUTCString()} uncaughtException: #{err.message}"
 	console.error err.stack
