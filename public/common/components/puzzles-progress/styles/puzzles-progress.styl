@@ -1,0 +1,58 @@
+@import '../../../stylesheets/common'
+
+circle-border-width = 2px
+circle-border = circle-border-width solid #4c8580
+
+//fix with complete font size integration
+circle-size = 25px
+
+circled-result(icon, icon-color)
+	border circle-border
+	border-radius 50%
+	&:after
+		content icon
+		font-family AwesomeIcon
+		color icon-color
+		position relative
+		top -(circle-border-width)
+
+.puzzles-progress
+
+	.puzzles-progress-bar
+		width 100%
+		height 3px
+		background main-text
+		transition width 1s
+
+	.puzzles-progress-indicators
+		margin-top 5px
+		display flex
+		justify-content space-between
+
+		.puzzles-progress-indicator
+			position relative
+			width circle-size
+			height circle-size
+			text-align center
+			line-height circle-size
+			box-sizing border-box
+			color secondary-text-color
+
+			&.-solved
+				circled-result('\f00c', main-text)
+
+			&.-current
+				color main-text
+
+			.puzzles-progress-indicator-content
+				position absolute
+				transform translateX(-50%)
+				white-space nowrap
+
+			&:first-child, &:last-child
+				.puzzles-progress-indicator-content
+					transform translateX(0)
+
+			&:last-child
+				.puzzles-progress-indicator-content
+					right 0

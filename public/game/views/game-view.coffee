@@ -4,6 +4,7 @@ MatchRendererView       = (require 'common/components/match-renderer').View
 UserPanelView           = (require 'common/components/user-panel').View
 CountdownCircleView     = (require 'common/components/countdown-circle').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
+PuzzlesProgress = (require 'common/components/puzzles-progress').View
 
 RoundPhase = require 'cssqd-shared/models/round-phase'
 
@@ -16,8 +17,7 @@ GameView = (context) ->
 		nxt.Element 'div',
 			nxt.Class 'game-screen-container'
 
-			nxt.Element 'div',
-				nxt.Text 'thread'
+			PuzzlesProgress context.puzzlesProgressViewModel
 
 			nxt.Element 'div',
 				nxt.Class 'levels-info'

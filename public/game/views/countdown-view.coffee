@@ -1,5 +1,6 @@
 TimespanView 						= (require 'common/components/timespan').View
 UserPanelView           = (require 'common/components/user-panel').View
+PuzzlesProgress = (require 'common/components/puzzles-progress').View
 
 CountdownView = (context) ->
 	nxt.Element 'div',
@@ -9,6 +10,8 @@ CountdownView = (context) ->
 
 		nxt.Element 'div',
 			nxt.Class 'game-countdown-container'
+
+			PuzzlesProgress context.puzzlesProgressViewModel
 
 			nxt.Element 'div',
 				nxt.Class 'levels-info'

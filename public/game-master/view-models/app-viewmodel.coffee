@@ -14,6 +14,7 @@ GameControlButtonViewModel = (require 'common/components/game-control-button').V
 { PlayersListViewModel, PlayersScoresListViewModel } = require 'common/components/players-list'
 MatchRenderer = require 'common/components/match-renderer'
 OccurrenceIndicator = require 'common/components/occurrence-indicator'
+PuzzlesProgressViewModel = (require 'common/components/puzzles-progress').ViewModel
 CountdownCircleViewModel = (require 'common/components/countdown-circle').ViewModel
 
 class AppViewModel
@@ -22,7 +23,7 @@ class AppViewModel
 		@user_data = new nx.Cell
 		@game_session_id = new nx.Cell
 		@round_phase = new nx.Cell
-		@puzzles = new nx.Cell
+		@puzzles = new nx.Cell value: []
 		@puzzle = new nx.Cell
 		@command = new nx.Cell
 		@countdown = new nx.Cell
@@ -131,6 +132,7 @@ class AppViewModel
 			{ radius: 40, strokeWidth: 5 }
 
 		@playersListViewModel = new PlayersListViewModel @players
+		@puzzlesProgressViewModel = new PuzzlesProgressViewModel @puzzles, @current_puzzle_index
 		@playersScoresListViewModel = new PlayersScoresListViewModel @aggregate_score
 
 		@round_countdown = new nx.Cell

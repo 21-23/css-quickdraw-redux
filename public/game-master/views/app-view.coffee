@@ -6,6 +6,7 @@ GameControlButtonView = (require 'common/components/game-control-button').View
 { PlayersListView, PlayersSolutionsListView, PlayersScoreListView } = require 'common/components/players-list'
 MatchRendererView       = (require 'common/components/match-renderer').View
 OccurrenceIndicatorView = (require 'common/components/occurrence-indicator').View
+PuzzlesProgress = (require 'common/components/puzzles-progress').View
 
 { formatMSS } = require '../../common/utils/date-time-utils'
 
@@ -19,6 +20,8 @@ AppView = (context) ->
 
 		nxt.Element 'div',
 			nxt.Class 'game-master-screen-container'
+
+				PuzzlesProgress context.puzzlesProgressViewModel
 
 				nxt.Binding context.puzzles, (puzzles) ->
 					nxt.Element 'div',
