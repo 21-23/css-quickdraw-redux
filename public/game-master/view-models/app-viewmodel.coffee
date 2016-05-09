@@ -44,15 +44,19 @@ class AppViewModel
 
 		@gameControlButtonViewModel = new GameControlButtonViewModel @round_phase
 
-		@command['<-'] @gameControlButtonViewModel.click, =>
-			if @round_phase.value is RoundPhase.IN_PROGRESS
-				new GameSessionCommand GameSessionCommand.END_ROUND
-			else if -1 <= @current_puzzle_index.value < @puzzles.value.length - 1
-				@current_puzzle_index.value++
-				new GameSessionCommand GameSessionCommand.START_ROUND, puzzle_index: @current_puzzle_index.value
 
-
-
+		@gameControlButtonViewModel.click['->'] \
+			(=>
+				if @round_phase.value is RoundPhase.IN_PROGRESS or @current_puzzle_index.value < @puzzles.value.length - 1
+					@command
+				else
+					[]),
+			=>
+				if @round_phase.value is RoundPhase.IN_PROGRESS
+					new GameSessionCommand GameSessionCommand.END_ROUND
+				else if -1 <= @current_puzzle_index.value < @puzzles.value.length - 1
+					@current_puzzle_index.value++
+					new GameSessionCommand GameSessionCommand.START_ROUND, puzzle_index: @current_puzzle_index.value
 
 
 		@command['<-'] @StartButtonViewModel.click, =>
