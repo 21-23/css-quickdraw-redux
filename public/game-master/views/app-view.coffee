@@ -50,7 +50,7 @@ AppView = (context) ->
 
 								nxt.Element 'p',
 									nxt.Class 'levels-info-name'
-									nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name or "Puzzle #{puzzle?.index}"
+									nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name or 'Puzzle'
 
 								GameControlButtonView context.gameControlButtonViewModel
 
