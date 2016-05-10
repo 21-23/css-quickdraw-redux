@@ -4,18 +4,14 @@ CounterCommand = require 'cssqd-shared/nx/counter-command'
 class PlayersListViewModel
 
 	constructor: (@players) ->
-		@solvedCount = Functor
-			cell:
-				value: 0
-			map:
-				'<-': [
-					@players.transform.change
-					({ value: {correct} }) ->
-						if correct
-							CounterCommand.INCREASE
-						else
-							CounterCommand.RETAIN
-				]
-
+		@solvedCount = new nx.Cell
+			'<-': [
+				[ @players.transform.change, @players.length ],
+				(change, length) =>
+					@players.value.reduce \
+						((solved, player) ->
+							if player.solution.value?.correct then (solved + 1) else solved),
+						0
+			]
 
 module.exports = PlayersListViewModel
