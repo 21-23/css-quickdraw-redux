@@ -12,13 +12,13 @@ light-shadow = 0 1px 4px rgba(0, 0, 0, .15)
 	padding 0 main-left-offset 0 main-right-offset
 
 	.puzzles-progress
-		margin-bottom 0.8em
+		margin-bottom 1.3em
 
 	.levels-info-num
 		color secondary-text-color
 		text-shadow light-shadow
-		font-size 1.2em
-		margin 0
+		font-size 1.5em
+		margin 0 .3em 0 0
 
 	.levels-info-name
 		color main-text
@@ -33,7 +33,7 @@ light-shadow = 0 1px 4px rgba(0, 0, 0, .15)
 		justify-content space-between
 		align-items stretch
 		flex-wrap wrap
-		margin .8em 0
+		margin .4em 0 .8em 0
 
 	.controls-selector-banned-container
 		display flex
@@ -41,19 +41,24 @@ light-shadow = 0 1px 4px rgba(0, 0, 0, .15)
 		align-items center
 		color secondary-text-color
 		text-shadow light-shadow
+		min-height 35px
 
 	.controls-selector-input
 		flex 1
 		box-sizing border-box
 		outline none
-		padding 10px
+		padding 20px
 		background lighter-than-background
 		border 1px solid lighter-than-background-border
 		border-radius 3px
 		color holy-white
+		align-self center
 
 		&::placeholder
 			color secondary-text-color
+
+	.controls-timer-stub
+		height 90px
 
 	.timespan
 		font-size 15em

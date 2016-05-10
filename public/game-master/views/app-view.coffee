@@ -36,13 +36,13 @@ AppView = (context) ->
 								nxt.Class 'level-controls'
 
 								nxt.Element 'p',
-									nxt.Class 'levels-info-num'
-									nxt.Binding context.current_puzzle_index, (index) ->
-										nxt.Text "Level #{index + 1}:"
-
-								nxt.Element 'p',
-									nxt.Class 'levels-info-name'
-									nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name or 'Puzzle'
+									nxt.Element 'span',
+										nxt.Class 'levels-info-num'
+										nxt.Binding context.current_puzzle_index, (index) ->
+											nxt.Text "##{index + 1}"
+									nxt.Element 'span',
+										nxt.Class 'levels-info-name'
+										nxt.Binding context.current_puzzle, (puzzle) -> nxt.Text puzzle?.name or 'Puzzle'
 
 								GameControlButtonView context.gameControlButtonViewModel
 

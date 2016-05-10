@@ -22,13 +22,13 @@ GameView = (context) ->
 			nxt.Element 'div',
 				nxt.Class 'levels-info'
 
-				nxt.Element 'p',
+				nxt.Element 'span',
 					nxt.Class 'levels-info-num'
 					nxt.Binding context.puzzle, (puzzle) ->
 						if puzzle?
-							nxt.Text "Level #{puzzle.index + 1}:"
+							nxt.Text "##{puzzle.index + 1}"
 
-				nxt.Element 'p',
+				nxt.Element 'span',
 					nxt.Class 'levels-info-name'
 					nxt.Binding context.puzzle, (puzzle) -> nxt.Text puzzle?.name or "Puzzle #{puzzle?.index}"
 
