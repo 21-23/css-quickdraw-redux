@@ -8,6 +8,5 @@ require 'common/components/toggle-list/test.coffee'
 require 'common/entities/task/viewmodels/test/task-pearl-viewmodel.spec'
 
 ### Common Utils ###
-require 'common/utils/test/cookie-utils.spec'
 require 'common/utils/test/data-type-utils.spec'
 require 'common/utils/test/date-time-utils.spec'
