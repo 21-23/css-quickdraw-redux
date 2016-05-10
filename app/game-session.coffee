@@ -212,6 +212,5 @@ class GameSession
 	remove_participant: (participant) ->
 		@participants.remove participant
 		@participants_by_id.delete participant.id.toString()
-		@score.delete participant.id.toString()
 
 module.exports = GameSession
