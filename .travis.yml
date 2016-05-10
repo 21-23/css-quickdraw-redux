@@ -22,6 +22,7 @@ services:
 after_success:
   - eval "$(ssh-agent -s)"
   - echo $deploy_key > ~/.ssh/id_rsa
+  - echo $deploy_key_pub > ~/.ssh/id_rsa.pub
   - chmod 600 ~/.ssh/id_rsa
   - ssh-add ~/.ssh/id_rsa
   - git remote add DO git@cssqd.io:cssqd
