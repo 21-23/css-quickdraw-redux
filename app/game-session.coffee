@@ -168,12 +168,11 @@ class GameSession
 					if player_id isnt @game_master_id.toString()
 						round_score[player_id] = value
 				@scorekeeper.add_round round_score
-				for score in do @scorekeeper.aggregate
-					if @participants_by_id.has score.id
-						player = @participants_by_id.get score.id
-						score.name = player.user_data.value.display_name
+				aggregate_score = do @scorekeeper.aggregate
+				for score in aggregate_score when @participants_by_id.has score.id
+					player = @participants_by_id.get score.id
+					score.name = player.user_data.value.display_name
 					score
-
 
 		@solution['->'] \
 			(({player_id}) -> Switchboard.to_score player_id),
