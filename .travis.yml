@@ -8,9 +8,6 @@ before_install:
   - sh -e /etc/init.d/xvfb start
 
 before_script:
-  - echo -e "Host cssqd.io\n\tUser git\n\tIdentityFile ~/.ssh/id_rsa_cssqd\n\tStrictHostKeyChecking no\n\tPasswordAuthentication no\n\tCheckHostIP no\n\tBatchMode yes\n" >> ~/.ssh/config
-  - git config --global user.email "<team@cssqd.io>"
-  - git config --global user.name "<cssqd team> (via TravisCI)"
   - npm install -g bower
   - bower i
 
@@ -20,12 +17,3 @@ notifications:
 
 services:
   - mongodb
-
-after_success:
-  - eval "$(ssh-agent -s)"
-  - echo $deploy_key > ~/.ssh/id_rsa_cssqd
-  - echo $deploy_key_pub > ~/.ssh/id_rsa_cssqd.pub
-  - chmod 600 ~/.ssh/id_rsa_cssqd
-  - ssh-add ~/.ssh/id_rsa_cssqd
-  - git remote add DO git@cssqd.io:cssqd
-  - git push DO master
