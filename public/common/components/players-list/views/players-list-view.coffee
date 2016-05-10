@@ -57,7 +57,7 @@ PlayersListView = (context) ->
 					nxt.Element 'div',
 						nxt.Class '-time'
 						nxt.Binding player.solution, (solution) ->
-							if solution?
+							if solution?.correct
 								nxt.Text formatMSS solution.time
 					nxt.Element 'div',
 						nxt.Class '-length'

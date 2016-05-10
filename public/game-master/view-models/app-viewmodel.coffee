@@ -141,15 +141,6 @@ class AppViewModel
 
 		@puzzlesProgressViewModel.select['->'] @current_puzzle_index
 
-		@round_countdown = new nx.Cell
-		@round_phase['->'] \
-			((phase) =>
-				if phase is RoundPhase.COUNTDOWN
-					@round_countdown
-				else
-					[]),
-			-> yes
-
 		@round_phase['->'] \
 			((phase) =>
 				if phase is RoundPhase.COUNTDOWN
@@ -157,8 +148,6 @@ class AppViewModel
 				else
 					[]),
 			-> {}
-
-		@playersListViewModel.solvedCount['<-'] @round_countdown, -> 0
 
 		@matchRenderer = new MatchRenderer.ViewModel
 		@matchRenderer.tag_list['<-'] @puzzle,	({tags}) -> tags
