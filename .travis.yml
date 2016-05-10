@@ -21,8 +21,8 @@ services:
 
 after_success:
   - eval "$(ssh-agent -s)"
-  - echo $deploy_key > .travis/deploy_key.pem
-  - chmod 600 .travis/deploy_key.pem
-  - ssh-add .travis/deploy_key.pem
+  - echo $deploy_key > ~/.ssh/id_rsa
+  - chmod 600 ~/.ssh/id_rsa
+  - ssh-add ~/.ssh/id_rsa
   - git remote add DO git@cssqd.io:cssqd
   - git push DO master
