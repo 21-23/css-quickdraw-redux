@@ -14,7 +14,15 @@ class Service
 
 	start: (http_server) ->
 
-		@sandbox = new Sandbox
+		facets_sandbox_logger = bunyan.createLogger
+			name: 'cssqd-facets-sandbox'
+			streams: [
+				path: "#{__dirname}/../cssqd-facets-sandbox-log.json"
+			]
+		@facets_sandbox_log = (info) ->
+			facets_sandbox_logger.info info
+
+		@sandbox = new Sandbox @facets_sandbox_log
 
 		@game_sessions = null
 		GameSessionModel
