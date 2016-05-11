@@ -4,4 +4,6 @@
 		db: "cssqd-dev"
 	service:
 		host: 'localhost'
+	id_aliases:
+		local: '565844f126c449d58eff2111'
 }

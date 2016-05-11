@@ -5,4 +5,6 @@
 	service:
 		host: 'cssqd.io'
 		port: 3000
+	id_aliases:
+		cssconfbp: '57332ef8a694241afc85df3b'
 }
