@@ -1,111 +1,137 @@
-landing-background-color = #000
+@import '~common/stylesheets/color-palette'
+@import '~common/stylesheets/common'
 
-landing-tagline-color = #fff
-landing-tagline-font-size = 2em
-landing-tagline-font-family = Monospace, Consolas, 'Menlo Regular'
+scroll-down-arrow-width = 4vw
+scroll-down-arrow-offset = (100vw - 4vw) / 2
 
-landing-scroll-down-arrow-width = 7%
-landing-scroll-down-arrow-height = 60px
 
-landing-scroll-login-icon-width = 50px
-landing-scroll-login-icon-height = 50px
-landing-scroll-login-icon-spacing = 10px
-landing-scroll-login-panel-height = landing-scroll-login-icon-height + landing-scroll-login-icon-spacing
-
-landing-scroll-items-bttom-offset = 10px
-
-main-background = #212121
-
-main-app-name-color = #fff
-main-app-name-font-size = 3em
-main-app-description-color = rgba(255, 255, 255, .7)
-
-main-space-width = 80%
-main-space-left-offset = (100% - main-space-width) / 2
-
-main-login-panel-background = #333
-main-login-icon-width = 100px
-main-login-icon-height = 100px
-main-login-icon-spacing = 10px
-
-footer-background = #1f1f1f
-footer-height = 70px
-footer-color = rgba(255, 255, 255 .8)
-
-green-main = #349161
-
-@require 'landing-background.styl'
-
-body
-	background-color landing-background-color
-	background-repeat no-repeat
-	background-size 100%
-
-.tagline
-	color landing-tagline-color
-	font-family landing-tagline-font-family
-	font-size landing-tagline-font-size
-	margin 1em
-	position absolute
+.landing-video-container
+	position fixed
 	top 0
 	left 0
+	width 100%
+	height 100vh
 
-	.line
-		margin .5em
+	.landing-video-image-fallback
+		height 100%
+		background url(./img/landing-bg-1366.jpg) no-repeat #000
 
-	.line-2
-		margin-left landing-tagline-font-size
-
-.scroll-down-container
+.landing-content
 	position absolute
-	bottom landing-scroll-items-bttom-offset
-	left 50% - (landing-scroll-down-arrow-width / 2)
-	width landing-scroll-down-arrow-width
-	height landing-scroll-down-arrow-height
-	margin auto
-	cursor pointer
+	width 100%
+
+	header
+		position relative
+		width 100%
+		height 100vh
+
+	main
+		width 100%
+		padding 0 main-left-offset 0 main-right-offset
+		box-sizing border-box
+		background game-background repeat-x background-green-0
+
+		section
+			padding-top 4rem
+
+			h2
+				color main-text
+				text-align center
+				margin 0 0 1.5rem 0
+
+	footer
+		width 100%
+		padding 0 main-left-offset 0 main-right-offset
+		box-sizing border-box
+		background background-green-0
+		font-size .8rem
+
+	.tagline
+		position relative
+		top	3rem
+		padding-left main-left-offset
+		color #fff
+		font-family Monospace, Consolas, 'Menlo Regular'
+		font-size 1.7rem
+
+		.line
+			margin 0
+			padding .5rem
+
+		.line-2
+			padding-left 2rem
 
 	.scroll-down-arrows
-		width 100%
-		height 100%
-		min-width 55px
-		max-width 70px
+		position absolute
+		bottom 2rem
+		width scroll-down-arrow-width
+		height 2rem
+		margin-left scroll-down-arrow-offset
 
 		.scroll-down-arrow
-			stroke #fff
-			fill transparent
-			stroke-width 3px
-			animation scroll-down-arrow 1.5s infinite
+				stroke holy-white
+				fill transparent
+				stroke-width 3px
+				animation scroll-down-arrow 1.5s infinite
 
-			&.arrow-1
-				animation-delay -.6s
-			&.arrow-2
-				animation-delay -.3s
-			&.arrow-3
-				animation-delay 0s
+				&.arrow-1
+					animation-delay -.6s
+				&.arrow-2
+					animation-delay -.3s
+				&.arrow-3
+					animation-delay 0s
 
-.scroll-login-panel
-	position absolute
-	bottom landing-scroll-items-bttom-offset
-	right 0
-	height landing-scroll-login-panel-height
+	.about
+		.about-description-container
+			margin 0
+			color holy-white
+			text-align center
+			line-height 1.5em
 
-	.icon
-		display inline-block
-		width landing-scroll-login-icon-width
-		height landing-scroll-login-icon-height
-		margin landing-scroll-login-icon-spacing
-		background-size contain
-		background-repeat no-repeat
+	.schedule
+		.schedule-list
+			margin 0
+			padding 0
+			list-style none
+			padding-left 5rem
 
-		&.fb
-			background-image url(./img/fb-white.png)
-		&.gh
-			background-image url(./img/gh-white.png)
-		&.gp
-			background-image url(./img/gp-white.png)
-		&.tw
-			background-image url(./img/tw-white.png)
+			.schedule-entry
+				line-height 2rem
+
+				.entry-link
+					color secondary-action-color
+					text-decoration none
+					font-weight bold
+					padding .2rem
+
+					&:hover
+						background secondary-action-background-color
+
+				.entry-meta
+					color holy-white
+
+				&.-past
+					.entry-meta
+						color alpha(holy-white, .8)
+
+	//super draft
+	.crew
+		padding-top 4rem
+		h3
+			color holy-white
+			margin 0 0 .5rem 0
+		ul
+			margin 0
+			padding 0
+			list-style none
+			padding 0 0 1.5rem 2rem
+
+			li
+				display inline-block
+				padding-right 2rem
+				a
+					color secondary-action-color
+					text-decoration none
 
 @keyframes scroll-down-arrow
 	0%
@@ -119,81 +145,3 @@ body
 
 	100%
 		opacity 0
-
-//------------------- Main Page -----------------------------
-
-main
-	position relative
-	top 100vh
-	text-align center
-	background main-background
-	color #fff
-
-	.app-name
-		color main-app-name-color
-		background landing-background-color
-		border-bottom 5px solid green-main
-		margin 0
-		font-size main-app-name-font-size
-		line-height main-app-name-font-size / 2
-		box-shadow 0 1px 0 0 darken(green-main, 50%)
-
-	.app-description
-		display flex
-		justify-content space-between
-		align-items stretch
-		width main-space-width
-		margin auto
-		color main-app-description-color
-
-		.new-game-flow-description, .play-flow-description
-			width 45%
-			text-align justify
-
-			h2
-				text-align center
-				margin 0
-				color #fff
-
-	.demo
-		width main-space-width
-		margin 1em auto
-
-		.demo-image
-			width 100%
-
-.login-panel
-	display flex
-	justify-content space-around
-	align-items stretch
-	padding 0 main-space-left-offset
-	background main-login-panel-background
-
-	.icon
-		display inline-block
-		width main-login-icon-width
-		height main-login-icon-height
-		margin main-login-icon-spacing
-		background-size contain
-		background-repeat no-repeat
-
-		&.fb
-			background-image url(./img/fb-white.png)
-		&.gh
-			background-image url(./img/gh-white.png)
-		&.gp
-			background-image url(./img/gp-white.png)
-		&.tw
-			background-image url(./img/tw-white.png)
-
-footer
-	position relative
-	top 100vh
-	background footer-background
-	color footer-color
-	line-height footer-height
-	text-align center
-	font-weight bold
-
-	.info
-		margin 10px
