@@ -15,6 +15,9 @@ class SessionManager
 		session_cookie = cookies.find ({name}) ->
 			name is 'koa:sess'
 
+		unless session_cookie?
+			return done new Error 'Not Authenticated'
+
 		session_data = JSON.parse (new Buffer session_cookie.value, 'base64').toString 'utf8'
 		user_id = session_data.passport.user
 
@@ -25,7 +28,7 @@ class SessionManager
 				facet:     facet
 				transport: transport
 				log:       @service.log
-			done session
+			done null, session
 		else
 			User.findOne id:user_id, (err, user) =>
 				facet = new ParticipantFacet @service, user
@@ -41,6 +44,6 @@ class SessionManager
 					old_session.facet.active = no
 
 				@sessions.set user_id, session
-				done session
+				done null, session
 
 module.exports = SessionManager
