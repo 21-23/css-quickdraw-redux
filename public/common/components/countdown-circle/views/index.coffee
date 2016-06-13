@@ -7,6 +7,7 @@ CountdownCircleView = (context) ->
 
 	nxt.Element 'div',
 		nxt.Class 'countdown-circle'
+		nxt.Class context.circleOptions.countdownCssClass
 		nxt.Style 'width': "#{size}px", 'height': "#{size}px"
 
 		nxt.SvgElement 'svg',

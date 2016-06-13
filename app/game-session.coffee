@@ -117,17 +117,20 @@ class GameSession
 		@selector = new nx.Cell
 			'->': [@sandbox.selector]
 
-		@sandbox.match['->'] ({player_id}) ->
-			Switchboard.to player_id, 'match'
+		@sandbox.match['->'] (({player_id}) ->
+			Switchboard.to player_id, 'match'),
+			(match) =>
+				match.time = @get_solution_time match.time_stamp
+				match
 
 		@solution = new nx.Cell
 			'<-': [
 				@sandbox.match
-				({result, selector, player_id}) =>
+				({result, selector, player_id, time_stamp}) =>
 					if result is SelectorMatchResult.POSITIVE
 						player_id: player_id
 						correct:   yes
-						time:      do @get_solution_time
+						time:      @get_solution_time time_stamp
 						selector:  selector
 					else
 						player_id: player_id
@@ -197,9 +200,8 @@ class GameSession
 
 		@puzzles.value = puzzles
 
-	get_solution_time: ->
-		now = do Date.now
-		now - @round_start_time.value
+	get_solution_time: (time_stamp) ->
+		time_stamp - @round_start_time.value
 
 	add_participant: (participant) ->
 		@participants.append participant

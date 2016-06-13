@@ -55,12 +55,11 @@ GameView = (context) ->
 								nxt.Attr 'disabled' if isSolved
 
 				nxt.Binding context.puzzle_solved, (isSolved) ->
-					if isSolved
-						nxt.Element 'div',
-							nxt.Class 'success-marker'
-							nxt.Text '✓'
-					else
-						CountdownCircleView context.roundTimerViewModel
+					CountdownCircleView \
+						if isSolved
+							context.solutionTimerViewModel
+						else
+							context.roundTimerViewModel
 
 			MatchRendererView context.matchRenderer
 

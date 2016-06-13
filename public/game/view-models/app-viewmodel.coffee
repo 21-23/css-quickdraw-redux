@@ -77,8 +77,15 @@ class AppViewModel
 			@currentRoundTimeLimit
 			COUNTDOWN_TIMER_STEP
 			dateTimeFormats['m:ss']
-			{ radius: 40, strokeWidth: 5 }
+			{ radius: 40, strokeWidth: 5, countdownCssClass: 'round-timer' }
 		@countdownViewModel = new TimespanViewModel @countdown, dateTimeFormats['s']
+
+		@solutionTime = new nx.Cell '<-': [@match, (match) -> match.time]
+		@solutionTimerViewModel = new CountdownCircleViewModel @solutionTime,
+			@solutionTime
+			0
+			dateTimeFormats['m:ss']
+			{ radius: 40, strokeWidth: 5, countdownCssClass: 'solution-timer' }
 
 		@puzzles['<-'] @session_info, (info) -> info.puzzle_names.map (name) -> name: name
 		@puzzlesProgressViewModel = new PuzzlesProgressViewModel @puzzles, @currentRoundIndex

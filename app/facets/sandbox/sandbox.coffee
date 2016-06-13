@@ -18,7 +18,7 @@ class Sandbox
 							message: 'match_in_memory'
 							selector: selector
 							match: match
-						match = @cloneMatch match, player_id
+						match = @cloneMatch match, player_id, do Date.now
 						@match.value = match
 						[]
 					else
@@ -29,7 +29,12 @@ class Sandbox
 			]
 
 		@match = new nx.Cell
-			'<-': [@remote.match]
+			'<-': [
+				@remote.match
+				(match) ->
+					match.time_stamp = do Date.now
+					match
+			]
 			action: (match) =>
 				@memory.set match.selector, match
 
@@ -39,12 +44,13 @@ class Sandbox
 
 		@log 'sandbox created'
 
-	cloneMatch: (match, player_id) ->
+	cloneMatch: (match, player_id, time_stamp) ->
 		matchClone =
 			selector: match.selector
 			result: match.result
 			ids: do match.ids.slice
 			player_id: player_id
+			time_stamp: time_stamp
 
 		if match.banned
 			matchClone.banned =
