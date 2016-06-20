@@ -74,7 +74,7 @@
     "mongoose": "^4.2.7",
     "nconf": "^0.7.1",
     "nexus-node": "DaQuirm/nexus",
-    "nexus-warp": "DaQuirm/nexus-warp#cssconf-budapest",
+    "nexus-warp": "DaQuirm/nexus-warp",
     "passport": "^0.3.0",
     "passport-facebook": "^2.0.0",
     "passport-github": "^1.0.0",
