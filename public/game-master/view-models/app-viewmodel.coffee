@@ -133,7 +133,7 @@ class AppViewModel
 			@currentRoundTimeLimit
 			COUNTDOWN_TIMER_STEP
 			dateTimeFormats['m:ss']
-			{ radius: 40, strokeWidth: 5 }
+			{ radius: 60, strokeWidth: 5 }
 
 		@playersListViewModel = new PlayersListViewModel @players
 		@puzzlesProgressViewModel = new PuzzlesProgressViewModel @puzzles, @current_puzzle_index
