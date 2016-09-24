@@ -5,10 +5,7 @@ bunyan = require 'bunyan'
 { APP_BASE_URL } = require 'cssqd-config/constants'
 
 SessionManager = require './session-manager'
-
-Sandbox = require './facets/sandbox/sandbox'
-GameSession = require './game-session'
-{GameSessionModel} = require './common/models/game-session'
+QuickDraw = require './quickdraw'
 
 class Service
 
@@ -22,19 +19,6 @@ class Service
 		@facets_sandbox_log = (info) ->
 			facets_sandbox_logger.info info
 
-		@sandbox = new Sandbox @facets_sandbox_log
-
-		@game_sessions = null
-		GameSessionModel
-			.find {}
-			.populate 'puzzles'
-			.exec (err, sessions) =>
-				@game_sessions = new Map sessions.map (session) =>
-					[
-						do session._id.toString,
-						new GameSession session, @sandbox
-					]
-
 		logger = bunyan.createLogger
 			name: 'cssqd-warp'
 			streams: [
@@ -47,11 +31,21 @@ class Service
 				user_id: session.facet.participant?.id or 'sandbox'
 				data: data
 
-		logger.info 'service-start'
-		new warp.Service
-			transport:         new warp.WebSocketTransport
-				http_server:     http_server
-				session_manager: new SessionManager @
-			log: @log
+		app = do QuickDraw.empty
+
+		QuickDraw
+			.do app, [
+				QuickDraw.create_sandbox @facets_sandbox_log
+				QuickDraw.load_sessions
+			]
+			.catch console.error
+			.then =>
+				logger.info 'service-start'
+				{@sandbox} = app
+				new warp.Service
+					transport:         new warp.WebSocketTransport
+						http_server:     http_server
+						session_manager: new SessionManager @
+					log: @log
 
 module.exports = Service
