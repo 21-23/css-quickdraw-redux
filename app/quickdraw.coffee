@@ -27,8 +27,8 @@ QuickDraw =
 		GameSessionModel
 			.find {}
 			.populate 'puzzles'
-			.exec (err, sessions) =>
-				state.game_session_by_id = new Map sessions.map (session) =>
+			.exec (err, sessions) ->
+				state.game_session_by_id = new Map sessions.map (session) ->
 					[
 						do session._id.toString,
 						new GameSession session, state.sandbox
