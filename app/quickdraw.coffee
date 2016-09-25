@@ -34,7 +34,7 @@ QuickDraw =
 		json =
 			game_sessions: {}
 
-		game_sessions_by_id: state.game_sessions_by_id.forEach (game_session, id) =>
+		game_sessions_by_id: state.game_sessions_by_id.forEach (game_session, id) ->
 			json.game_sessions[id] = GameSession.toJSON game_session
 
 		json
