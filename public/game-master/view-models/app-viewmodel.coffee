@@ -18,7 +18,7 @@ PuzzlesProgressViewModel = (require 'common/components/puzzles-progress').ViewMo
 CountdownCircleViewModel = (require 'common/components/countdown-circle').ViewModel
 
 class AppViewModel
-	constructor: (sessionId) ->
+	constructor: (session_id) ->
 
 		@user_data = new nx.Cell
 		@game_session_id = new nx.Cell
@@ -102,26 +102,32 @@ class AppViewModel
 						puzzle?.selector if phase is RoundPhase.FINISHED
 				]
 
+		@state = new nx.Cell
+			action: console.log
+
 		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
-				user_data:       @user_data
-				game_session_id: @game_session_id
-				role:            @role
+				state:   @state
+				command: @command
 
-				round_phase:     @round_phase
-				puzzles:         @puzzles
-				puzzle:          @puzzle
-
-				command:         @command
-
-				countdown:       @countdown
-				solution:        @solution
-				players:
-					link: @players
-					item_from_json: (json) -> new Player json
-
-				aggregate_score: @aggregate_score
+				# user_data:       @user_data
+				# game_session_id: @game_session_id
+				# role:            @role
+				#
+				# round_phase:     @round_phase
+				# puzzles:         @puzzles
+				# puzzle:          @puzzle
+				#
+				# command:         @command
+				#
+				# countdown:       @countdown
+				# solution:        @solution
+				# players:
+				# 	link: @players
+				# 	item_from_json: (json) -> new Player json
+				#
+				# aggregate_score: @aggregate_score
 
 		@userPanelViewModel = new UserPanelViewModel @user_data
 
@@ -159,6 +165,11 @@ class AppViewModel
 			({banned_characters}) -> banned_characters
 
 		#Keep session ID set as the last operation as it triggers the data flow
-		@game_session_id.value = sessionId
+		@command.value =
+			domain:          'game_session'
+			name:            'add_participant'
+			game_session_id: session_id
+			args:            []
+		# @game_session_id.value = sessionId
 
 module.exports = AppViewModel

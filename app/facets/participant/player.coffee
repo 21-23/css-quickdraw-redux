@@ -25,13 +25,13 @@ class Player
 			]
 
 	get_entities: ->
-		session_info: @participant.session_info
-		round_phase:  @participant.round_phase
-		puzzle:       @participant.puzzle
+		# session_info: @participant.session_info
+		# round_phase:  @participant.round_phase
+		# puzzle:       @participant.puzzle
 
-		countdown: @participant.countdown
+		# countdown: @participant.countdown
 
 		selector: @participant.selector # Player only
-		match:    @participant.match    # Player only
+		# match:    @participant.match    # Player only
 
 module.exports = Player

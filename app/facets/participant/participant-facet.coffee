@@ -13,27 +13,30 @@ class ParticipantFacet
 		@participant = new Participant @service, user
 
 		@entities =
-			user_data:       @participant.user_data
-			game_session_id: @participant.game_session_id
-			role:            @participant.role
+			command: @participant.command
+			state:   @participant.state
 
-		@dynamic_entities = new nx.Cell
-			'<-': [
-				@participant.role
-				(role) =>
-					switch role
-						when GameRole.GAME_MASTER
-							@game_master = new GameMaster @participant
-							do @game_master.get_entities
+			# user_data:       @participant.user_data
+			# game_session_id: @participant.game_session_id
+			# role:            @participant.role
 
-						when GameRole.PLAYER
-							@player = new Player @participant
-							do @player.get_entities
-			]
+		# @dynamic_entities = new nx.Cell
+		# 	'<-': [
+		# 		@participant.role
+		# 		(role) =>
+		# 			switch role
+		# 				when GameRole.GAME_MASTER
+		# 					@game_master = new GameMaster @participant
+		# 					do @game_master.get_entities
+		#
+		# 				when GameRole.PLAYER
+		# 					@player = new Player @participant
+		# 					do @player.get_entities
+		# 	]
 
 	destroy: (session) ->
-		if @active
-			@participant.disconnected.value = yes
+		# if @active
+		# 	@participant.disconnected.value = yes
 
 	get_model: -> @participant
 

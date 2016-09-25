@@ -1,38 +1,42 @@
 {nx} = require 'nexus-node'
 co   = require 'co'
 
-Sandbox = require './facets/sandbox/sandbox'
-
 GameSession = require './game-session'
-{GameSessionModel} = require './common/models/game-session'
+Sandbox = require './facets/sandbox/sandbox'
 
 QuickDraw =
 
-	do: (state, actions) ->
-		co ->
-			for action in actions
-				state = yield action state
+	Prism: (zoom) ->
+		(state, actions) ->
+			QuickDraw.do (zoom state), actions
 			state
 
-	empty: ->
-		game_session_by_id: null
-		sandbox: null
+	do: (state, actions) ->
+		for action in actions
+			state = action state
+		state
+
+	init: (game_sessions) ->
+		->
+			game_sessions_by_id: new Map game_sessions.map (game_session) ->
+				[
+					do game_session._id.toString,
+					GameSession.create game_session
+				]
+			sandbox: null
 
 	create_sandbox: (logger) ->
 		(state) ->
 			state.sandbox = new Sandbox logger
 			state
 
-	load_sessions: (state) ->
-		GameSessionModel
-			.find {}
-			.populate 'puzzles'
-			.exec (err, sessions) ->
-				state.game_session_by_id = new Map sessions.map (session) ->
-					[
-						do session._id.toString,
-						new GameSession session, state.sandbox
-					]
-				state
+	toJSON: (state) ->
+		json =
+			game_sessions: {}
+
+		game_sessions_by_id: state.game_sessions_by_id.forEach (game_session, id) =>
+			json.game_sessions[id] = GameSession.toJSON game_session
+
+		json
 
 module.exports = QuickDraw

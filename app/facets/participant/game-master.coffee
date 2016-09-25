@@ -23,19 +23,19 @@ class GameMaster
 		@participant.aggregate_score = new nx.Cell
 
 	get_entities: ->
-		round_phase: @participant.round_phase
-		puzzle:      @participant.puzzle
-		puzzles:     @participant.puzzles # GM only
+		# round_phase: @participant.round_phase
+		# puzzle:      @participant.puzzle
+		# puzzles:     @participant.puzzles # GM only
 
-		countdown:   @participant.countdown
-		solution:    @participant.solution
+		# countdown:   @participant.countdown
+		# solution:    @participant.solution
 
 		command:     @participant.command # GM only
 
-		players:
-			link: @participant.players
-			item_to_json: ({user_data: {value}}) -> value
+		# players:
+		# 	link: @participant.players
+		# 	item_to_json: ({user_data: {value}}) -> value
 
-		aggregate_score: @participant.aggregate_score #GM only
+		# aggregate_score: @participant.aggregate_score #GM only
 
 module.exports = GameMaster

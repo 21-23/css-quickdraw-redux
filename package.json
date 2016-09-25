@@ -9,7 +9,7 @@
   "scripts": {
     "coffeelint": "find . ! -path \"./node_modules/*\" -path \"*.coffee\" | xargs ./node_modules/coffeelint/bin/coffeelint",
     "dev": "NODE_ENV=dev npm start",
-    "dev-debug": "NODE_ENV=dev NODE_PATH=./app coffee --nodejs --debug-brk index.coffee 2>>cssqderr.log",
+    "dev-debug": "NODE_ENV=dev NODE_PATH=./app coffee --nodejs --inspect index.coffee 2>>cssqderr.log",
     "dev-test": "NODE_ENV=test npm start",
     "dev-test-debug": "NODE_ENV=test NODE_PATH=./app coffee --nodejs --debug-brk index.coffee 2>>cssqderr.log",
     "prepush": "npm run coffeelint && npm test",

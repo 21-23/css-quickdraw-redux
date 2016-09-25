@@ -22,6 +22,8 @@ connectionString = "#{mongohost}/#{mongodb}"
 console.log "mongo connection string: #{connectionString}"
 console.log "port: #{cssqdConfig.get 'service:port'}"
 
+mongoose.Promise = Promise
+
 {connection} = mongoose.connect connectionString
 connection.on 'error', console.error.bind console, 'mongoose connection error:'
 connection.once 'open', ->
