@@ -44,7 +44,6 @@ class AppViewModel
 
 		@gameControlButtonViewModel = new GameControlButtonViewModel @round_phase
 
-
 		@gameControlButtonViewModel.click['->'] \
 			(=>
 				if @round_phase.value is RoundPhase.IN_PROGRESS or @current_puzzle_index.value < @puzzles.value.length - 1
@@ -119,13 +118,14 @@ class AppViewModel
 		@state['->'] @round_phase, ({game_sessions}) ->
 			game_sessions[session_id].round_phase
 
+		@state['->'] @user_data, ({$user_data}) -> $user_data
+
 		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
 				state:   @state
 				command: @command
 
-				# user_data:       @user_data
 				# game_session_id: @game_session_id
 				# role:            @role
 				#

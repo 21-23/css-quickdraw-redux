@@ -22,7 +22,11 @@ class Participant
 	constructor: (@service, @user_data) ->
 
 		@state = new nx.Cell
-			'<-': [@service.state_json]
+			'<-': [
+				@service.state_json
+				(state) =>
+					Object.assign $user_data: @user_data, state
+			]
 
 		@command = new nx.Cell
 			action: ({domain, name, game_session_id, args}) =>

@@ -4,7 +4,7 @@ class UserPanelViewModel
 			'<-': [
 				userData,
 				(userInfo) ->
-					userInfo.display_name
+					userInfo.displayName
 			]
 
 module.exports = UserPanelViewModel

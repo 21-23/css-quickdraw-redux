@@ -48,13 +48,13 @@ class AppViewModel
 		@state['->'] @round_phase, ({game_sessions}) ->
 			game_sessions[session_id].round_phase
 
+		@state['->'] @user_data, ({$user_data}) -> $user_data
+
 		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
 				state:   @state
 				command: @command
-				# user_data:       @user_data
-				# game_session_id: @game_session_id
 				# session_info:    @session_info
 				# round_phase:     @round_phase
 				# puzzle:          @puzzle
