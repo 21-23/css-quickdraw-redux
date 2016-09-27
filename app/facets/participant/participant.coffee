@@ -7,6 +7,12 @@ Domain =
 	SERVICE:      'service'
 	GAME_SESSION: 'game_session'
 
+GameSessionPrism = (game_session_id) ->
+	zoom = ({game_sessions_by_id}) ->
+		game_sessions_by_id.get game_session_id
+	unzoom = (state) -> state
+	QuickDraw.Prism zoom, unzoom
+
 class Participant
 
 	@actions_by_domain:
@@ -16,6 +22,7 @@ class Participant
 	constructor: (@service, @user_data) ->
 
 		@state = new nx.Cell
+			'<-': [@service.state_json]
 
 		@command = new nx.Cell
 			action: ({domain, name, game_session_id, args}) =>
@@ -33,11 +40,24 @@ class Participant
 							QuickDraw.do
 
 						when Domain.GAME_SESSION
-							QuickDraw.Prism ({game_sessions_by_id}) ->
-								game_sessions_by_id.get game_session_id
+							GameSessionPrism game_session_id
 
 				@service.state = prism @service.state, [action args...]
-				@state.value = QuickDraw.toJSON @service.state
+
+				if name is 'start_round'
+					QuickDraw.Interval @service.state,
+						prism: GameSessionPrism game_session_id
+						tick: 1000
+						duration: 3000
+						tick_actions: [do GameSession.start_countdown_tick]
+						end_actions: [do GameSession.start_countdown_end]
+
+					QuickDraw.Interval @service.state,
+						prism: GameSessionPrism game_session_id
+						tick: 1000
+						duration: 120000
+						tick_actions: [do GameSession.round_countdown_tick]
+						end_actions: [do GameSession.round_countdown_end]
 
 		@args_transform =
 			add_participant: => [@user_data]

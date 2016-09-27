@@ -18,7 +18,7 @@ PuzzlesProgressViewModel = (require 'common/components/puzzles-progress').ViewMo
 ButtonViewModel = (require 'common/components/button').ViewModel
 
 class AppViewModel
-	constructor: (sessionId) ->
+	constructor: (session_id) ->
 		@SELECTOR_MAX_LENGTH = 128
 
 		@user_data = new nx.Cell
@@ -42,19 +42,27 @@ class AppViewModel
 					nx.Identity
 				]
 
+		@state = new nx.Cell
+		@command = new nx.Cell
+
+		@state['->'] @round_phase, ({game_sessions}) ->
+			game_sessions[session_id].round_phase
+
 		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
-				user_data:       @user_data
-				game_session_id: @game_session_id
-				session_info:    @session_info
-				round_phase:     @round_phase
-				puzzle:          @puzzle
-				countdown:       @countdown
-				role:            @role
-
-				selector: @selector
-				match:    @match
+				state:   @state
+				command: @command
+				# user_data:       @user_data
+				# game_session_id: @game_session_id
+				# session_info:    @session_info
+				# round_phase:     @round_phase
+				# puzzle:          @puzzle
+				# countdown:       @countdown
+				# role:            @role
+				#
+				# selector: @selector
+				# match:    @match
 
 		@listenToConnectionClose @warp_client.transport
 
@@ -101,7 +109,12 @@ class AppViewModel
 			do window.location.reload
 
 		#Keep session ID set as the last operation as it triggers the data flow
-		@game_session_id.value = sessionId
+		# @game_session_id.value = sessionId
+		@command.value =
+			domain:          'game_session'
+			name:            'add_participant'
+			game_session_id: session_id
+			args:            []
 
 	listenToConnectionClose: (transport) ->
 		if transport.socket

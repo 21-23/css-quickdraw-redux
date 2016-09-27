@@ -40,14 +40,17 @@ module.exports =
 		new HtmlWebpackPlugin
 			title: 'CSS Quickdraw'
 			template: 'public/landing/index.html'
+			inject: no
 		new HtmlWebpackPlugin
 			title: 'CSS Quickdraw DOM Sandbox'
 			template: 'public/dom-sandbox/index.html'
 			filename: 'sandbox.html'
+			inject: no
 		new HtmlWebpackPlugin
 			title: 'CSS Quickdraw Login'
 			template: 'public/quick-login/index.html'
 			filename: 'quick-login.html'
+			inject: no
 	]
 
 	coffeelint:

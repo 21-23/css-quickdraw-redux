@@ -60,25 +60,37 @@ class AppViewModel
 
 
 		@command['<-'] @StartButtonViewModel.click, =>
-			new GameSessionCommand \
-				GameSessionCommand.START_ROUND,
-				puzzle_index: @current_puzzle_index.value
+			domain:          'game_session'
+			name:            GameSessionCommand.START_ROUND
+			game_session_id: session_id
+			args:            [@current_puzzle_index.value]
+			# new GameSessionCommand \
+			# 	GameSessionCommand.START_ROUND,
+			# 	puzzle_index: @current_puzzle_index.value
 
 		@command['<-'] @StopButtonViewModel.click, ->
-			new GameSessionCommand \
-				GameSessionCommand.END_ROUND
+			domain:          'game_session'
+			name:            GameSessionCommand.END_ROUND
+			game_session_id: session_id
+			args:            []
 
 		@command['<-'] @NextButtonViewModel.click, =>
 			@current_puzzle_index.value++
-			nextIndex = @current_puzzle_index.value
+			# nextIndex = @current_puzzle_index.value
 
-			if nextIndex < @puzzles.value.length
-				new GameSessionCommand \
-					GameSessionCommand.START_ROUND,
-					puzzle_index: nextIndex
+			# if nextIndex < @puzzles.value.length
+			domain:          'game_session'
+			name:            GameSessionCommand.START_ROUND
+			game_session_id: session_id
+			args:            [@current_puzzle_index.value]
 
-
-
+			# @current_puzzle_index.value++
+			# nextIndex = @current_puzzle_index.value
+			#
+			# if nextIndex < @puzzles.value.length
+			# 	new GameSessionCommand \
+			# 		GameSessionCommand.START_ROUND,
+			# 		puzzle_index: nextIndex
 
 		@current_puzzle = new nx.Cell
 			'<-': [
@@ -103,7 +115,9 @@ class AppViewModel
 				]
 
 		@state = new nx.Cell
-			action: console.log
+
+		@state['->'] @round_phase, ({game_sessions}) ->
+			game_sessions[session_id].round_phase
 
 		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
@@ -164,12 +178,10 @@ class AppViewModel
 			@puzzle,
 			({banned_characters}) -> banned_characters
 
-		#Keep session ID set as the last operation as it triggers the data flow
 		@command.value =
 			domain:          'game_session'
 			name:            'add_participant'
 			game_session_id: session_id
 			args:            []
-		# @game_session_id.value = sessionId
 
 module.exports = AppViewModel

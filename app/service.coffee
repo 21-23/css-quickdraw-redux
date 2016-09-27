@@ -36,6 +36,7 @@ class Service
 				data: data
 
 		@state = null
+		@state_json = new nx.Cell
 
 		GameSessionModel
 			.find {}
@@ -43,7 +44,7 @@ class Service
 			.exec (err, game_sessions) =>
 				@state = QuickDraw
 					.do @state, [
-						QuickDraw.init game_sessions
+						QuickDraw.init @state_json, game_sessions
 						QuickDraw.create_sandbox @facets_sandbox_log
 					]
 			.then =>
