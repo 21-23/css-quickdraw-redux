@@ -21,8 +21,8 @@ class AppViewModel
 	constructor: (session_id) ->
 
 		@user_data = new nx.Cell
-		@game_session_id = new nx.Cell
 		@round_phase = new nx.Cell
+
 		@puzzles = new nx.Cell value: []
 		@puzzle = new nx.Cell
 		@command = new nx.Cell
@@ -120,13 +120,15 @@ class AppViewModel
 
 		@state['->'] @user_data, ({$user_data}) -> $user_data
 
+		@state['->'] @puzzles, ({game_sessions}) ->
+			game_sessions[session_id].raw_puzzles
+
 		@warp_client = new warp.Client
 			transport: new warp.WebSocketTransport address:"ws://#{window.location.host}"
 			entities:
 				state:   @state
 				command: @command
 
-				# game_session_id: @game_session_id
 				# role:            @role
 				#
 				# round_phase:     @round_phase

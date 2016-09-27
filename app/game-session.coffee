@@ -58,6 +58,7 @@ GameSession =
 
 	toJSON: (session) ->
 		json =
+			raw_puzzles:          session.raw_puzzles
 			current_puzzle_index: session.current_puzzle_index
 			round_phase:          session.round_phase
 			participants:         {}
