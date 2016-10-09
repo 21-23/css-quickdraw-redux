@@ -13,7 +13,7 @@
   "dependencies": {
     "nexus": "git://github.com/DaQuirm/nexus#master",
     "normalize.css": "~3.0.3",
-    "nexus-warp": "git://github.com/DaQuirm/nexus-warp#cssconf-budapest",
+    "nexus-warp": "git://github.com/DaQuirm/nexus-warp#master",
     "cssqd-shared": "./shared",
     "backspace-block": "~1.0.1"
   }
