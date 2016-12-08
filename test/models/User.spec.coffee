@@ -21,8 +21,8 @@ describe 'User', ->
 				provider: 'provider'
 				username: 'username'
 
-		afterEach (done) ->
-			User.remove {}, done
+		afterEach ->
+			User.remove {}
 
 		it "creates new user if user with the same id doesn't exist", ->
 			yield User.fromOAuthProfile profile

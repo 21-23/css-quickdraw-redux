@@ -15,5 +15,5 @@ before (done) ->
 	connection.on 'open', ->
 		connection.db.dropDatabase done
 
-after (done) ->
-	connection.close done
+after ->
+	do connection.close

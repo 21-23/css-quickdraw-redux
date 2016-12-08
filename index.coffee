@@ -1,11 +1,12 @@
 { spawn }   = require 'child_process'
-electron    = require 'electron-prebuilt'
+electron    = require 'electron'
 
 cssqdConfig = require 'cssqd-config'
 path        = require 'path'
 koa         = require 'koa'
 serve       = require 'koa-static'
 mongoose    = require 'mongoose'
+mongoose.Promise = Promise
 
 appConfig   = require './config'
 
