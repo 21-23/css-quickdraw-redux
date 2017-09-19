@@ -64,6 +64,7 @@
     "webpack-notifier": "^1.4.1"
   },
   "dependencies": {
+    "bower": "^1.8.2",
     "bunyan": "^1.8.1",
     "co": "^4.6.0",
     "cson": "^3.0.1",

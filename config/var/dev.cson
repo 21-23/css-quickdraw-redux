@@ -1,6 +1,6 @@
 {
 	mongo:
-		host: "mongodb://mongo"
+		host: "mongodb://localhost"
 		db: "cssqd-dev"
 	service:
 		host: 'localhost'
